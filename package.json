@@ -1,0 +1,24 @@
+{
+  "name": "react-pure-modal",
+  "version": "0.0.1",
+  "description": "React modal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max-mykhailenko/react-pure-modal.git"
+  },
+  "keywords": [
+    "react",
+    "modal",
+    "dialog"
+  ],
+  "author": "Max Mykhailenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/max-mykhailenko/react-pure-modal/issues"
+  },
+  "homepage": "https://github.com/max-mykhailenko/react-pure-modal#readme"
+}

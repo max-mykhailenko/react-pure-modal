@@ -1,0 +1,66 @@
+.body-modal-fix {
+  overflow: hidden;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.smart-modal {
+  top: 10vh;
+  width: 300px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1041;
+  box-sizing: border-box;
+  transition: all .2s ease-in-out;
+}
+
+.smart-modal > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 80vh;
+
+}
+.smart-modal > * > * {
+  flex: 0 0 auto;
+}
+
+.smart-modal > * > [scrollable] {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-scrolling: touch;
+  transform: translate3d(0, 0, 0);
+  flex: 0 1 auto;
+}
+
+
+@media (max-width: 768px) {
+  .smart-modal {
+    top: 5%;
+  }
+  .smart-modal > * {
+    max-height: 90vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .smart-modal {
+    top: 0;
+    width: 100%;
+  }
+  .smart-modal > * {
+    height: 100vh;
+    max-height: 100vh;
+  }
+}
