@@ -1,6 +1,6 @@
 // import React, { Component, PropTypes } from 'react';
-import keymage from 'keymage';
-import uniqueId from 'lodash/uniqueId';
+const keymage =  require('keymage');
+const uniqueId = require('lodash/uniqueId');
 
 class PureModal extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 // import React, { Component, PropTypes } from 'react';
-import keymage from 'keymage';
-import uniqueId from 'lodash/uniqueId';
+var keymage = require('keymage');
+var uniqueId = require('lodash/uniqueId');
 
 var PureModal = function (_Component) {
   babelHelpers.inherits(PureModal, _Component);

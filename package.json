@@ -8,7 +8,9 @@
     "clean": "rimraf dist",
     "build:es": "BABEL_ENV=es babel src --out-dir dist/es",
     "build:cjs": "babel src --out-dir dist/commonjs",
-    "build": "npm run clean && npm run build:cjs && npm run build:es",
+    "build:amd": "rollup -c rollup.config.js -f amd",
+    "build:umd": "rollup -c rollup.config.js -f umd",
+    "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:amd && npm run build:umd",
     "clog": "conventional-changelog -i CHANGELOG.md -w"
   },
   "repository": {

@@ -6,22 +6,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _keymage = require('keymage');
-
-var _keymage2 = _interopRequireDefault(_keymage);
-
-var _uniqueId = require('lodash/uniqueId');
-
-var _uniqueId2 = _interopRequireDefault(_uniqueId);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // import React, { Component, PropTypes } from 'react';
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import React, { Component, PropTypes } from 'react';
+var keymage = require('keymage');
+var uniqueId = require('lodash/uniqueId');
 
 var PureModal = function (_Component) {
   _inherits(PureModal, _Component);
@@ -35,14 +28,14 @@ var PureModal = function (_Component) {
     _this.close = _this.close.bind(_this);
     _this.open = _this.open.bind(_this);
     _this.handleBackdropClick = _this.handleBackdropClick.bind(_this);
-    _this.scope = (0, _uniqueId2.default)('modal-');
+    _this.scope = uniqueId('modal-');
     return _this;
   }
 
   _createClass(PureModal, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      (0, _keymage2.default)(this.scope, 'esc', this.close);
+      keymage(this.scope, 'esc', this.close);
 
       if (this.props.isOpen) {
         this.setModalContext();
@@ -67,20 +60,20 @@ var PureModal = function (_Component) {
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      _keymage2.default.unbind(this.scope, 'esc', this.close);
+      keymage.unbind(this.scope, 'esc', this.close);
       this.unsetModalContext();
     }
   }, {
     key: 'setModalContext',
     value: function setModalContext() {
       document.body.classList.add('body-modal-fix');
-      _keymage2.default.pushScope(this.scope);
+      keymage.pushScope(this.scope);
     }
   }, {
     key: 'unsetModalContext',
     value: function unsetModalContext() {
       document.body.classList.remove('body-modal-fix');
-      _keymage2.default.popScope();
+      keymage.popScope();
     }
   }, {
     key: 'open',

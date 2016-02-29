@@ -15,8 +15,8 @@ const babelOptions = {
 };
 
 const dest = {
-    amd:  'dist/amd/redux-router.js',
-    umd:  'dist/umd/redux-router.js'
+    amd:  'dist/amd/react-pure-modal.js',
+    umd:  'dist/umd/react-pure-modal.js'
 }[format];
 
 export default {
