@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/max-mykhailenko/react-pure-modal/issues"
   },
-  "homepage": "https://github.com/max-mykhailenko/react-pure-modal#readme"
+  "homepage": "https://github.com/max-mykhailenko/react-pure-modal#readme",
+  "dependencies": {
+    "keymage": "^1.1.3",
+    "lodash": "^4.5.1"
+  },
+  "peerDependencies": {
+    "redux": "^3.0.0"
+  }
 }

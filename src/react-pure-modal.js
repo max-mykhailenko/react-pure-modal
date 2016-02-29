@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import keymage from 'keymage';
 import uniqueId from 'lodash/uniqueId';
-import './react-pure-modal.css';
 
-class SmartModal extends Component {
+class PureModal extends Component {
   constructor(props) {
     super(props);
     this.isOpen = false;
@@ -123,12 +122,12 @@ class SmartModal extends Component {
   }
 }
 
-SmartModal.defaultProps = {
+PureModal.defaultProps = {
   mode: 'modal',
   replace: false,
 };
 
-SmartModal.propTypes = {
+PureModal.propTypes = {
   mode: PropTypes.oneOf(['modal', 'tooltip']),
   replace: PropTypes.bool,
   children: PropTypes.node,
@@ -145,4 +144,4 @@ SmartModal.propTypes = {
   ]),
 };
 
-export default SmartModal;
+export default PureModal;
