@@ -1,6 +1,6 @@
 {
   "name": "react-pure-modal",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React modal",
   "main": "dist/commonjs/index.js",
   "jnext:main": "dist/es/index.js",
