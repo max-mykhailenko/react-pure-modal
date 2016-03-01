@@ -105,7 +105,7 @@ class PureModal extends React.Component {
                 {header}
                 <div onClick={this.close} className="close">&times;</div>
               </div>
-              <div className="panel-body" scrollable>
+              <div className="panel-body scrollable">
                 {children}
               </div>
               {

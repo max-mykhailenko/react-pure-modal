@@ -192,7 +192,7 @@ define('reactPureModal', ['exports'], function (exports) { 'use strict';
               ),
               React.createElement(
                 'div',
-                { className: 'panel-body', scrollable: true },
+                { className: 'panel-body scrollable' },
                 children
               ),
               footer && React.createElement(
