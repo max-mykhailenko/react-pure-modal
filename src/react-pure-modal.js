@@ -1,4 +1,4 @@
-// import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 const keymage =  require('keymage');
 const uniqueId = require('lodash/uniqueId');
 
