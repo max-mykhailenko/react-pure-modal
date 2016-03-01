@@ -56,12 +56,12 @@
 
   babelHelpers;
 
-  // import React, { Component, PropTypes } from 'react';
+  var React = require('react');
   var keymage = require('keymage');
   var uniqueId = require('lodash/uniqueId');
 
-  var PureModal = function (_Component) {
-    babelHelpers.inherits(PureModal, _Component);
+  var PureModal = function (_React$Component) {
+    babelHelpers.inherits(PureModal, _React$Component);
 
     function PureModal(props) {
       babelHelpers.classCallCheck(this, PureModal);
@@ -210,7 +210,7 @@
       }
     }]);
     return PureModal;
-  }(Component);
+  }(React.Component);
 
   PureModal.defaultProps = {
     mode: 'modal',
@@ -218,14 +218,14 @@
   };
 
   PureModal.propTypes = {
-    mode: PropTypes.oneOf(['modal', 'tooltip']),
-    replace: PropTypes.bool,
-    children: PropTypes.node,
-    isOpen: PropTypes.bool,
-    onClose: PropTypes.func,
-    className: PropTypes.string,
-    header: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-    footer: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+    mode: React.PropTypes.oneOf(['modal', 'tooltip']),
+    replace: React.PropTypes.bool,
+    children: React.PropTypes.node,
+    isOpen: React.PropTypes.bool,
+    onClose: React.PropTypes.func,
+    className: React.PropTypes.string,
+    header: React.PropTypes.oneOfType([React.PropTypes.node, React.PropTypes.string]),
+    footer: React.PropTypes.oneOfType([React.PropTypes.node, React.PropTypes.string])
   };
 
   exports.reactPureModal = PureModal;

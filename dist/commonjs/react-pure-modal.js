@@ -12,12 +12,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import React, { Component, PropTypes } from 'react';
+var React = require('react');
 var keymage = require('keymage');
 var uniqueId = require('lodash/uniqueId');
 
-var PureModal = function (_Component) {
-  _inherits(PureModal, _Component);
+var PureModal = function (_React$Component) {
+  _inherits(PureModal, _React$Component);
 
   function PureModal(props) {
     _classCallCheck(this, PureModal);
@@ -167,7 +167,7 @@ var PureModal = function (_Component) {
   }]);
 
   return PureModal;
-}(Component);
+}(React.Component);
 
 PureModal.defaultProps = {
   mode: 'modal',
@@ -175,14 +175,14 @@ PureModal.defaultProps = {
 };
 
 PureModal.propTypes = {
-  mode: PropTypes.oneOf(['modal', 'tooltip']),
-  replace: PropTypes.bool,
-  children: PropTypes.node,
-  isOpen: PropTypes.bool,
-  onClose: PropTypes.func,
-  className: PropTypes.string,
-  header: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-  footer: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+  mode: React.PropTypes.oneOf(['modal', 'tooltip']),
+  replace: React.PropTypes.bool,
+  children: React.PropTypes.node,
+  isOpen: React.PropTypes.bool,
+  onClose: React.PropTypes.func,
+  className: React.PropTypes.string,
+  header: React.PropTypes.oneOfType([React.PropTypes.node, React.PropTypes.string]),
+  footer: React.PropTypes.oneOfType([React.PropTypes.node, React.PropTypes.string])
 };
 
 exports.default = PureModal;

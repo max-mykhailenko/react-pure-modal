@@ -1,6 +1,6 @@
 {
   "name": "react-pure-modal",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "React modal",
   "main": "dist/commonjs/index.js",
   "jnext:main": "dist/es/index.js",
@@ -11,7 +11,8 @@
     "build:amd": "rollup -c rollup.config.js -f amd",
     "build:umd": "rollup -c rollup.config.js -f umd",
     "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:amd && npm run build:umd",
-    "clog": "conventional-changelog -i CHANGELOG.md -w"
+    "clog": "conventional-changelog -i CHANGELOG.md -w",
+    "release": "./scripts/release.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "lodash": "^4.5.1"
   },
   "devDependencies": {
+    "react": "^0.14.0",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.4.0",
     "babel-eslint": "^4.1.6",
