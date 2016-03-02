@@ -5,7 +5,7 @@ const uniqueId = require('lodash/uniqueId');
 class PureModal extends React.Component {
   constructor(props) {
     super(props);
-    this.isOpen = false;
+    this.isOpen = props.isOpen || false;
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleBackdropClick = this.handleBackdropClick.bind(this);
