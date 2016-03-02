@@ -78,9 +78,9 @@ class PureModal extends React.Component {
 
   handleBackdropClick(event) {
     if (event) {
-      event.stopPropagation();
-      event.preventDefault();
       if (!event.target.classList.contains('modal-backdrop')) {
+        event.stopPropagation();
+        event.preventDefault();
         return;
       }
     }

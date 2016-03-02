@@ -94,9 +94,9 @@ var PureModal = function (_React$Component) {
     key: 'handleBackdropClick',
     value: function handleBackdropClick(event) {
       if (event) {
-        event.stopPropagation();
-        event.preventDefault();
         if (!event.target.classList.contains('modal-backdrop')) {
+          event.stopPropagation();
+          event.preventDefault();
           return;
         }
       }
