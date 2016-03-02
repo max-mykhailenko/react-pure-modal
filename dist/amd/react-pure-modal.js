@@ -149,10 +149,10 @@ define('reactPureModal', ['exports'], function (exports) { 'use strict';
       value: function handleBackdropClick(event) {
         if (event) {
           if (!event.target.classList.contains('modal-backdrop')) {
-            event.stopPropagation();
-            event.preventDefault();
             return;
           }
+          event.stopPropagation();
+          event.preventDefault();
         }
         this.close();
       }
