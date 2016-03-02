@@ -1,5 +1,5 @@
 const React = require('react');
-const keymage =  require('keymage');
+const keymage = require('keymage');
 const uniqueId = require('lodash/uniqueId');
 
 class PureModal extends React.Component {
