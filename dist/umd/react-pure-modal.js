@@ -68,7 +68,7 @@
 
       var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(PureModal).call(this, props));
 
-      _this.isOpen = false;
+      _this.isOpen = props.isOpen || false;
       _this.close = _this.close.bind(_this);
       _this.open = _this.open.bind(_this);
       _this.handleBackdropClick = _this.handleBackdropClick.bind(_this);
