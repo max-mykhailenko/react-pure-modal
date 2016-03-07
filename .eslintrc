@@ -1,0 +1,9 @@
+{
+  "extends": "defaults/configurations/airbnb/es6-react",
+  "plugins": [
+    "react"
+  ],
+  "rules" : {
+    "no-case-declarations": 0
+  }
+}

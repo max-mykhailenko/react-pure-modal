@@ -1,5 +1,2 @@
 import reactPureModal from './react-pure-modal.js';
-
-export {
-  reactPureModal
-};
+export default reactPureModal;
