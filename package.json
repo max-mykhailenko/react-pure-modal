@@ -1,6 +1,6 @@
 {
   "name": "react-pure-modal",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "React modal",
   "main": "dist/react-pure-modal.min.js",
   "jnext:main": "dist/react-pure-modal.min.js",

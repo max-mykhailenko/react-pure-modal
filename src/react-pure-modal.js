@@ -92,7 +92,7 @@ class PureModal extends React.Component {
       return null;
     }
 
-    const { children, replace, className, header, footer } = this.props;
+    const { children, replace, className = '', header, footer } = this.props;
 
     return (
       <div className="modal-backdrop" onClick={this.handleBackdropClick}>
@@ -102,8 +102,10 @@ class PureModal extends React.Component {
             children :
             <div className="panel panel-default">
               <div className="panel-heading">
-                {header}
-                <div onClick={this.close} className="close">&times;</div>
+                <h3 className="panel-title">
+                  {header}
+                  <div onClick={this.close} className="close">&times;</div>
+                </h3>
               </div>
               <div className="panel-body scrollable">
                 {children}
