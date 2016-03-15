@@ -20,6 +20,7 @@ class ModalContainer extends React.Component {
           ref={(k) => this.modal = k}
         >
           test
+          test2
         </PureModal>
       </div>
     );

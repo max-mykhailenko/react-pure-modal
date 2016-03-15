@@ -12,7 +12,7 @@
   background-color: rgba(0, 0, 0, .4);
 }
 
-.smart-modal {
+.modal-backdrop .smart-modal {
   top: 10vh;
   width: 300px;
   max-width: 100%;
@@ -26,7 +26,7 @@
           transition: all .2s ease-in-out;
 }
 
-.smart-modal > * {
+.modal-backdrop .smart-modal > * {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -43,7 +43,7 @@
   max-height: 80vh;
 
 }
-.smart-modal > * > * {
+.modal-backdrop .smart-modal > * > * {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
@@ -64,20 +64,20 @@
 
 
 @media (max-width: 768px) {
-  .smart-modal {
+  .modal-backdrop .smart-modal {
     top: 5%;
   }
-  .smart-modal > * {
+  .modal-backdrop .smart-modal > * {
     max-height: 90vh;
   }
 }
 
 @media (max-width: 480px) {
-  .smart-modal {
+  .modal-backdrop .smart-modal {
     top: 0;
     width: 100%;
   }
-  .smart-modal > * {
+  .modal-backdrop .smart-modal > * {
     height: 100vh;
     max-height: 100vh;
   }
