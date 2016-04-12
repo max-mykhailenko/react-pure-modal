@@ -51,7 +51,6 @@
 }
 
 .smart-modal > * > .scrollable {
-  height: 100%;
   overflow-x: hidden;
   overflow-scrolling: touch;
   -webkit-transform: translate3d(0, 0, 0);
