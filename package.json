@@ -8,7 +8,7 @@
     "clean": "rimraf dist",
     "build": "npm run clean && NODE_ENV=production npm run webpack:prod && npm run webpack:dev",
     "clog": "conventional-changelog -i CHANGELOG.md -w",
-    "webpack:dev": "webpack --config webpack.config.dev.js",
+    "webpack:dev": "webpack --config webpack.config.dev.js --watch",
     "webpack:prod": "webpack --config webpack.config.js",
     "release": "./scripts/release.js"
   },

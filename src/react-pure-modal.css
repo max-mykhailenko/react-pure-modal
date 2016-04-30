@@ -2,7 +2,7 @@
   overflow: hidden;
 }
 
-.modal-backdrop {
+.pure-modal-backdrop {
   position: fixed;
   top: 0;
   right: 0;
@@ -12,7 +12,7 @@
   background-color: rgba(0, 0, 0, .4);
 }
 
-.modal-backdrop .smart-modal {
+.pure-modal-backdrop .pure-modal {
   top: 10vh;
   width: 300px;
   max-width: 100%;
@@ -26,7 +26,7 @@
           transition: all .2s ease-in-out;
 }
 
-.modal-backdrop .smart-modal > * {
+.pure-modal-backdrop .pure-modal > * {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -43,14 +43,15 @@
   max-height: 80vh;
 
 }
-.modal-backdrop .smart-modal > * > * {
+
+.pure-modal-backdrop .pure-modal > * > * {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
 }
 
-.smart-modal > * > .scrollable {
+.pure-modal > * > .scrollable {
   height: 100%;
   overflow-x: hidden;
   overflow-scrolling: touch;
@@ -64,21 +65,63 @@
 
 
 @media (max-width: 768px) {
-  .modal-backdrop .smart-modal {
+  .pure-modal-backdrop .pure-modal {
     top: 5%;
   }
-  .modal-backdrop .smart-modal > * {
+  .pure-modal-backdrop .pure-modal > * {
     max-height: 90vh;
   }
 }
 
 @media (max-width: 480px) {
-  .modal-backdrop .smart-modal {
+  .pure-modal-backdrop .pure-modal {
     top: 0;
     width: 100%;
   }
-  .modal-backdrop .smart-modal > * {
+  .pure-modal-backdrop .pure-modal > * {
     height: 100vh;
     max-height: 100vh;
   }
+}
+
+
+.panel {
+  background-color: white;
+}
+
+.panel-heading {
+  background: rgb(240, 240, 240);
+}
+
+.panel-heading {
+  position: relative;
+}
+
+.panel-title {
+  padding: 12px 45px 12px 15px;
+  margin: 0;
+}
+
+.panel-heading .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+  background: rgba(240, 240, 240, 0.8);
+  width: 30px;
+  color: rgb(140, 140, 140);
+  transition: color ease-in-out .1s;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.panel-heading .close:hover {
+  color: #000;
+}
+
+.panel-body {
+  padding: 15px;
 }

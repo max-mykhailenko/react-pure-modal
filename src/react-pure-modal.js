@@ -78,7 +78,7 @@ class PureModal extends React.Component {
 
   handleBackdropClick(event) {
     if (event) {
-      if (!event.target.classList.contains('modal-backdrop')) {
+      if (!event.target.classList.contains('pure-modal-backdrop')) {
         return;
       }
       event.stopPropagation();
@@ -95,17 +95,20 @@ class PureModal extends React.Component {
     const { children, replace, className = '', header, footer } = this.props;
 
     return (
-      <div className="modal-backdrop" onClick={this.handleBackdropClick}>
-        <div className={`smart-modal ${ className }`}>
+      <div className="pure-modal-backdrop" onClick={this.handleBackdropClick}>
+        <div className={`pure-modal ${ className }`}>
           {
             replace ?
             children :
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h3 className="panel-title">
-                  {header}
-                  <div onClick={this.close} className="close">&times;</div>
-                </h3>
+                {
+                  header &&
+                  <h3 className="panel-title">
+                    {header}
+                  </h3>
+                }
+                <div onClick={this.close} className="close">&times;</div>
               </div>
               <div className="panel-body scrollable">
                 {children}
