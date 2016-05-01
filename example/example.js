@@ -18,6 +18,8 @@ class ModalContainer extends React.Component {
         <button onClick={ this.openModal }>Open simple modal</button>
         <PureModal
           header="test heading sdfn asjkd nf a s k;l fna sd; lf"
+          footer="buttons or smth else"
+          isOpen
           ref={(k) => this.modal = k}
         >
           <p>test</p>

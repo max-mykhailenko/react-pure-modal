@@ -84,24 +84,24 @@
 }
 
 
-.panel {
+.pure-modal .panel {
   background-color: white;
 }
 
-.panel-heading {
+.pure-modal .panel-heading {
   background: rgb(240, 240, 240);
 }
 
-.panel-heading {
+.pure-modal .panel-heading {
   position: relative;
 }
 
-.panel-title {
+.pure-modal .panel-title {
   padding: 12px 45px 12px 15px;
   margin: 0;
 }
 
-.panel-heading .close {
+.pure-modal .panel-heading .close {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -117,10 +117,15 @@
   cursor: pointer;
 }
 
-.panel-heading .close:hover {
+.pure-modal .panel-heading .close:hover {
   color: #000;
 }
 
-.panel-body {
+.pure-modal .panel-body {
   padding: 15px;
+}
+
+.pure-modal .panel-footer {
+  padding: 12px 45px 12px 15px;
+  background: rgb(240, 240, 240);
 }
