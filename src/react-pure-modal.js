@@ -98,11 +98,21 @@ class PureModal extends React.Component {
       return null;
     }
 
-    const { children, replace, className = '', header, footer } = this.props;
+    const {
+      children,
+      replace,
+      className,
+      header,
+      footer,
+      scrollable,
+    } = this.props;
 
     return (
-      <div className="pure-modal-backdrop" onClick={this.handleBackdropClick}>
-        <div className={`pure-modal ${ className }`}>
+      <div
+        className={`pure-modal-backdrop ${scrollable ? '' : 'scrollable'}`}
+        onClick={this.handleBackdropClick}
+      >
+        <div className={`pure-modal ${ className } ${scrollable ? '' : 'auto-height'}`}>
           {
             replace ?
             children :
@@ -116,7 +126,7 @@ class PureModal extends React.Component {
                 }
                 <div onClick={this.close} className="close">&times;</div>
               </div>
-              <div className="panel-body scrollable">
+              <div className={`panel-body ${scrollable ? 'scrollable' : ''}`}>
                 {children}
               </div>
               {
@@ -136,6 +146,8 @@ class PureModal extends React.Component {
 PureModal.defaultProps = {
   mode: 'modal',
   replace: false,
+  scrollable: true,
+  className: '',
 };
 
 PureModal.propTypes = {
@@ -143,6 +155,7 @@ PureModal.propTypes = {
   replace: React.PropTypes.bool,
   children: React.PropTypes.node,
   isOpen: React.PropTypes.bool,
+  scrollable: React.PropTypes.bool,
   onClose: React.PropTypes.func,
   className: React.PropTypes.string,
   header: React.PropTypes.oneOfType([
