@@ -1,6 +1,6 @@
 {
   "name": "react-pure-modal",
-  "version": "0.0.16",
+  "version": "1.0.0",
   "description": "React modal",
   "main": "dist/react-pure-modal.min.js",
   "jnext:main": "dist/react-pure-modal.min.js",
@@ -8,8 +8,8 @@
     "clean": "rimraf dist",
     "build": "npm run clean && NODE_ENV=production npm run webpack:prod && npm run webpack:dev",
     "clog": "conventional-changelog -i CHANGELOG.md -w",
-    "webpack:dev": "webpack --config webpack.config.dev.js --watch",
-    "webpack:prod": "webpack --config webpack.config.js --watch",
+    "webpack:dev": "webpack --config webpack.config.dev.js",
+    "webpack:prod": "webpack --config webpack.config.js",
     "release": "./scripts/release.js"
   },
   "repository": {
