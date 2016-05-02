@@ -101,15 +101,21 @@
     margin-bottom: 0;
     width: 100%;
   }
+
   .pure-modal-backdrop .pure-modal > * {
     height: 100vh;
     max-height: 100vh;
   }
+
+  .pure-modal.auto-height > * {
+    height: auto;
+    max-height: none;
+  }
 }
 
 
-.pure-modal .panel {
-  background-color: white;
+.pure-modal .panel-body {
+  background-color: #fff;
 }
 
 .pure-modal .panel-heading {
