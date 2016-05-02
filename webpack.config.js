@@ -11,7 +11,7 @@ const reactExternal = {
 
 const config = {
   entry: {
-    'react-pure-modal': path.join(__dirname, 'src/index.js'),
+    'react-pure-modal': path.join(__dirname, './src/react-pure-modal.js'),
   },
   module: {
     loaders: [
