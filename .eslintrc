@@ -1,5 +1,10 @@
 {
-  "extends": "defaults/configurations/airbnb/es6-react",
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaFeatures": {
+      experimentalObjectRestSpread: true
+    }
+  },
   "rules" : {
     "no-case-declarations": 0
   }

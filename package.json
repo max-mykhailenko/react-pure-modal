@@ -8,8 +8,8 @@
     "clean": "rimraf dist",
     "build": "npm run clean && NODE_ENV=production npm run webpack:prod && npm run webpack:dev",
     "clog": "conventional-changelog -i CHANGELOG.md -w",
-    "webpack:dev": "webpack --config webpack.config.dev.js",
-    "webpack:prod": "webpack --config webpack.config.js",
+    "webpack:dev": "webpack --config webpack.config.dev.js --watch",
+    "webpack:prod": "webpack --config webpack.config.js --watch",
     "release": "./scripts/release.js"
   },
   "repository": {
@@ -27,10 +27,6 @@
     "url": "https://github.com/max-mykhailenko/react-pure-modal/issues"
   },
   "homepage": "https://github.com/max-mykhailenko/react-pure-modal#readme",
-  "dependencies": {
-    "keymage": "^1.1.3",
-    "lodash": "^4.5.1"
-  },
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-core": "^6.4.0",

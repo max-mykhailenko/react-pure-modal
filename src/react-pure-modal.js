@@ -1,54 +1,51 @@
 import React from 'react';
-import keymage from 'keymage';
-import uniqueId from 'lodash/uniqueId';
 
 class PureModal extends React.Component {
   constructor(props) {
     super(props);
-    this.isOpen = props.isOpen || false;
+    this.handleEsc = this.handleEsc.bind(this);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleBackdropClick = this.handleBackdropClick.bind(this);
-    this.scope = uniqueId('modal-');
+    this.state = {
+      isOpen: props.isOpen || false,
+    }
   }
 
   componentDidMount() {
-    keymage(this.scope, 'esc', this.close);
-
     if (this.props.isOpen) {
       this.setModalContext();
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.isOpen === 'boolean' ) {
-      this.isOpen = nextProps.isOpen;
-    }
-  }
-
-  componentWillUpdate() {
-    if (this.isOpen) {
-      if (this.props.isOpen !== this.isOpen) {
-        this.setModalContext();
+    if (typeof nextProps.isOpen === 'boolean') {
+      if (nextProps.isOpen) {
+        this.open();
+      } else {
+        this.close();
       }
-    } else {
-      this.unsetModalContext();
     }
   }
 
   componentWillUnmount() {
-    keymage.unbind(this.scope, 'esc', this.close);
     this.unsetModalContext();
   }
 
+  handleEsc(event) {
+    if (event.keyCode === 27) {
+      this.close();
+    }
+  }
+
   setModalContext() {
+    document.addEventListener('keydown', this.handleEsc);
     document.body.classList.add('body-modal-fix');
-    keymage.pushScope(this.scope);
   }
 
   unsetModalContext() {
+    document.removeEventListener('keydown', this.handleEsc);
     document.body.classList.remove('body-modal-fix');
-    keymage.popScope();
   }
 
   open(event) {
@@ -56,9 +53,11 @@ class PureModal extends React.Component {
       event.stopPropagation();
       event.preventDefault();
     }
-    if (!this.isOpen) {
-      this.isOpen = true;
-      this.forceUpdate();
+    if (!this.state.isOpen) {
+      this.setState({
+        isOpen: true,
+      });
+      this.setModalContext();
     }
   }
 
@@ -68,19 +67,24 @@ class PureModal extends React.Component {
       event.preventDefault();
     }
 
-    if (this.isOpen) {
+    if (this.state.isOpen) {
+      let isOpen = false;
       if (this.props.onClose) {
-        this.isOpen = !this.props.onClose();
-      } else {
-        this.isOpen = false;
+        isOpen = !this.props.onClose();
       }
-      this.forceUpdate();
+
+      if (this.state.isOpen !== isOpen) {
+        this.setState({
+          isOpen,
+        });
+        this.unsetModalContext();
+      }
     }
   }
 
   handleBackdropClick(event) {
     if (event) {
-      if (!event.target.classList.contains('modal-backdrop')) {
+      if (!event.target.classList.contains('pure-modal-backdrop')) {
         return;
       }
       event.stopPropagation();
@@ -90,26 +94,39 @@ class PureModal extends React.Component {
   }
 
   render() {
-    if (!this.isOpen) {
+    if (!this.state.isOpen) {
       return null;
     }
 
-    const { children, replace, className = '', header, footer } = this.props;
+    const {
+      children,
+      replace,
+      className,
+      header,
+      footer,
+      scrollable,
+    } = this.props;
 
     return (
-      <div className="modal-backdrop" onClick={this.handleBackdropClick}>
-        <div className={`smart-modal ${ className }`}>
+      <div
+        className={`pure-modal-backdrop ${scrollable ? '' : 'scrollable'}`}
+        onClick={this.handleBackdropClick}
+      >
+        <div className={`pure-modal ${ className } ${scrollable ? '' : 'auto-height'}`}>
           {
             replace ?
             children :
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h3 className="panel-title">
-                  {header}
-                  <div onClick={this.close} className="close">&times;</div>
-                </h3>
+                {
+                  header &&
+                  <h3 className="panel-title">
+                    {header}
+                  </h3>
+                }
+                <div onClick={this.close} className="close">&times;</div>
               </div>
-              <div className="panel-body scrollable">
+              <div className={`panel-body ${scrollable ? 'scrollable' : ''}`}>
                 {children}
               </div>
               {
@@ -129,6 +146,8 @@ class PureModal extends React.Component {
 PureModal.defaultProps = {
   mode: 'modal',
   replace: false,
+  scrollable: true,
+  className: '',
 };
 
 PureModal.propTypes = {
@@ -136,6 +155,7 @@ PureModal.propTypes = {
   replace: React.PropTypes.bool,
   children: React.PropTypes.node,
   isOpen: React.PropTypes.bool,
+  scrollable: React.PropTypes.bool,
   onClose: React.PropTypes.func,
   className: React.PropTypes.string,
   header: React.PropTypes.oneOfType([
