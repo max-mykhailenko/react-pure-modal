@@ -31,17 +31,25 @@ And open with
 
 ## Options
 
-### replace `PropTypes.bool` (default: false)
+#### replace `PropTypes.bool` (default: false)
 Replace all inner markup with Component children
-### isOpen: `PropTypes.bool`
+#### isOpen: `PropTypes.bool`
 Control modal state from parent component
-### scrollable: `PropTypes.bool` (default: true)
+#### scrollable: `PropTypes.bool` (default: true)
 You can disable scroll in modal body
-### onClose: `PropTypes.func`
+#### onClose: `PropTypes.func`
 Handle modal closing. Should return true if you allow closing
-### className: `PropTypes.string`
+#### className: `PropTypes.string`
 ClassName for modal DOM element, can be used for set modal width or change behaviour on mobile devices
-### header: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
+#### header: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
 Modal heading, doesn't disabled close button
-### footer: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
+#### footer: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
 Place here your actions
+
+
+## Screencast
+### Simple
+![Simple demo](./screencast/simple.gif)
+### With inner scrolling
+![Scrollable demo](./screencast/scrollable.gif)
+
