@@ -34,7 +34,7 @@ class PureModal extends React.Component {
 
   handleEsc(event) {
     if (event.keyCode === 27) {
-      this.close();
+      this.close(event);
     }
   }
 
@@ -69,7 +69,7 @@ class PureModal extends React.Component {
 
     if (this.state.isOpen) {
       let isOpen = false;
-      if (this.props.onClose) {
+      if (this.props.onClose && event) {
         isOpen = !this.props.onClose();
       }
 
@@ -90,7 +90,7 @@ class PureModal extends React.Component {
       event.stopPropagation();
       event.preventDefault();
     }
-    this.close();
+    this.close(event);
   }
 
   render() {
