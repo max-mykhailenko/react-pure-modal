@@ -19,7 +19,7 @@ class PureModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.isOpen === 'boolean') {
+    if (typeof nextProps.isOpen === 'boolean' && this.props.isOpen !== nextProps.isOpen) {
       if (nextProps.isOpen) {
         this.open();
       } else {
