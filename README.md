@@ -1,6 +1,6 @@
 # react-pure-modal
 React pure modal is a simplest way to create dialog on your site.
-- Very small
+- Very small (less than 4Kb)
 - Mobile friendly
 - Without dependencies
 
@@ -53,4 +53,3 @@ Place here your actions
 ![Simple demo](./screencast/simple.gif)
 ### With inner scrolling
 ![Scrollable demo](./screencast/scrollable.gif)
-

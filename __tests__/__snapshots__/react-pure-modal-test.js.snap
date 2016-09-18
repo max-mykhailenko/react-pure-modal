@@ -1,0 +1,62 @@
+exports[`test Should be closed 1`] = `null`;
+
+exports[`test Should be opened and closed after click 1`] = `
+<div
+  className="pure-modal-backdrop "
+  onClick={[Function bound handleBackdropClick]}>
+  <div
+    className="pure-modal  ">
+    <div
+      className="panel panel-default">
+      <div
+        className="panel-heading">
+        <div
+          className="close"
+          onClick={[Function bound close]}>
+          ×
+        </div>
+      </div>
+      <div
+        className="panel-body scrollable" />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Should be opened and closed after click 2`] = `null`;
+
+exports[`test Should show content 1`] = `
+<div
+  className="pure-modal-backdrop "
+  onClick={[Function bound handleBackdropClick]}>
+  <div
+    className="pure-modal  ">
+    <div
+      className="panel panel-default">
+      <div
+        className="panel-heading">
+        <div
+          className="close"
+          onClick={[Function bound close]}>
+          ×
+        </div>
+      </div>
+      <div
+        className="panel-body scrollable">
+        Some content of modal
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Should show only content 1`] = `
+<div
+  className="pure-modal-backdrop "
+  onClick={[Function bound handleBackdropClick]}>
+  <div
+    className="pure-modal  ">
+    Some content of modal
+  </div>
+</div>
+`;
