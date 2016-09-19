@@ -12,6 +12,7 @@
     "webpack:prod": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.dev.js -- --watch",
     "test": "jest",
+    "test-ci": "jest -- --json",
     "release": "./scripts/release.js"
   },
   "repository": {
