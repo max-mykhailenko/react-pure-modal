@@ -1,4 +1,4 @@
-# react-pure-modal
+# react-pure-modal [![Build Status](https://travis-ci.org/max-mykhailenko/react-pure-modal.svg?branch=master)](https://travis-ci.org/max-mykhailenko/react-pure-modal)
 React pure modal is a simplest way to create dialog on your site.
 - Very small (less than 4Kb)
 - Mobile friendly
