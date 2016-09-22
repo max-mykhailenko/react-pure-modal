@@ -9,7 +9,7 @@ class PureModal extends React.Component {
     this.handleBackdropClick = this.handleBackdropClick.bind(this);
     this.state = {
       isOpen: props.isOpen || false,
-    }
+    };
   }
 
   componentDidMount() {
@@ -32,15 +32,15 @@ class PureModal extends React.Component {
     this.unsetModalContext();
   }
 
+  setModalContext() {
+    document.addEventListener('keydown', this.handleEsc);
+    document.body.classList.add('body-modal-fix');
+  }
+
   handleEsc(event) {
     if (event.keyCode === 27) {
       this.close(event);
     }
-  }
-
-  setModalContext() {
-    document.addEventListener('keydown', this.handleEsc);
-    document.body.classList.add('body-modal-fix');
   }
 
   unsetModalContext() {
@@ -112,30 +112,36 @@ class PureModal extends React.Component {
         className={`pure-modal-backdrop ${scrollable ? '' : 'scrollable'}`}
         onClick={this.handleBackdropClick}
       >
-        <div className={`pure-modal ${ className } ${scrollable ? '' : 'auto-height'}`}>
+        <div className={`pure-modal ${className} ${scrollable ? '' : 'auto-height'}`}>
           {
             replace ?
             children :
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                {
-                  header &&
-                  <h3 className="panel-title">
-                    {header}
-                  </h3>
-                }
-                <div onClick={this.close} className="close">&times;</div>
-              </div>
-              <div className={`panel-body ${scrollable ? 'scrollable' : ''}`}>
-                {children}
-              </div>
-              {
-                footer &&
-                <div className="panel-footer" ref="footer">
-                  {footer}
+            (
+              <div className="panel panel-default">
+                <div className="panel-heading">
+                  {
+                    header &&
+                    (
+                      <h3 className="panel-title">
+                        {header}
+                      </h3>
+                    )
+                  }
+                  <div onClick={this.close} className="close">&times;</div>
                 </div>
-              }
-            </div>
+                <div className={`panel-body ${scrollable ? 'scrollable' : ''}`}>
+                  {children}
+                </div>
+                {
+                  footer &&
+                  (
+                    <div className="panel-footer" ref="footer">
+                    {footer}
+                    </div>
+                  )
+                }
+              </div>
+            )
           }
         </div>
       </div>
