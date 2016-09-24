@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../src/react-pure-modal.js';
+import Modal from '../dist/react-pure-modal.min.js';
 import renderer from 'react-test-renderer';
 
 it('Should be null without props', () => {
