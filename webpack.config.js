@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const env = process.env.NODE_ENV;
 
 const reactExternal = {
@@ -16,6 +17,7 @@ const config = {
   module: {
     loaders: [
       { test: /\.js$/, loaders: ['babel-loader'], exclude: /(node_modules|dist)/ },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader'), exclude: /(node_modules|dist)/ },
     ],
   },
   output: {
@@ -28,6 +30,7 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
     }),
+    new ExtractTextPlugin("[name].min.css"),
   ],
   resolve: {
     modulesDirectories: ['node_modules'],

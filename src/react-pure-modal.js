@@ -1,4 +1,5 @@
 import React from 'react';
+import './react-pure-modal.css';
 
 class PureModal extends React.Component {
   constructor(props) {

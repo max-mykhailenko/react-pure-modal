@@ -1,5 +1,5 @@
 {
-  "ecmaVersion": 6,
+  "ecmaVersion": 7,
   "libs": [
     "browser"
   ],
@@ -10,6 +10,7 @@
     "complete_strings": {},
     "node": {},
     "modules": {},
+    "jsx": {},
     "es_modules": {},
     "doc_comment": {
       "fullDocs": true
