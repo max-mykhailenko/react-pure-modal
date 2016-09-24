@@ -54,3 +54,11 @@ Place here your actions
 ![Simple demo](./screencast/simple.gif)
 ### With inner scrolling
 ![Scrollable demo](./screencast/scrollable.gif)
+
+## Changelog
+   - prevent of modal closing if ESC pressed in editable element
+   - now with minified css!
+   - styles are more impressive now, good mobile support
+   - now scrollable can be false
+   - remove dependencies, rewrite open and close logic, fix linting
+   - new header logic and breaking classes changes
