@@ -39,7 +39,7 @@ class PureModal extends React.Component {
   }
 
   handleEsc(event) {
-    if (event.keyCode === 27) {
+    if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
       this.close(event);
     }
   }
