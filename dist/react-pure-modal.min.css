@@ -23,8 +23,7 @@
   left: 0;
   z-index: 1041;
   box-sizing: border-box;
-  -webkit-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 .pure-modal-backdrop.scrollable {
@@ -42,40 +41,28 @@
 }
 
 .pure-modal-backdrop .pure-modal > * {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   max-height: 100%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
 
 }
 
 .pure-modal > * > * {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
 }
 
 .pure-modal > * > .scrollable {
   max-height: 80vh;
   overflow-x: hidden;
   overflow-scrolling: touch;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
+  transform: translate3d(0, 0, 0);
+  -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
 }
 
 
