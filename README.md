@@ -56,9 +56,16 @@ Place here your actions
 ![Scrollable demo](./screencast/scrollable.gif)
 
 ## Changelog
+   - new default aligning to the screen center!
    - prevent of modal closing if ESC pressed in editable element
    - now with minified css!
    - styles are more impressive now, good mobile support
    - now scrollable can be false
    - remove dependencies, rewrite open and close logic, fix linting
    - new header logic and breaking classes changes
+
+## Developing
+   - npm install
+   - npm run webpack:dev -- --watch
+   - npm run webpack:prod -- --watch
+   - Open index.html from examples
