@@ -5,6 +5,12 @@ React pure modal is a simplest way to create dialog on your site.
 - Mobile friendly
 - Without dependencies
 
+## Screencast
+### Simple
+![Simple demo](./screencast/simple.gif)
+### With inner scrolling
+![Scrollable demo](./screencast/scrollable.gif)
+
 ## Installation
 `npm install --save-dev react-pure-modal`
 
@@ -48,12 +54,6 @@ Modal heading, doesn't disabled close button
 #### footer: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
 Place here your actions
 
-
-## Screencast
-### Simple
-![Simple demo](./screencast/simple.gif)
-### With inner scrolling
-![Scrollable demo](./screencast/scrollable.gif)
 
 ## Changelog
    - new default aligning to the screen center!
