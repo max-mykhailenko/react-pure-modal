@@ -3,7 +3,7 @@ exports[`test Should be closed 1`] = `null`;
 exports[`test Should be opened and closed after click 1`] = `
 <div
   className="pure-modal-backdrop "
-  onClick={[Function bound handleBackdropClick]}>
+  onClick={[Function]}>
   <div
     className="pure-modal  ">
     <div
@@ -12,7 +12,7 @@ exports[`test Should be opened and closed after click 1`] = `
         className="panel-heading">
         <div
           className="close"
-          onClick={[Function bound close]}>
+          onClick={[Function]}>
           ×
         </div>
       </div>
@@ -28,7 +28,7 @@ exports[`test Should be opened and closed after click 2`] = `null`;
 exports[`test Should show content 1`] = `
 <div
   className="pure-modal-backdrop "
-  onClick={[Function bound handleBackdropClick]}>
+  onClick={[Function]}>
   <div
     className="pure-modal  ">
     <div
@@ -37,7 +37,7 @@ exports[`test Should show content 1`] = `
         className="panel-heading">
         <div
           className="close"
-          onClick={[Function bound close]}>
+          onClick={[Function]}>
           ×
         </div>
       </div>
@@ -53,7 +53,7 @@ exports[`test Should show content 1`] = `
 exports[`test Should show only content 1`] = `
 <div
   className="pure-modal-backdrop "
-  onClick={[Function bound handleBackdropClick]}>
+  onClick={[Function]}>
   <div
     className="pure-modal  ">
     Some content of modal
