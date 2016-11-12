@@ -49,6 +49,8 @@ You can disable scroll in modal body
 Handle modal closing. Should return true if you allow closing
 #### className: `PropTypes.string`
 ClassName for modal DOM element, can be used for set modal width or change behaviour on mobile devices
+#### width: `PropTypes.string` (example '200px')
+Width in pixels, em's, vw etc
 #### header: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
 Modal heading, doesn't disabled close button
 #### footer: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
