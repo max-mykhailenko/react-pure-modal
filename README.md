@@ -12,7 +12,7 @@ React pure modal is a simplest way to create dialog on your site.
 ![Scrollable demo](./screencast/scrollable.gif)
 
 ## Installation
-`npm install --save-dev react-pure-modal`
+`npm i -S react-pure-modal`
 
 ## Usage
 ```jsx
