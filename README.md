@@ -57,7 +57,8 @@ Modal heading, doesn't disabled close button
 Place here your actions
 
 
-## Changelog
+## Changelog (latest on top)
+   - set width as atribute
    - new default aligning to the screen center!
    - prevent of modal closing if ESC pressed in editable element
    - now with minified css!
@@ -67,7 +68,8 @@ Place here your actions
    - new header logic and breaking classes changes
 
 ## Developing
-   - npm install
-   - npm run webpack:dev -- --watch
-   - npm run webpack:prod -- --watch
-   - Open index.html from examples
+   - `npm install`
+   - `npm run webpack:dev -- --watch`
+   - `npm run webpack:prod -- --watch`
+   - `npm run test:dev`
+   - Open `index.html` from examples
