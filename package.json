@@ -1,6 +1,6 @@
 {
   "name": "react-pure-modal",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "React modal",
   "main": "dist/react-pure-modal.min.js",
   "jnext:main": "dist/react-pure-modal.min.js",
@@ -29,11 +29,9 @@
     "url": "https://github.com/max-mykhailenko/react-pure-modal/issues"
   },
   "homepage": "https://github.com/max-mykhailenko/react-pure-modal#readme",
-  "dependencies": {
-    "react": "15.3.1",
-    "react-dom": "15.3.1"
-  },
   "devDependencies": {
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
     "autoprefixer": "6.4.1",
     "babel-cli": "6.14.0",
     "babel-core": "6.14.0",
@@ -54,8 +52,8 @@
     "extract-text-webpack-plugin": "1.0.1",
     "jest": "17.0.0",
     "postcss-loader": "0.13.0",
-    "react-addons-test-utils": "15.3.1",
-    "react-test-renderer": "15.3.1",
+    "react-addons-test-utils": "^15.4.0",
+    "react-test-renderer": "^15.4.0",
     "rimraf": "2.5.4",
     "style-loader": "0.13.1",
     "webpack": "1.13.2",
