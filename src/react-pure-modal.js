@@ -161,7 +161,7 @@ class PureModal extends React.Component {
                 {
                   footer &&
                   (
-                    <div className="panel-footer" ref="footer">
+                    <div className="panel-footer">
                       {footer}
                     </div>
                   )
