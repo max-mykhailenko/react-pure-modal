@@ -1,6 +1,6 @@
 {
   "name": "react-pure-modal",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "React modal",
   "main": "dist/react-pure-modal.min.js",
   "jnext:main": "dist/react-pure-modal.min.js",
@@ -58,6 +58,6 @@
     "yargs": "5.0.0"
   },
   "peerDependencies": {
-    "react": "15.3.1"
+    "react": "^15.4.0"
   }
 }
