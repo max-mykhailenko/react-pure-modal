@@ -31,3 +31,7 @@ it('Should show only content', () => {
   expect(component.toJSON()).toMatchSnapshot();
 });
 
+it('Should contain width attribute', () => {
+  const component = renderer.create(<Modal replace width="400px" isOpen>Some content of modal</Modal>);
+  expect(component.toJSON()).toMatchSnapshot();
+});

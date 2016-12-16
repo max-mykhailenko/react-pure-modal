@@ -35,6 +35,7 @@ class PureModal extends React.Component {
 
   setModalContext() {
     document.addEventListener('keydown', this.handleEsc);
+    document.activeElement.blur();
     document.body.classList.add('body-modal-fix');
   }
 
@@ -106,14 +107,38 @@ class PureModal extends React.Component {
       header,
       footer,
       scrollable,
+      width,
     } = this.props;
+
+    let backdropclasses = ['pure-modal-backdrop'];
+    let modalclasses = ['pure-modal'];
+    let bodyClasses = ['panel-body'];
+
+    if (className) {
+      modalclasses = modalclasses.concat(className);
+    }
+
+    if (scrollable) {
+      bodyClasses = bodyClasses.concat('scrollable');
+    } else {
+      backdropclasses = backdropclasses.concat('scrollable');
+      modalclasses = modalclasses.concat('auto-height');
+    }
+
+    const attrs = {};
+    if (width) {
+      attrs.style = { width };
+    }
 
     return (
       <div
-        className={`pure-modal-backdrop ${scrollable ? '' : 'scrollable'}`}
+        className={backdropclasses.join(' ')}
         onClick={this.handleBackdropClick}
       >
-        <div className={`pure-modal ${className} ${scrollable ? '' : 'auto-height'}`}>
+        <div
+          className={modalclasses.join(' ')}
+          {...attrs}
+        >
           {
             replace ?
             children :
@@ -130,14 +155,14 @@ class PureModal extends React.Component {
                   }
                   <div onClick={this.close} className="close">&times;</div>
                 </div>
-                <div className={`panel-body ${scrollable ? 'scrollable' : ''}`}>
+                <div className={bodyClasses.join(' ')}>
                   {children}
                 </div>
                 {
                   footer &&
                   (
                     <div className="panel-footer" ref="footer">
-                    {footer}
+                      {footer}
                     </div>
                   )
                 }
@@ -154,7 +179,6 @@ PureModal.defaultProps = {
   mode: 'modal',
   replace: false,
   scrollable: true,
-  className: '',
 };
 
 PureModal.propTypes = {
@@ -165,6 +189,7 @@ PureModal.propTypes = {
   scrollable: React.PropTypes.bool,
   onClose: React.PropTypes.func,
   className: React.PropTypes.string,
+  width: React.PropTypes.string,
   header: React.PropTypes.oneOfType([
     React.PropTypes.node,
     React.PropTypes.string,

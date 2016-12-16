@@ -12,7 +12,7 @@ React pure modal is a simplest way to create dialog on your site.
 ![Scrollable demo](./screencast/scrollable.gif)
 
 ## Installation
-`npm install --save-dev react-pure-modal`
+`npm i -S react-pure-modal`
 
 ## Usage
 ```jsx
@@ -49,13 +49,16 @@ You can disable scroll in modal body
 Handle modal closing. Should return true if you allow closing
 #### className: `PropTypes.string`
 ClassName for modal DOM element, can be used for set modal width or change behaviour on mobile devices
+#### width: `PropTypes.string` (example '200px')
+Width in pixels, em's, vw etc
 #### header: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
 Modal heading, doesn't disabled close button
 #### footer: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
 Place here your actions
 
 
-## Changelog
+## Changelog (latest on top)
+   - set width as atribute
    - new default aligning to the screen center!
    - prevent of modal closing if ESC pressed in editable element
    - now with minified css!
@@ -65,7 +68,8 @@ Place here your actions
    - new header logic and breaking classes changes
 
 ## Developing
-   - npm install
-   - npm run webpack:dev -- --watch
-   - npm run webpack:prod -- --watch
-   - Open index.html from examples
+   - `npm install`
+   - `npm run webpack:dev -- --watch`
+   - `npm run webpack:prod -- --watch`
+   - `npm run test:dev`
+   - Open `index.html` from examples

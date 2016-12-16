@@ -25,6 +25,7 @@ class ModalContainer extends React.Component {
         <PureModal
           header="Custom heading"
           footer="Buttons?"
+          width="800px"
           scrollable={false}
           ref={(k) => this.modal = k}
         >

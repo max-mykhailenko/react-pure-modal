@@ -2,10 +2,10 @@ exports[`test Should be closed 1`] = `null`;
 
 exports[`test Should be opened and closed after click 1`] = `
 <div
-  className="pure-modal-backdrop "
+  className="pure-modal-backdrop"
   onClick={[Function]}>
   <div
-    className="pure-modal  ">
+    className="pure-modal">
     <div
       className="panel panel-default">
       <div
@@ -25,12 +25,28 @@ exports[`test Should be opened and closed after click 1`] = `
 
 exports[`test Should be opened and closed after click 2`] = `null`;
 
-exports[`test Should show content 1`] = `
+exports[`test Should contain width attribute 1`] = `
 <div
-  className="pure-modal-backdrop "
+  className="pure-modal-backdrop"
   onClick={[Function]}>
   <div
-    className="pure-modal  ">
+    className="pure-modal"
+    style={
+      Object {
+        "width": "400px",
+      }
+    }>
+    Some content of modal
+  </div>
+</div>
+`;
+
+exports[`test Should show content 1`] = `
+<div
+  className="pure-modal-backdrop"
+  onClick={[Function]}>
+  <div
+    className="pure-modal">
     <div
       className="panel panel-default">
       <div
@@ -52,10 +68,10 @@ exports[`test Should show content 1`] = `
 
 exports[`test Should show only content 1`] = `
 <div
-  className="pure-modal-backdrop "
+  className="pure-modal-backdrop"
   onClick={[Function]}>
   <div
-    className="pure-modal  ">
+    className="pure-modal">
     Some content of modal
   </div>
 </div>
