@@ -20,8 +20,6 @@
 .pure-modal-backdrop .pure-modal {
   width: 300px;
   max-width: 100%;
-  position: fixed;
-  z-index: 1041;
   box-sizing: border-box;
   transition: all .2s ease-in-out;
   max-height: 100%;
