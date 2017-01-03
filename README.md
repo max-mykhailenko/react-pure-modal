@@ -58,6 +58,7 @@ Place here your actions
 
 
 ## Changelog (latest on top)
+   - fix bug in firefox and safari with modal position
    - set width as atribute
    - new default aligning to the screen center!
    - prevent of modal closing if ESC pressed in editable element
