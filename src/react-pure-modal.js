@@ -1,7 +1,27 @@
+// flow
 import React from 'react';
 import './react-pure-modal.css';
 
 class PureModal extends React.Component {
+  props: {
+    mode: string,
+    replace: boolean,
+    children: HTMLElement,
+    isOpen: boolean,
+    scrollable: boolean,
+    onClose: Function,
+    className: string,
+    width: string,
+    header: string | HTMLElement,
+    footer: string | HTMLElement,
+  };
+
+  static defaultProps = {
+    mode: 'modal',
+    replace: false,
+    scrollable: true,
+  };
+
   constructor(props) {
     super(props);
     this.handleEsc = this.handleEsc.bind(this);
@@ -83,8 +103,8 @@ class PureModal extends React.Component {
       }
     }
   }
-
-  handleBackdropClick(event) {
+// flow
+  handleBackdropClick(event: Event) {
     if (event) {
       if (!event.target.classList.contains('pure-modal-backdrop')) {
         return;
@@ -175,29 +195,29 @@ class PureModal extends React.Component {
   }
 }
 
-PureModal.defaultProps = {
-  mode: 'modal',
-  replace: false,
-  scrollable: true,
-};
+// PureModal.defaultProps = {
+//   mode: 'modal',
+//   replace: false,
+//   scrollable: true,
+// };
 
-PureModal.propTypes = {
-  mode: React.PropTypes.oneOf(['modal', 'tooltip']),
-  replace: React.PropTypes.bool,
-  children: React.PropTypes.node,
-  isOpen: React.PropTypes.bool,
-  scrollable: React.PropTypes.bool,
-  onClose: React.PropTypes.func,
-  className: React.PropTypes.string,
-  width: React.PropTypes.string,
-  header: React.PropTypes.oneOfType([
-    React.PropTypes.node,
-    React.PropTypes.string,
-  ]),
-  footer: React.PropTypes.oneOfType([
-    React.PropTypes.node,
-    React.PropTypes.string,
-  ]),
-};
+// PureModal.propTypes = {
+//   mode: React.PropTypes.oneOf(['modal', 'tooltip']),
+//   replace: React.PropTypes.bool,
+//   children: React.PropTypes.node,
+//   isOpen: React.PropTypes.bool,
+//   scrollable: React.PropTypes.bool,
+//   onClose: React.PropTypes.func,
+//   className: React.PropTypes.string,
+//   width: React.PropTypes.string,
+//   header: React.PropTypes.oneOfType([
+//     React.PropTypes.node,
+//     React.PropTypes.string,
+//   ]),
+//   footer: React.PropTypes.oneOfType([
+//     React.PropTypes.node,
+//     React.PropTypes.string,
+//   ]),
+// };
 
 export default PureModal;
