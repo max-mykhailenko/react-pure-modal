@@ -1,10 +1,15 @@
-// flow
+/* @flow */
 import React from 'react';
 import './react-pure-modal.css';
 
+// Should I ignore this errors ?
+//
+// covariantErr: covariant property incompatible with contravariant use
+// possiblyNullErr: Method cannot be called or property cannot be accessed on possibly null value
+
 class PureModal extends React.Component {
   props: {
-    mode: string,
+    mode: 'modal' | 'tooltip',
     replace: boolean,
     children: HTMLElement,
     isOpen: boolean,
@@ -16,18 +21,22 @@ class PureModal extends React.Component {
     footer: string | HTMLElement,
   };
 
+  state: {
+    isOpen: boolean,
+  }
+
   static defaultProps = {
     mode: 'modal',
     replace: false,
     scrollable: true,
   };
 
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
-    this.handleEsc = this.handleEsc.bind(this);
-    this.close = this.close.bind(this);
-    this.open = this.open.bind(this);
-    this.handleBackdropClick = this.handleBackdropClick.bind(this);
+    this.handleEsc = this.handleEsc.bind(this); // covariantErr
+    this.close = this.close.bind(this); // covariantErr
+    this.open = this.open.bind(this); // covariantErr
+    this.handleBackdropClick = this.handleBackdropClick.bind(this); // covariantErr
     this.state = {
       isOpen: props.isOpen || false,
     };
@@ -39,7 +48,7 @@ class PureModal extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Object) {
     if (typeof nextProps.isOpen === 'boolean' && this.props.isOpen !== nextProps.isOpen) {
       if (nextProps.isOpen) {
         this.open();
@@ -55,22 +64,22 @@ class PureModal extends React.Component {
 
   setModalContext() {
     document.addEventListener('keydown', this.handleEsc);
-    document.activeElement.blur();
-    document.body.classList.add('body-modal-fix');
+    document.activeElement.blur(); // possiblyNullErr
+    document.body.classList.add('body-modal-fix'); // possiblyNullErr
   }
 
-  handleEsc(event) {
-    if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
+  handleEsc(event: Event) {
+    if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) { // possiblyNullErr
       this.close(event);
     }
   }
 
   unsetModalContext() {
     document.removeEventListener('keydown', this.handleEsc);
-    document.body.classList.remove('body-modal-fix');
+    document.body.classList.remove('body-modal-fix'); // possiblyNullErr
   }
 
-  open(event) {
+  open(event: ?Event) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -83,7 +92,7 @@ class PureModal extends React.Component {
     }
   }
 
-  close(event) {
+  close(event: ?Event) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -103,10 +112,10 @@ class PureModal extends React.Component {
       }
     }
   }
-// flow
+
   handleBackdropClick(event: Event) {
     if (event) {
-      if (!event.target.classList.contains('pure-modal-backdrop')) {
+      if (!event.target.classList.contains('pure-modal-backdrop')) { // possiblyNullErr
         return;
       }
       event.stopPropagation();
@@ -194,30 +203,5 @@ class PureModal extends React.Component {
     );
   }
 }
-
-// PureModal.defaultProps = {
-//   mode: 'modal',
-//   replace: false,
-//   scrollable: true,
-// };
-
-// PureModal.propTypes = {
-//   mode: React.PropTypes.oneOf(['modal', 'tooltip']),
-//   replace: React.PropTypes.bool,
-//   children: React.PropTypes.node,
-//   isOpen: React.PropTypes.bool,
-//   scrollable: React.PropTypes.bool,
-//   onClose: React.PropTypes.func,
-//   className: React.PropTypes.string,
-//   width: React.PropTypes.string,
-//   header: React.PropTypes.oneOfType([
-//     React.PropTypes.node,
-//     React.PropTypes.string,
-//   ]),
-//   footer: React.PropTypes.oneOfType([
-//     React.PropTypes.node,
-//     React.PropTypes.string,
-//   ]),
-// };
 
 export default PureModal;
