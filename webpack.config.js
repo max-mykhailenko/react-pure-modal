@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+
 const env = process.env.NODE_ENV;
 
 const reactExternal = {
@@ -21,7 +22,7 @@ const config = {
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader'), exclude: /(node_modules|dist)/ },
     ],
   },
-  postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
+  postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
   output: {
     path: path.join(__dirname, 'dist/'),
     filename: '[name].min.js',
@@ -32,7 +33,7 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
     }),
-    new ExtractTextPlugin("[name].min.css"),
+    new ExtractTextPlugin('[name].min.css'),
   ],
   resolve: {
     modulesDirectories: ['node_modules'],

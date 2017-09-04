@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './react-pure-modal.css';
 
 class PureModal extends React.Component {
@@ -182,21 +183,21 @@ PureModal.defaultProps = {
 };
 
 PureModal.propTypes = {
-  mode: React.PropTypes.oneOf(['modal', 'tooltip']),
-  replace: React.PropTypes.bool,
-  children: React.PropTypes.node,
-  isOpen: React.PropTypes.bool,
-  scrollable: React.PropTypes.bool,
-  onClose: React.PropTypes.func,
-  className: React.PropTypes.string,
-  width: React.PropTypes.string,
-  header: React.PropTypes.oneOfType([
-    React.PropTypes.node,
-    React.PropTypes.string,
+  mode: PropTypes.oneOf(['modal', 'tooltip']),
+  replace: PropTypes.bool,
+  children: PropTypes.node,
+  isOpen: PropTypes.bool,
+  scrollable: PropTypes.bool,
+  onClose: PropTypes.func,
+  className: PropTypes.string,
+  width: PropTypes.string,
+  header: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.string,
   ]),
-  footer: React.PropTypes.oneOfType([
-    React.PropTypes.node,
-    React.PropTypes.string,
+  footer: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.string,
   ]),
 };
 
