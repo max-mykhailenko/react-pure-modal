@@ -1,6 +1,6 @@
 {
   "name": "react-pure-modal",
-  "version": "1.0.18",
+  "version": "1.1.0",
   "description": "React modal",
   "main": "dist/react-pure-modal.min.js",
   "jnext:main": "dist/react-pure-modal.min.js",
@@ -50,17 +50,17 @@
     "extract-text-webpack-plugin": "1.0.1",
     "jest": "17.0.0",
     "postcss-loader": "0.13.0",
-    "prop-types": "15.5.10",
-    "react": "^15.4.0",
+    "prop-types": "15.6.0",
+    "react": "16.0.0",
     "react-addons-test-utils": "^15.4.0",
-    "react-dom": "^15.4.0",
-    "react-test-renderer": "^15.4.0",
+    "react-dom": "16.0.0",
+    "react-test-renderer": "16.0.0",
     "rimraf": "2.5.4",
     "style-loader": "0.13.1",
     "webpack": "1.13.2",
     "yargs": "5.0.0"
   },
   "peerDependencies": {
-    "react": "^15.4.0"
+    "react": "^15.3.0 || ^16.0"
   }
 }
