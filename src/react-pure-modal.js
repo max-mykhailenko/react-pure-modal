@@ -54,7 +54,6 @@ class PureModal extends React.Component {
   unsetModalContext() {
     document.removeEventListener('keydown', this.handleEsc);
     document.body.classList.remove('body-modal-fix');
-    this.setState({ level: 1 });
   }
 
   open(event) {
