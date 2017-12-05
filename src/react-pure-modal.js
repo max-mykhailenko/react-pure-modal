@@ -9,9 +9,9 @@ class PureModal extends React.Component {
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleBackdropClick = this.handleBackdropClick.bind(this);
+    this.hash = Math.random(10).toString();
     this.state = {
       isOpen: props.isOpen || false,
-      level: 1,
     };
   }
 
@@ -42,10 +42,10 @@ class PureModal extends React.Component {
   }
 
   handleEsc(event) {
-    if (this.state.level < this.props.level) {
-      this.setState({ level: ++this.state.level });
-      return false;
-    }
+    const allModals = document.querySelectorAll('.pure-modal');
+    if (
+      allModals.length && !allModals[allModals.length - 1].classList.contains(this.hash)
+    ) return false;
     if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
       this.close(event);
     }
@@ -118,7 +118,7 @@ class PureModal extends React.Component {
     } = this.props;
 
     let backdropclasses = ['pure-modal-backdrop'];
-    let modalclasses = ['pure-modal'];
+    let modalclasses = ['pure-modal', this.hash];
     let bodyClasses = ['panel-body'];
 
     if (className) {
@@ -186,7 +186,6 @@ PureModal.defaultProps = {
   mode: 'modal',
   replace: false,
   scrollable: true,
-  level: 1,
 };
 
 PureModal.propTypes = {
@@ -198,7 +197,6 @@ PureModal.propTypes = {
   onClose: PropTypes.func,
   className: PropTypes.string,
   width: PropTypes.string,
-  level: PropTypes.number,
   header: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.string,
