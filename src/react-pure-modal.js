@@ -9,7 +9,7 @@ class PureModal extends React.Component {
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleBackdropClick = this.handleBackdropClick.bind(this);
-    this.hash = Math.random(10).toString();
+    this.hash = Math.random().toString();
     this.state = {
       isOpen: props.isOpen || false,
     };
