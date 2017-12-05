@@ -11,6 +11,7 @@ class PureModal extends React.Component {
     this.handleBackdropClick = this.handleBackdropClick.bind(this);
     this.state = {
       isOpen: props.isOpen || false,
+      level: 1,
     };
   }
 
@@ -41,6 +42,10 @@ class PureModal extends React.Component {
   }
 
   handleEsc(event) {
+    if (this.state.level !== this.props.level) {
+      this.setState({ level: ++this.state.level });
+      return false;
+    }
     if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
       this.close(event);
     }
@@ -49,6 +54,7 @@ class PureModal extends React.Component {
   unsetModalContext() {
     document.removeEventListener('keydown', this.handleEsc);
     document.body.classList.remove('body-modal-fix');
+    this.setState({ level: 1 });
   }
 
   open(event) {
@@ -180,6 +186,7 @@ PureModal.defaultProps = {
   mode: 'modal',
   replace: false,
   scrollable: true,
+  level: 1,
 };
 
 PureModal.propTypes = {
@@ -191,6 +198,7 @@ PureModal.propTypes = {
   onClose: PropTypes.func,
   className: PropTypes.string,
   width: PropTypes.string,
+  level: PropTypes.number,
   header: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.string,
