@@ -9,6 +9,7 @@ class PureModal extends React.Component {
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleBackdropClick = this.handleBackdropClick.bind(this);
+    this.hash = Math.random().toString();
     this.state = {
       isOpen: props.isOpen || false,
     };
@@ -41,6 +42,10 @@ class PureModal extends React.Component {
   }
 
   handleEsc(event) {
+    const allModals = document.querySelectorAll('.pure-modal');
+    if (
+      allModals.length && !allModals[allModals.length - 1].classList.contains(this.hash)
+    ) return false;
     if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
       this.close(event);
     }
@@ -112,7 +117,7 @@ class PureModal extends React.Component {
     } = this.props;
 
     let backdropclasses = ['pure-modal-backdrop'];
-    let modalclasses = ['pure-modal'];
+    let modalclasses = ['pure-modal', this.hash];
     let bodyClasses = ['panel-body'];
 
     if (className) {
