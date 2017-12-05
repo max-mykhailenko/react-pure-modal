@@ -42,7 +42,7 @@ class PureModal extends React.Component {
   }
 
   handleEsc(event) {
-    if (this.state.level !== this.props.level) {
+    if (this.state.level < this.props.level) {
       this.setState({ level: ++this.state.level });
       return false;
     }
