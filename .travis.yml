@@ -1,5 +1,14 @@
 language: node_js
 node_js:
-  - "6"
+  - "8"
 script:
   - npm run test-ci
+deploy:
+  provider: npm
+  email: max.mykhailenko@gmail.com
+  api_key:
+    secure: m9qQPcvmtrTpENiujdt5huazbN5FzHftsfgh6qYtNdNtUhMl65G/bBCdpfEjnRhcWKoW9JQQjd9h3uIxUstO7+M1i5YaKnQbrsEI7Xr2tepUp6X7kyPpUbBAeGAN6lonBbWFdxKEz9BAbXfJavQlVLV+IQBHkEyt5Jfuavjx7AdkXtAaMsknDsnEV5aaXkJh2SX7oA1FBRc3hZ639+npvg83Hol6Lsk0pPGblkuK4J6MABTUvJu2SoJBU91cpMyWuO02ObpvChdJEKoF8dy1PczhRN6swta9GlnLMRdszFrQtRaMdG3HA12stKRycU59sbXbp4Jb0rYQhA2u6fulW5AsA/Z154Ba1HQzA7CW4vSW/jEe4WFb0ppiwRGEkEtmjDuJ2CS8vrH/0gdObT+AZvzuINmaFp+v6EF8oHYofkNEZBpkYj3E7OOszovsqQSNQokrrCawvtm5o5aWC/7Q5QjQyQvVhN4PqNaRxt4jrcWECoKemG8Y9wdCUXJavO5R6DpNCQEESFQaXtKC11rKLxJRFfmWhseKxGG8Dy3ykfc6+P/H0qb6PWCMBPcOGaxrkiJ1N0otvjnxgVyopwyX2bu1V9y6b6JeKnFE4+lBiPanHZsNSf1l/6AynewAFoDwNdL5QCzmzD1+QEE/zcSTnk/b1vaYhSJLK/TZH+E+rWM=
+  on:
+    tags: true
+    repo: memCrab/react-pure-modal
+    branch: master
