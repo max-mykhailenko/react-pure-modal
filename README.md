@@ -1,4 +1,4 @@
-# react-pure-modal [![npm package](https://img.shields.io/npm/v/react-pure-modal.svg?style=flat-square)](https://www.npmjs.org/package/react-pure-modal) [![Build Status](https://travis-ci.org/max-mykhailenko/react-pure-modal.svg?branch=master)](https://travis-ci.org/max-mykhailenko/react-pure-modal) [![Dependency Status](https://david-dm.org/max-mykhailenko/react-pure-modal.svg)](https://david-dm.org/max-mykhailenko/react-pure-modal)
+# react-pure-modal [![npm package](https://img.shields.io/npm/v/react-pure-modal.svg?style=flat-square)](https://www.npmjs.org/package/react-pure-modal) [![Build Status](https://travis-ci.org/memCrab/react-pure-modal.svg?branch=master)](https://travis-ci.org/memCrab/react-pure-modal) [![Dependency Status](https://david-dm.org/memCrab/react-pure-modal.svg)](https://david-dm.org/memCrab/react-pure-modal)
 [![NPM](https://nodei.co/npm/react-pure-modal.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-pure-modal/)
 
 React pure modal is a simplest way to create dialog on your site.
