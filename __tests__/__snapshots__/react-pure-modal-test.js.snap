@@ -1,64 +1,80 @@
-exports[`test Should be closed 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test Should be opened and closed after click 1`] = `
+exports[`Should be closed 1`] = `null`;
+
+exports[`Should be opened and closed after click 1`] = `
 <div
   className="pure-modal-backdrop"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
-    className="pure-modal">
+    className="pure-modal 0.5"
+  >
     <div
-      className="panel panel-default">
+      className="panel panel-default"
+    >
       <div
-        className="panel-heading">
+        className="panel-heading"
+      >
         <div
           className="close"
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           ×
         </div>
       </div>
       <div
-        className="panel-body scrollable" />
+        className="panel-body scrollable"
+      />
     </div>
   </div>
 </div>
 `;
 
-exports[`test Should be opened and closed after click 2`] = `null`;
+exports[`Should be opened and closed after click 2`] = `null`;
 
-exports[`test Should contain width attribute 1`] = `
+exports[`Should contain width attribute 1`] = `
 <div
   className="pure-modal-backdrop"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
-    className="pure-modal"
+    className="pure-modal 0.5"
     style={
       Object {
         "width": "400px",
       }
-    }>
+    }
+  >
     Some content of modal
   </div>
 </div>
 `;
 
-exports[`test Should show content 1`] = `
+exports[`Should show content 1`] = `
 <div
   className="pure-modal-backdrop"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
-    className="pure-modal">
+    className="pure-modal 0.5"
+  >
     <div
-      className="panel panel-default">
+      className="panel panel-default"
+    >
       <div
-        className="panel-heading">
+        className="panel-heading"
+      >
         <div
           className="close"
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           ×
         </div>
       </div>
       <div
-        className="panel-body scrollable">
+        className="panel-body scrollable"
+      >
         Some content of modal
       </div>
     </div>
@@ -66,12 +82,14 @@ exports[`test Should show content 1`] = `
 </div>
 `;
 
-exports[`test Should show only content 1`] = `
+exports[`Should show only content 1`] = `
 <div
   className="pure-modal-backdrop"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
-    className="pure-modal">
+    className="pure-modal 0.5"
+  >
     Some content of modal
   </div>
 </div>

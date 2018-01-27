@@ -2,6 +2,10 @@ import React from 'react';
 import Modal from '../dist/react-pure-modal.min.js';
 import renderer from 'react-test-renderer';
 
+const mockMath = Object.create(global.Math);
+mockMath.random = () => 0.5;
+global.Math = mockMath;
+
 it('Should be null without props', () => {
   const component = renderer.create(<Modal />);
   expect(component.toJSON()).toBeNull();

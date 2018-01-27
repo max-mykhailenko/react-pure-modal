@@ -17,27 +17,53 @@ const config = {
     'react-pure-modal': path.join(__dirname, './src/react-pure-modal.js'),
   },
   module: {
-    loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /(node_modules|dist)/ },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader'), exclude: /(node_modules|dist)/ },
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|dist)/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules|dist)/,
+        use: {
+          loader: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {},
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  config: {
+                    path: path.resolve(__dirname, './postcss.config.js'),
+                  },
+                },
+              },
+            ],
+          }),
+        },
+      },
     ],
   },
-  postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
   output: {
     path: path.join(__dirname, 'dist/'),
     filename: '[name].min.js',
     libraryTarget: 'umd',
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
     }),
     new ExtractTextPlugin('[name].min.css'),
   ],
   resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js'],
+    modules: ['node_modules'],
+    extensions: ['.js'],
   },
   externals: {
     react: reactExternal,

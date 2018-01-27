@@ -7,9 +7,33 @@ const config = {
     example: path.join(__dirname, 'example/example.js'),
   },
   module: {
-    loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /(node_modules)/ },
-      { test: /\.css$/, loaders: ['style-loader', 'css-loader'], exclude: /(node_modules)/ },
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules)/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {},
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: path.resolve(__dirname, './postcss.config.js'),
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   output: {
@@ -17,14 +41,14 @@ const config = {
     filename: '[name].min.js',
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
     }),
   ],
   resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js'],
+    modules: ['node_modules'],
+    extensions: ['.js'],
+
   },
 };
 
