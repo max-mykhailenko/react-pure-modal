@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.backdrop-overflow-hidden {
+  overflow: hidden !important;
+}
+
 
 .pure-modal-backdrop .pure-modal {
   width: 300px;

@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './react-pure-modal.css';
 
+import PureModalContent from './pure-modal-content.js';
+
 class PureModal extends React.Component {
   constructor(props) {
     super(props);
+    this.handleStartDrag = this.handleStartDrag.bind(this);
+    this.handleDrag = this.handleDrag.bind(this);
+    this.handleEndDrag = this.handleEndDrag.bind(this);
+
     this.handleEsc = this.handleEsc.bind(this);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
@@ -12,6 +18,13 @@ class PureModal extends React.Component {
     this.hash = Math.random().toString();
     this.state = {
       isOpen: props.isOpen || false,
+      isDragged: false,
+      x: null,
+      y: null,
+      deltaX: 0,
+      deltaY: 0,
+      mouseOffsetX: 0,
+      mouseOffsetY: 0,
     };
   }
 
@@ -54,6 +67,58 @@ class PureModal extends React.Component {
   unsetModalContext() {
     document.removeEventListener('keydown', this.handleEsc);
     document.body.classList.remove('body-modal-fix');
+    this.setState({
+      x: null,
+      y: null,
+      deltaX: 0,
+      deltaY: 0,
+      mouseOffsetX: 0,
+      mouseOffsetY: 0,
+    });
+  }
+
+  getCoords(e) {
+    let { pageX, pageY } = e;
+    if (e.changedTouches && e.changedTouches.length === 1) {
+      pageX = e.changedTouches[0].pageX;
+      pageY = e.changedTouches[0].pageY;
+    }
+    return {
+      pageX,
+      pageY,
+    };
+  }
+
+  handleStartDrag(e) {
+    if (e.changedTouches && e.changedTouches.length > 1) return false;
+
+    const { pageX, pageY } = this.getCoords(e);
+    const { top, left } = e.currentTarget.getBoundingClientRect();
+
+    return this.setState({
+      isDragged: true,
+      x: typeof this.state.x === 'number' ? this.state.x : left,
+      y: typeof this.state.y === 'number' ? this.state.y : top,
+      mouseOffsetX: pageX - left,
+      mouseOffsetY: pageY - top,
+    });
+  }
+
+  handleDrag(e) {
+    if (e.changedTouches && e.changedTouches.lenght > 1) {
+      return this.handleEndDrag();
+    }
+
+    const { pageX, pageY } = this.getCoords(e);
+
+    return this.setState({
+      deltaX: pageX - this.state.x - this.state.mouseOffsetX,
+      deltaY: pageY - this.state.y - this.state.mouseOffsetY,
+    });
+  }
+
+  handleEndDrag() {
+    return this.setState({ isDragged: false });
   }
 
   open(event) {
@@ -113,6 +178,7 @@ class PureModal extends React.Component {
       header,
       footer,
       scrollable,
+      draggable,
       width,
     } = this.props;
 
@@ -131,50 +197,36 @@ class PureModal extends React.Component {
       modalclasses = modalclasses.concat('auto-height');
     }
 
-    const attrs = {};
-    if (width) {
-      attrs.style = { width };
+    if (draggable) {
+      backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
     }
 
     return (
       <div
         className={backdropclasses.join(' ')}
         onClick={this.handleBackdropClick}
+        onTouchMove={this.state.isDragged ? this.handleDrag : null}
+        onMouseMove={this.state.isDragged ? this.handleDrag : null}
       >
         <div
+          style={{
+            transform: `translate(${this.state.deltaX}px, ${this.state.deltaY}px)`,
+            transition: 'none',
+            width,
+          }}
           className={modalclasses.join(' ')}
-          {...attrs}
         >
-          {
-            replace ?
-            children :
-            (
-              <div className="panel panel-default">
-                <div className="panel-heading">
-                  {
-                    header &&
-                    (
-                      <h3 className="panel-title">
-                        {header}
-                      </h3>
-                    )
-                  }
-                  <div onClick={this.close} className="close">&times;</div>
-                </div>
-                <div className={bodyClasses.join(' ')}>
-                  {children}
-                </div>
-                {
-                  footer &&
-                  (
-                    <div className="panel-footer">
-                      {footer}
-                    </div>
-                  )
-                }
-              </div>
-            )
-          }
+          <PureModalContent
+            replace={replace}
+            header={header}
+            footer={footer}
+            onDragStart={draggable ? this.handleStartDrag : null}
+            onDragEnd={draggable ? this.handleEndDrag : null}
+            onClose={this.close}
+            bodyClass={bodyClasses.join(' ')}
+          >
+            {children}
+          </PureModalContent>
         </div>
       </div>
     );
@@ -185,6 +237,7 @@ PureModal.defaultProps = {
   mode: 'modal',
   replace: false,
   scrollable: true,
+  draggable: false,
 };
 
 PureModal.propTypes = {
@@ -193,6 +246,7 @@ PureModal.propTypes = {
   children: PropTypes.node,
   isOpen: PropTypes.bool,
   scrollable: PropTypes.bool,
+  draggable: PropTypes.bool,
   onClose: PropTypes.func,
   className: PropTypes.string,
   width: PropTypes.string,

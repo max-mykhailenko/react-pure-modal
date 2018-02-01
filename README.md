@@ -46,6 +46,8 @@ Replace all inner markup with Component children
 Control modal state from parent component
 #### scrollable: `PropTypes.bool` (default: true)
 You can disable scroll in modal body
+#### draggable: `PropTypes.bool` (default: false)
+You can drag a modal window
 #### onClose: `PropTypes.func`
 Handle modal closing. Should return true if you allow closing
 #### className: `PropTypes.string`
