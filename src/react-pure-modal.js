@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './react-pure-modal.css';
 
+import PureModalContent from './pure-modal-content.js';
+
 class PureModal extends React.Component {
   constructor(props) {
     super(props);
@@ -171,9 +173,8 @@ class PureModal extends React.Component {
       modalclasses = modalclasses.concat('auto-height');
     }
 
-    const attrs = {};
-    if (width) {
-      attrs.style = { width };
+    if (draggable) {
+      backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
     }
 
     return (
@@ -187,46 +188,21 @@ class PureModal extends React.Component {
           style={{
             transform: `translate(${this.state.deltaX}px, ${this.state.deltaY}px)`,
             transition: 'none',
+            width,
           }}
           className={modalclasses.join(' ')}
-          {...attrs}
         >
-          {
-            replace ?
-            children :
-            (
-              <div className="panel panel-default">
-                <div
-                  className="panel-heading"
-                  onTouchStart={draggable ? this.handleStartDrag : null}
-                  onMouseDown={draggable ? this.handleStartDrag : null}
-                  onTouchEnd={draggable ? this.handleEndDrag : null}
-                  onMouseUp={draggable ? this.handleEndDrag : null}
-                >
-                  {
-                    header &&
-                    (
-                      <h3 className="panel-title">
-                        {header}
-                      </h3>
-                    )
-                  }
-                  <div onClick={this.close} className="close">&times;</div>
-                </div>
-                <div className={bodyClasses.join(' ')}>
-                  {children}
-                </div>
-                {
-                  footer &&
-                  (
-                    <div className="panel-footer">
-                      {footer}
-                    </div>
-                  )
-                }
-              </div>
-            )
-          }
+          <PureModalContent
+            replace={replace}
+            header={header}
+            footer={footer}
+            onDragStart={draggable ? this.handleStartDrag : null}
+            onDragEnd={draggable ? this.handleEndDrag : null}
+            onClose={this.close}
+            bodyClass={bodyClasses.join(' ')}
+          >
+            {children}
+          </PureModalContent>
         </div>
       </div>
     );
