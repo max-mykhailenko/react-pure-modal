@@ -5,12 +5,23 @@ import './react-pure-modal.css';
 class PureModal extends React.Component {
   constructor(props) {
     super(props);
+    this.handleStartDrag = this.handleStartDrag.bind(this);
+    this.handleDrag = this.handleDrag.bind(this);
+    this.handleEndDrag = this.handleEndDrag.bind(this);
+
     this.handleEsc = this.handleEsc.bind(this);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleBackdropClick = this.handleBackdropClick.bind(this);
     this.state = {
       isOpen: props.isOpen || false,
+      isDragged: false,
+      x: 0,
+      y: 0,
+      deltaX: 0,
+      deltaY: 0,
+      mouseOffsetX: 0,
+      mouseOffsetY: 0,
     };
   }
 
@@ -49,6 +60,39 @@ class PureModal extends React.Component {
   unsetModalContext() {
     document.removeEventListener('keydown', this.handleEsc);
     document.body.classList.remove('body-modal-fix');
+    this.setState({
+      x: 0,
+      y: 0,
+      deltaX: 0,
+      deltaY: 0,
+      mouseOffsetX: 0,
+      mouseOffsetY: 0,
+    });
+  }
+
+  handleStartDrag(e) {
+    const { pageX, pageY } = e;
+    const { top, left } = e.currentTarget.getBoundingClientRect();
+
+    this.setState({
+      isDragged: true,
+      x: this.state.x ? this.state.x : left,
+      y: this.state.y ? this.state.y : top,
+      mouseOffsetX: pageX - left,
+      mouseOffsetY: pageY - top,
+    });
+  }
+
+  handleDrag(e) {
+    const { pageX, pageY } = e;
+    this.setState({
+      deltaX: pageX - this.state.x - this.state.mouseOffsetX,
+      deltaY: pageY - this.state.y - this.state.mouseOffsetY,
+    });
+  }
+
+  handleEndDrag() {
+    this.setState({ isDragged: false });
   }
 
   open(event) {
@@ -108,6 +152,7 @@ class PureModal extends React.Component {
       header,
       footer,
       scrollable,
+      draggable,
       width,
     } = this.props;
 
@@ -135,8 +180,14 @@ class PureModal extends React.Component {
       <div
         className={backdropclasses.join(' ')}
         onClick={this.handleBackdropClick}
+        onTouchMove={this.state.isDragged ? this.handleDrag : null}
+        onMouseMove={this.state.isDragged ? this.handleDrag : null}
       >
         <div
+          style={{
+            transform: `translate(${this.state.deltaX}px, ${this.state.deltaY}px)`,
+            transition: 'none',
+          }}
           className={modalclasses.join(' ')}
           {...attrs}
         >
@@ -145,7 +196,13 @@ class PureModal extends React.Component {
             children :
             (
               <div className="panel panel-default">
-                <div className="panel-heading">
+                <div
+                  className="panel-heading"
+                  onTouchStart={draggable ? this.handleStartDrag : null}
+                  onMouseDown={draggable ? this.handleStartDrag : null}
+                  onTouchEnd={draggable ? this.handleEndDrag : null}
+                  onMouseUp={draggable ? this.handleEndDrag : null}
+                >
                   {
                     header &&
                     (
@@ -180,6 +237,7 @@ PureModal.defaultProps = {
   mode: 'modal',
   replace: false,
   scrollable: true,
+  draggable: false,
 };
 
 PureModal.propTypes = {
@@ -188,6 +246,7 @@ PureModal.propTypes = {
   children: PropTypes.node,
   isOpen: PropTypes.bool,
   scrollable: PropTypes.bool,
+  draggable: PropTypes.bool,
   onClose: PropTypes.func,
   className: PropTypes.string,
   width: PropTypes.string,
