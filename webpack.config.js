@@ -28,25 +28,23 @@ const config = {
       {
         test: /\.css$/,
         exclude: /(node_modules|dist)/,
-        use: {
-          loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              {
-                loader: 'css-loader',
-                options: {},
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  config: {
-                    path: path.resolve(__dirname, './postcss.config.js'),
-                  },
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {},
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: {
+                  path: path.resolve(__dirname, './postcss.config.js'),
                 },
               },
-            ],
-          }),
-        },
+            },
+          ],
+        }),
       },
     ],
   },
