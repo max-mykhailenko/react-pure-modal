@@ -18,8 +18,8 @@ class PureModal extends React.Component {
     this.state = {
       isOpen: props.isOpen || false,
       isDragged: false,
-      x: 0,
-      y: 0,
+      x: null,
+      y: null,
       deltaX: 0,
       deltaY: 0,
       mouseOffsetX: 0,
@@ -63,8 +63,8 @@ class PureModal extends React.Component {
     document.removeEventListener('keydown', this.handleEsc);
     document.body.classList.remove('body-modal-fix');
     this.setState({
-      x: 0,
-      y: 0,
+      x: null,
+      y: null,
       deltaX: 0,
       deltaY: 0,
       mouseOffsetX: 0,
@@ -72,29 +72,48 @@ class PureModal extends React.Component {
     });
   }
 
+  getCoords(e) {
+    let { pageX, pageY } = e;
+    if (e.changedTouches && e.changedTouches.length === 1) {
+      pageX = e.changedTouches[0].pageX;
+      pageY = e.changedTouches[0].pageY;
+    }
+    return {
+      pageX,
+      pageY,
+    };
+  }
+
   handleStartDrag(e) {
-    const { pageX, pageY } = e;
+    if (e.changedTouches && e.changedTouches.length > 1) return false;
+
+    const { pageX, pageY } = this.getCoords(e);
     const { top, left } = e.currentTarget.getBoundingClientRect();
 
-    this.setState({
+    return this.setState({
       isDragged: true,
-      x: this.state.x ? this.state.x : left,
-      y: this.state.y ? this.state.y : top,
+      x: typeof this.state.x === 'number' ? this.state.x : left,
+      y: typeof this.state.y === 'number' ? this.state.y : top,
       mouseOffsetX: pageX - left,
       mouseOffsetY: pageY - top,
     });
   }
 
   handleDrag(e) {
-    const { pageX, pageY } = e;
-    this.setState({
+    if (e.changedTouches && e.changedTouches.lenght > 1) {
+      return this.handleEndDrag();
+    }
+
+    const { pageX, pageY } = this.getCoords(e);
+
+    return this.setState({
       deltaX: pageX - this.state.x - this.state.mouseOffsetX,
       deltaY: pageY - this.state.y - this.state.mouseOffsetY,
     });
   }
 
   handleEndDrag() {
-    this.setState({ isDragged: false });
+    return this.setState({ isDragged: false });
   }
 
   open(event) {
