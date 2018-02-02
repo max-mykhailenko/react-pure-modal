@@ -1,17 +1,17 @@
 language: node_js
 node_js:
-  - '8'
+- '8'
 before_script: npm run webpack:dev && npm run webpack:prod
 cache:
   directories:
   - node_modules
 script:
-  - npm run test-ci
+- npm run test-ci
 deploy:
   provider: npm
   email: max.mykhailenko@gmail.com
   api_key:
-    secure: EvgG8S1uObLIjOeqQxTPaz4B7JjOApXuXT0OPxJOLfdPcuO67RgneugGIhODr27c96VXvygA8vpNK5db6Ko847MvllHLDNHuzGvod2hOe8GzkhDO06PMf1bqrstvgodHFxSFWU+divY1UQDZh2gMI9s/k3tLOiiAthpGpMnKGlofC8ux7uqNZhK4laggKrD7NnoRBhtMTbDc7Pzdx0qZNfTQPPQYbdRzBlSVvN3gQ3zvN7H/mcXs+AntpNXkPdeMzYMUNaBYBhhBtLJhOKNizrlSbmMRxyZpFl2EKt485dgJqTad323/qvvxe1wp+5J5ilnDxCn1g6cY6oLElxDeHNRVHh5Fiu31DQUxNRojMbbeAtLt1L+Jg4cXJzEldqM9jKHuqyX8G9x+MKu58F4poKGkNrRslzIPn8XePzPeKL2wv/zAH/pHRvd4SZGAnepB/NiNaK4qpIUJey5X8rlPPn9T0BM0ye3JLcnNPNyWYIGcTur28KNJbZdVFSUjAjPpH0bDl/Qz9Q9BJ9VKW9d+2F0ktFqmIEiaU8CqJtN7enWj+89qdDN6dKPoOgJOM6Z2oTAPErAFmeidVi4i7ng4d3eAF4Nz6CKLZN7frO11DGmg/mp1SCZU7RvF8UldRvOdxdEhfqxzz5Ufg3joRC+KX4Wtjn/m6yZLsJO38wzuT88=
+    secure: gLDCh8yROnWfEdP1KyO1Ki0URiSiTWYGMmlP9rwVQQBOms1R6nnhJ7dsVFH3UowKqony2LPuq9I6hcoE88t/sEnVMp/xO3fOs3d3Ci0jpIniQsa5o56F3z141hDre919nhE8ukZ0FQhQzOhsiMaP2m0IfBYsOyWR64zDKFjNSE8+JNvpUEWwrrPCWRNHvuUBu+Sg58MEOinOGlcp2cxhS+tV6RNoTvefyXhsC0tY18ePowJBIQZ7H4Qn+QWUn1EAc3coMDugpwodVw1vVCBzjC7V5m+5Uu++lmfOvubtzljanm4JhbMRpEV+G9/NFiAOrV56Cxn4vLhbYmeQBpbI2NrGwzCcvcLv5NbgZ+X64MA+Tfj1tXGH/4dKr8niFqlVbblk4F/sC3ErGpN4NTBdBSv2SbG3Ktcp8ohnKJoIgmYj6vc+HsLVDv/kI6uWRcLE02cAAp2sX1YKsN2pQutWDm7M6hpxzplqmFvta/CL3kfEk8AeFn1zWdGRfZs+gP9PlWqEHGYlYyKQ8Q6HbrGG3m67QVawiQAdL3G/mnup6gmGyGIvTlU8w4U8xcFeC9fHKNlc6AEr6msNAtSDb/Jt+4nvtLKQ6BPKvxGKyisPmGji2d0QheC5kDeVTNCU6Oun+VIeDApXiibXW2ppP+cSbp3vGJtxQRNA0hlj+AZ6dmY=
   on:
     tags: true
     repo: memCrab/react-pure-modal
