@@ -61,7 +61,8 @@ exports[`Should contain width attribute 1`] = `
         "transition": "none",
         "width": "400px",
       }
-    }>
+    }
+  >
     <div>
       Some content of modal
     </div>
