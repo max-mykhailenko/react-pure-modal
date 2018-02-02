@@ -90,8 +90,9 @@ class PureModal extends React.Component {
   }
 
   handleStartDrag(e) {
-    e.preventDefault();
     if (e.changedTouches && e.changedTouches.length > 1) return false;
+
+    e.preventDefault();
 
     const { pageX, pageY } = this.getCoords(e);
     const { top, left } = e.currentTarget.getBoundingClientRect();
@@ -106,10 +107,11 @@ class PureModal extends React.Component {
   }
 
   handleDrag(e) {
-    e.preventDefault();
     if (e.changedTouches && e.changedTouches.lenght > 1) {
       return this.handleEndDrag();
     }
+
+    e.preventDefault();
 
     const { pageX, pageY } = this.getCoords(e);
 
