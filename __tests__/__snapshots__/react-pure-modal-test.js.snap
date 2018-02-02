@@ -1,3 +1,4 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 exports[`test Should be closed 1`] = `null`;
 
 exports[`test Should be opened and closed after click 1`] = `
