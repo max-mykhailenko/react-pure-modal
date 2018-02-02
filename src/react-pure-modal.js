@@ -92,6 +92,8 @@ class PureModal extends React.Component {
   handleStartDrag(e) {
     if (e.changedTouches && e.changedTouches.length > 1) return false;
 
+    e.preventDefault();
+
     const { pageX, pageY } = this.getCoords(e);
     const { top, left } = e.currentTarget.getBoundingClientRect();
 
@@ -108,6 +110,8 @@ class PureModal extends React.Component {
     if (e.changedTouches && e.changedTouches.lenght > 1) {
       return this.handleEndDrag();
     }
+
+    e.preventDefault();
 
     const { pageX, pageY } = this.getCoords(e);
 
@@ -209,12 +213,12 @@ class PureModal extends React.Component {
         onMouseMove={this.state.isDragged ? this.handleDrag : null}
       >
         <div
+          className={modalclasses.join(' ')}
           style={{
             transform: `translate(${this.state.deltaX}px, ${this.state.deltaY}px)`,
             transition: 'none',
             width,
           }}
-          className={modalclasses.join(' ')}
         >
           <PureModalContent
             replace={replace}

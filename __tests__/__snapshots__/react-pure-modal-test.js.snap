@@ -6,15 +6,28 @@ exports[`Should be opened and closed after click 1`] = `
 <div
   className="pure-modal-backdrop"
   onClick={[Function]}
+  onMouseMove={null}
+  onTouchMove={null}
 >
   <div
     className="pure-modal 0.5"
+    style={
+      Object {
+        "transform": "translate(0px, 0px)",
+        "transition": "none",
+        "width": undefined,
+      }
+    }
   >
     <div
       className="panel panel-default"
     >
       <div
         className="panel-heading"
+        onMouseDown={null}
+        onMouseUp={null}
+        onTouchEnd={null}
+        onTouchStart={null}
       >
         <div
           className="close"
@@ -37,16 +50,22 @@ exports[`Should contain width attribute 1`] = `
 <div
   className="pure-modal-backdrop"
   onClick={[Function]}
+  onMouseMove={null}
+  onTouchMove={null}
 >
   <div
     className="pure-modal 0.5"
     style={
       Object {
+        "transform": "translate(0px, 0px)",
+        "transition": "none",
         "width": "400px",
       }
     }
   >
-    Some content of modal
+    <div>
+      Some content of modal
+    </div>
   </div>
 </div>
 `;
@@ -55,15 +74,28 @@ exports[`Should show content 1`] = `
 <div
   className="pure-modal-backdrop"
   onClick={[Function]}
+  onMouseMove={null}
+  onTouchMove={null}
 >
   <div
     className="pure-modal 0.5"
+    style={
+      Object {
+        "transform": "translate(0px, 0px)",
+        "transition": "none",
+        "width": undefined,
+      }
+    }
   >
     <div
       className="panel panel-default"
     >
       <div
         className="panel-heading"
+        onMouseDown={null}
+        onMouseUp={null}
+        onTouchEnd={null}
+        onTouchStart={null}
       >
         <div
           className="close"
@@ -86,11 +118,22 @@ exports[`Should show only content 1`] = `
 <div
   className="pure-modal-backdrop"
   onClick={[Function]}
+  onMouseMove={null}
+  onTouchMove={null}
 >
   <div
     className="pure-modal 0.5"
+    style={
+      Object {
+        "transform": "translate(0px, 0px)",
+        "transition": "none",
+        "width": undefined,
+      }
+    }
   >
-    Some content of modal
+    <div>
+      Some content of modal
+    </div>
   </div>
 </div>
 `;
