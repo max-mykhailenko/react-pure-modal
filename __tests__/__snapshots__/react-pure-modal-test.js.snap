@@ -63,9 +63,9 @@ exports[`Should contain width attribute 1`] = `
       }
     }
   >
-    <div>
+    <span>
       Some content of modal
-    </div>
+    </span>
   </div>
 </div>
 `;
@@ -107,7 +107,9 @@ exports[`Should show content 1`] = `
       <div
         className="panel-body scrollable"
       >
-        Some content of modal
+        <span>
+          Some content of modal
+        </span>
       </div>
     </div>
   </div>
@@ -131,9 +133,9 @@ exports[`Should show only content 1`] = `
       }
     }
   >
-    <div>
+    <span>
       Some content of modal
-    </div>
+    </span>
   </div>
 </div>
 `;
