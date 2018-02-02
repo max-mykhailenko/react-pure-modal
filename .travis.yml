@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8"
+  - '8'
 before_script: npm run webpack:dev && npm run webpack:prod
 cache:
   directories:
@@ -11,7 +11,7 @@ deploy:
   provider: npm
   email: max.mykhailenko@gmail.com
   api_key:
-    secure: m9qQPcvmtrTpENiujdt5huazbN5FzHftsfgh6qYtNdNtUhMl65G/bBCdpfEjnRhcWKoW9JQQjd9h3uIxUstO7+M1i5YaKnQbrsEI7Xr2tepUp6X7kyPpUbBAeGAN6lonBbWFdxKEz9BAbXfJavQlVLV+IQBHkEyt5Jfuavjx7AdkXtAaMsknDsnEV5aaXkJh2SX7oA1FBRc3hZ639+npvg83Hol6Lsk0pPGblkuK4J6MABTUvJu2SoJBU91cpMyWuO02ObpvChdJEKoF8dy1PczhRN6swta9GlnLMRdszFrQtRaMdG3HA12stKRycU59sbXbp4Jb0rYQhA2u6fulW5AsA/Z154Ba1HQzA7CW4vSW/jEe4WFb0ppiwRGEkEtmjDuJ2CS8vrH/0gdObT+AZvzuINmaFp+v6EF8oHYofkNEZBpkYj3E7OOszovsqQSNQokrrCawvtm5o5aWC/7Q5QjQyQvVhN4PqNaRxt4jrcWECoKemG8Y9wdCUXJavO5R6DpNCQEESFQaXtKC11rKLxJRFfmWhseKxGG8Dy3ykfc6+P/H0qb6PWCMBPcOGaxrkiJ1N0otvjnxgVyopwyX2bu1V9y6b6JeKnFE4+lBiPanHZsNSf1l/6AynewAFoDwNdL5QCzmzD1+QEE/zcSTnk/b1vaYhSJLK/TZH+E+rWM=
+    secure: EvgG8S1uObLIjOeqQxTPaz4B7JjOApXuXT0OPxJOLfdPcuO67RgneugGIhODr27c96VXvygA8vpNK5db6Ko847MvllHLDNHuzGvod2hOe8GzkhDO06PMf1bqrstvgodHFxSFWU+divY1UQDZh2gMI9s/k3tLOiiAthpGpMnKGlofC8ux7uqNZhK4laggKrD7NnoRBhtMTbDc7Pzdx0qZNfTQPPQYbdRzBlSVvN3gQ3zvN7H/mcXs+AntpNXkPdeMzYMUNaBYBhhBtLJhOKNizrlSbmMRxyZpFl2EKt485dgJqTad323/qvvxe1wp+5J5ilnDxCn1g6cY6oLElxDeHNRVHh5Fiu31DQUxNRojMbbeAtLt1L+Jg4cXJzEldqM9jKHuqyX8G9x+MKu58F4poKGkNrRslzIPn8XePzPeKL2wv/zAH/pHRvd4SZGAnepB/NiNaK4qpIUJey5X8rlPPn9T0BM0ye3JLcnNPNyWYIGcTur28KNJbZdVFSUjAjPpH0bDl/Qz9Q9BJ9VKW9d+2F0ktFqmIEiaU8CqJtN7enWj+89qdDN6dKPoOgJOM6Z2oTAPErAFmeidVi4i7ng4d3eAF4Nz6CKLZN7frO11DGmg/mp1SCZU7RvF8UldRvOdxdEhfqxzz5Ufg3joRC+KX4Wtjn/m6yZLsJO38wzuT88=
   on:
     tags: true
     repo: memCrab/react-pure-modal
