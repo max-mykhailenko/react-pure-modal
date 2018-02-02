@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
-exports[`test Should be closed 1`] = `null`;
+exports[`Should be closed 1`] = `null`;
 
-exports[`test Should be opened and closed after click 1`] = `
+exports[`Should be opened and closed after click 1`] = `
 <div
   className="pure-modal-backdrop"
   onClick={[Function]}
@@ -37,9 +37,9 @@ exports[`test Should be opened and closed after click 1`] = `
 </div>
 `;
 
-exports[`test Should be opened and closed after click 2`] = `null`;
+exports[`Should be opened and closed after click 2`] = `null`;
 
-exports[`test Should contain width attribute 1`] = `
+exports[`Should contain width attribute 1`] = `
 <div
   className="pure-modal-backdrop"
   onClick={[Function]}
@@ -61,7 +61,7 @@ exports[`test Should contain width attribute 1`] = `
 </div>
 `;
 
-exports[`test Should show content 1`] = `
+exports[`Should show content 1`] = `
 <div
   className="pure-modal-backdrop"
   onClick={[Function]}
@@ -99,7 +99,7 @@ exports[`test Should show content 1`] = `
 </div>
 `;
 
-exports[`test Should show only content 1`] = `
+exports[`Should show only content 1`] = `
 <div
   className="pure-modal-backdrop"
   onClick={[Function]}
