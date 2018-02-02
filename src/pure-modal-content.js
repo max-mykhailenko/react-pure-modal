@@ -16,7 +16,7 @@ class PureModalContent extends React.PureComponent {
 
     return (
       replace ? (
-        children
+         <div>{children}</div>
       ) : (
         <div className="panel panel-default">
           <div

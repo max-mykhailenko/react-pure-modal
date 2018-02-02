@@ -213,12 +213,12 @@ class PureModal extends React.Component {
         onMouseMove={this.state.isDragged ? this.handleDrag : null}
       >
         <div
+          className={modalclasses.join(' ')}
           style={{
             transform: `translate(${this.state.deltaX}px, ${this.state.deltaY}px)`,
             transition: 'none',
             width,
           }}
-          className={modalclasses.join(' ')}
         >
           <PureModalContent
             replace={replace}
