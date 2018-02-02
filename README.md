@@ -61,6 +61,7 @@ Place here your actions
 
 
 ## Changelog (latest on top)
+   - Drag and drop
    - fix bug in firefox and safari with modal position
    - set width as atribute
    - new default aligning to the screen center!
