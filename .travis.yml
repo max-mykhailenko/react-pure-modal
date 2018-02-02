@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - "8"
+before_script: npm run webpack:dev && npm run webpack:prod
+cache:
+  directories:
+  - node_modules
 script:
   - npm run test-ci
 deploy:
