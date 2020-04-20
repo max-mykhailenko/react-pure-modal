@@ -15,7 +15,6 @@ React pure modal is a simplest way to create dialog on your site.
 ## Installation
 `npm i -S react-pure-modal`
 
-
 ## Usage
 ```jsx
 import PureModal from 'react-pure-modal';
