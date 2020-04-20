@@ -38,6 +38,7 @@ And open with
 
 `<button onClick={() => this.refs.modal.open() }>Open modal</button>`
 
+
 ## Options
 
 #### replace `PropTypes.bool` (default: false)
