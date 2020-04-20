@@ -6,6 +6,7 @@ React pure modal is a simplest way to create dialog on your site.
 - Mobile friendly
 - Without dependencies
 
+
 ## Screencast
 ### Simple
 ![Simple demo](./screencast/simple.gif)
