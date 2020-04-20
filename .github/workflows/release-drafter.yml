@@ -1,2 +1,12 @@
 - name: Release Drafter
   uses: release-drafter/release-drafter@v5.7.0
+
+on:
+  pull_request:
+    branches:
+    - master
+
+template: |
+  ## What’s Changed
+
+  $CHANGES
