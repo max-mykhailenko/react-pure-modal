@@ -59,7 +59,6 @@ Modal heading, doesn't disabled close button
 #### footer: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
 Place here your actions
 
-
 ## Changelog (latest on top)
    - Drag and drop
    - fix bug in firefox and safari with modal position
