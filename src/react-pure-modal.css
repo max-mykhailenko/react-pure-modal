@@ -23,6 +23,7 @@
   left: 0;
   z-index: 1041;
   box-sizing: border-box;
+  transition: all .2s ease-in-out;
 }
 
 .pure-modal-backdrop.scrollable {
@@ -45,6 +46,7 @@
   max-height: -moz-available;
   max-height: -webkit-fill-available;
   max-height: fill-available;
+  height: 100%;
 }
 
 .pure-modal > * > * {
@@ -54,7 +56,6 @@
 .pure-modal > * > .scrollable {
   overflow-x: hidden;
   overflow-y: auto;
-  min-height: 0;
 }
 
 
@@ -95,6 +96,7 @@
 
 .pure-modal .panel-body {
   background-color: #fff;
+  padding: 15px;
 }
 
 .pure-modal .panel-heading {
@@ -130,8 +132,10 @@
   color: #000;
 }
 
-.pure-modal .panel-body {
-  padding: 15px;
+.pure-modal .panel-body,
+.pure-modal .panel-footer,
+.pure-modal .panel-title {
+  word-break: break-all;
 }
 
 .pure-modal .panel-footer {

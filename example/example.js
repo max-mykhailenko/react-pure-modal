@@ -17,8 +17,8 @@ class ModalContainer extends React.Component {
       <div>
         <button onClick={ this.openModal }>Open simple modal</button>
         <PureModal
-          header="test heading sdfn asjkd nf a s k;l fna sd; lf wkjh skjdhfs kshdjfh kdfhskd sdhfk shfskd hfkshdfkhs fs"
-          footer="buttons or smth else nasd;lfkadn asdf klasdmf a;lksdfmas'dl ;fmad"
+          header="1111111111111113333333333333333333333333333333333333333333333111111111111111111111111111111111111111"
+          footer="1111111111111111111111111111112222222222222222222222222222222222222222222222111111111111111111111111"
           isOpen
           ref={(k) => this.modal = k}
         >
@@ -28,7 +28,7 @@ class ModalContainer extends React.Component {
           <p>test</p>
           <p>test2 asdmfkasdm flkasmd fasdkfm ; asdkfn;asldkf masd</p>
           <p>fasdfjasknd;f aslkdf ans'fk ams'df lasmdf adsasdf </p>
-          <p>test</p>
+          <p>test1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
           <p>test2 asdmfkasdm flkasmd fasdkfm ; asdkfn;asldkf masd</p>
           <p>fasdfjasknd;f aslkdf ans'fk ams'df lasmdf adsasdf </p>
           <p>fasdfjasknd;f aslkdf ans'fk ams'df lasmdf adsasdf </p>
