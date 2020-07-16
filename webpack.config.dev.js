@@ -36,6 +36,13 @@ const config = {
       },
     ],
   },
+  devServer: {
+    contentBase: path.resolve(__dirname, "examples/"),
+    compress: true,
+    port: 8000,
+    stats: 'errors-only',
+    open: true
+  },
   output: {
     path: path.join(__dirname, 'example/'),
     filename: '[name].min.js',
