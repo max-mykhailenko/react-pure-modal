@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const autoprefixer = require('autoprefixer');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const env = process.env.NODE_ENV;
 
@@ -28,7 +28,11 @@ const config = {
       {
         test: /\.css$/,
         exclude: /(node_modules|dist)/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+        use: ['style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader'],
       },
     ],
   },
@@ -42,6 +46,14 @@ const config = {
       'process.env.NODE_ENV': JSON.stringify(env),
     }),
     new MiniCssExtractPlugin('[name].min.css'),
+    new OptimizeCSSAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }],
+      },
+      canPrint: true
+    })
   ],
   resolve: {
     modules: ['node_modules'],
