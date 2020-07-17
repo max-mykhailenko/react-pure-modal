@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import PureModal from '../dist/react-pure-modal.min.js';
-import '../dist/react-pure-modal.min.css';
+import '../dist/react-pure-modal.css';
 
 class ModalContainer extends React.Component {
   render() {
