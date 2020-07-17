@@ -22,11 +22,14 @@ const config = {
           'style-loader',
           {
             loader: 'css-loader',
-            options: {},
+            options: {
+              minimize: true,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
+              minimize: true,
               config: {
                 path: path.resolve(__dirname, './postcss.config.js'),
               },
@@ -35,6 +38,13 @@ const config = {
         ],
       },
     ],
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, "examples/"),
+    compress: true,
+    port: 8000,
+    stats: 'errors-only',
+    open: true
   },
   output: {
     path: path.join(__dirname, 'example/'),

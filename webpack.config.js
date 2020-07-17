@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const autoprefixer = require('autoprefixer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const env = process.env.NODE_ENV;
 
@@ -28,23 +28,11 @@ const config = {
       {
         test: /\.css$/,
         exclude: /(node_modules|dist)/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {},
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                config: {
-                  path: path.resolve(__dirname, './postcss.config.js'),
-                },
-              },
-            },
-          ],
-        }),
+        use: ['style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader'],
       },
     ],
   },
@@ -57,7 +45,15 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
     }),
-    new ExtractTextPlugin('[name].min.css'),
+    new MiniCssExtractPlugin('[name].min.css'),
+    new OptimizeCSSAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }],
+      },
+      canPrint: true
+    })
   ],
   resolve: {
     modules: ['node_modules'],

@@ -1,4 +1,7 @@
 .body-modal-fix {
+  height: 100%;
+  width: 100%;
+  position: fixed;
   overflow: hidden;
 }
 
@@ -37,10 +40,16 @@
   overflow-y: auto;
 }
 
-.pure-modal > * {
-  display: flex;
-  max-height: 100vh;
-  flex-direction: column;
+.pure-modal-backdrop .panel {
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
+}
+.pure-modal-backdrop:not(.scrollable) .panel {
+  grid-template-rows: min-content minmax(0, 100%) min-content;
+  max-height: -moz-available;
+  max-height: -webkit-fill-available;
+  max-height: fill-available;
+  height: 100%;
 }
 
 .pure-modal > * > * {
@@ -50,8 +59,7 @@
 .pure-modal > * > .scrollable {
   overflow-x: hidden;
   overflow-scrolling: touch;
-  transform: translate3d(0, 0, 0);
-  flex: 0 1 auto;
+
 }
 
 @media (max-width: 480px) {
@@ -66,9 +74,6 @@
 
 .pure-modal .panel-heading {
   background: rgb(240, 240, 240);
-}
-
-.pure-modal .panel-heading {
   position: relative;
 }
 
@@ -104,4 +109,10 @@
 .pure-modal .panel-footer {
   padding: 12px 45px 12px 15px;
   background: rgb(240, 240, 240);
+}
+
+.pure-modal .panel-body,
+.pure-modal .panel-footer,
+.pure-modal .panel-title {
+  word-break: break-all;
 }
