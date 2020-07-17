@@ -12,11 +12,10 @@ class ModalContainer extends React.Component {
         <button className="button" onClick={() => this.modalCenter.open()}>Open small modal on center scrollable or not</button>
 
         <PureModal
-          header="Custom headingqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
-          footer="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaButtons?"
+          header="Custom header with a lot of symbols. It's very important to have a dynamic header height and this modal supports it"
+          footer="Buttons?"
           ref={(k) => this.modalInnerScroll = k}
         >
-          <p>Ut s,dmsnfsndnfsdflklllssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ex a feugiat blandit. Sed tempor placerat dui et hendrerit. Nunc fringilla vel orci at lacinia. Duis vitae nulla sit amet justo faucibus ornare. Nunc nec lacinia dolor. Vestibulum egestas condimentum ante, id semper sem facilisis eu. Sed aliquam eget est eget finibus. Quisque vehicula massa et elit maximus, vel euismod erat lacinia. Morbi ut risus eget nunc feugiat cursus.</p>
             <p>Pellentesque quis metus eu urna feugiat auctor. Fusce accumsan mi nibh, porttitor lacinia est egestas vel. Maecenas nibh odio, volutpat quis tincidunt eget, lacinia a lorem. Etiam ullamcorper turpis a ultrices auctor. Cras quis tortor turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam porta sagittis congue. Maecenas volutpat lacus eu lectus dapibus, nec eleifend ipsum luctus. Etiam ac lobortis ligula, id porta lectus. Curabitur eget leo ut sapien ullamcorper sagittis.</p>
             <p>Suspendisse commodo nisl in neque tempus pellentesque. Nullam magna turpis, fringilla sollicitudin maximus non, consectetur ac quam. Ut sit amet tortor ornare, tincidunt ante non, tempor mauris. Proin vestibulum purus vel felis pellentesque varius. Sed eget volutpat dui. Curabitur quis nunc facilisis, euismod justo placerat, sagittis nunc. Phasellus sagittis felis urna, sed sodales odio auctor sit amet. Etiam id metus quis velit ullamcorper consequat. Fusce posuere ultricies felis, at vestibulum turpis egestas et.</p>
