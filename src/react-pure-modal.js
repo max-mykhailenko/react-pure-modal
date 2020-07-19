@@ -96,7 +96,7 @@ function PureModal(props) {
 
     e.preventDefault();
 
-    const { pageX, pageY } = this.getCoords(e);
+    const { pageX, pageY } = getCoords(e);
 
     setDeltaX(pageX - x - mouseOffsetX);
     setDeltaY(pageY - y - mouseOffsetY);

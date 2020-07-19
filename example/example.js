@@ -4,10 +4,10 @@ import PureModal from '../dist/react-pure-modal.min.js';
 import '../dist/react-pure-modal.css';
 
 function ModalContainer() {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const [modalInnerScroll, setModalInnerScroll] = useState(false);
   const [modalCenter, setModalCenter] = useState(false);
-  
+
   return (
 	<div>
 	  <button className="button" onClick={() => setModal(true)}>Open simple modal</button>
