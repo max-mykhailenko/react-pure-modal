@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import './react-pure-modal.css';
 
@@ -25,20 +25,14 @@ function PureModal(props) {
     }
   }, [props.isOpen])  
 
-  useEffect(() => {
+   useEffect(() => {
     if (props.isOpen) {
       setModalContext()
     }
     unsetModalContext();
   },[])
 
-  function setModalContext() {
-    document.addEventListener('keydown', handleEsc);
-    document.activeElement.blur();
-    document.body.classList.add('body-modal-fix');
-  }
-
-  function handleEsc(event) {
+  const handleEsc = useCallback((event) => {
     const allModals = document.querySelectorAll('.pure-modal');
     if (
       allModals.length && !allModals[allModals.length - 1].classList.contains(hash)
@@ -46,6 +40,16 @@ function PureModal(props) {
     if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
       close(event);
     }
+  },[])
+
+  if (!isOpen) {
+    return null;
+  }
+
+  function setModalContext() {
+    document.addEventListener('keydown', handleEsc);
+    document.activeElement.blur();
+    document.body.classList.add('body-modal-fix');
   }
 
   function unsetModalContext() {
@@ -142,10 +146,6 @@ function PureModal(props) {
       event.preventDefault();
     }
     close(event);
-  }
-
-  if (!isOpen) {
-    return null;
   }
 
   const {
