@@ -35,7 +35,7 @@ function PureModal(props) {
   const handleEsc = useCallback((event) => {
     const allModals = document.querySelectorAll('.pure-modal');
     if (
-      allModals.length && !allModals[allModals.length - 1].classList.contains(hash)
+      allModals.length && allModals[allModals.length - 1].classList.contains(hash)
     ) return false;
     if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
       close(event);
@@ -124,16 +124,14 @@ function PureModal(props) {
       event.preventDefault();
     }
 
-    if (isOpen) {
-      let isOpened = false;
-      if (props.onClose && event) {
-        isOpened = !props.onClose();
-      }
+    let isOpened = false;
+    if (props.onClose && event) {
+      isOpened = !props.onClose();
+    }
 
-      if (isOpen !== isOpened) {
-        setIsOpen(isOpened)
-        unsetModalContext();
-      }
+    if (isOpen !== isOpened) {
+      setIsOpen(isOpened)
+      unsetModalContext();
     }
   }
 
