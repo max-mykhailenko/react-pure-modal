@@ -16,10 +16,12 @@ function PureModal(props) {
   const [mouseOffsetY, setMouseOffsetY] = useState(0);
 
   useEffect(() => {
-    if (isOpen !== props.isOpen){
-      open();
-    } else {
-      close();
+    if (typeof props.isOpen === 'boolean' && isOpen !== props.isOpen){
+      if (props.isOpen) {
+        open();
+      } else {
+        close();
+      } 
     }
   }, [props.isOpen])  
 
@@ -27,13 +29,8 @@ function PureModal(props) {
     if (props.isOpen) {
       setModalContext()
     }
+    unsetModalContext();
   },[])
-
-  useEffect(() => {
-    return () => {
-     unsetModalContext();
-    }
-  }, []);
 
   function setModalContext() {
     document.addEventListener('keydown', handleEsc);
