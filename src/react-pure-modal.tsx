@@ -25,7 +25,7 @@ const defaultProps = {
 };
 
 function PureModal(props: Props) {
-  let hash = Math.random().toString();
+  let hash: string = Math.random().toString();
   const [isOpen, setIsOpen] = useState(false);
   const [isDragged, setIsDragged] = useState(false);
   const [x, setX] = useState(null);
@@ -57,6 +57,7 @@ function PureModal(props: Props) {
     if (
       allModals.length && allModals[allModals.length - 1].classList.contains(hash)
     ) return false;
+    // @ts-ignore
     if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
       close(event);
     }
@@ -68,7 +69,9 @@ function PureModal(props: Props) {
 
   function setModalContext() {
     document.addEventListener('keydown', handleEsc);
-    document.activeElement.blur();
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     document.body.classList.add('body-modal-fix');
   }
 

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should be closed 1`] = `null`;
+
+exports[`Should contain width attribute 1`] = `null`;
+
+exports[`Should show content 1`] = `null`;
+
+exports[`Should show only content 1`] = `
+<div
+  className="pure-modal-backdrop"
+  onClick={[Function]}
+  onMouseMove={null}
+  onTouchMove={null}
+>
+  <div
+    className="pure-modal 0.5"
+    style={
+      Object {
+        "transform": "translate(0px, 0px)",
+        "transition": "none",
+        "width": undefined,
+      }
+    }
+  >
+    <span>
+      Some content of modal
+    </span>
+  </div>
+</div>
+`;

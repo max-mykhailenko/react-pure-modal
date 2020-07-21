@@ -16,7 +16,7 @@ const defaultProps = {
     draggable: false,
 };
 
-const PureModalContent = (props: Props) => {
+function PureModalContent(props: Props): JSX.Element {
   const {
         children,
         replace,
@@ -28,7 +28,8 @@ const PureModalContent = (props: Props) => {
         onClose,
     } = props;
 
-  return (
+  // @ts-ignore
+    return (
       replace ? (
         children
     ) : (
