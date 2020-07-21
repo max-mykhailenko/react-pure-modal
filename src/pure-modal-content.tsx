@@ -2,13 +2,13 @@ import React from 'react';
 
 type Props = {
     replace: boolean,
-    children: Node,
+    children: JSX.Element,
     onDragStart: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void,
     onDragEnd: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void,
     onClose: (event: React.MouseEvent<HTMLDivElement>) => void,
     bodyClass: string,
-    header: Node | string,
-    footer: Node | string
+    header: JSX.Element | string,
+    footer: JSX.Element | string
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -28,7 +28,6 @@ function PureModalContent(props: Props): JSX.Element {
         onClose,
     } = props;
 
-  // @ts-ignore
     return (
       replace ? (
         children
