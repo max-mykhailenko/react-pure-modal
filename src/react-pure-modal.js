@@ -1,83 +1,69 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import './react-pure-modal.css';
 
 import PureModalContent from './pure-modal-content.js';
 
-class PureModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleStartDrag = this.handleStartDrag.bind(this);
-    this.handleDrag = this.handleDrag.bind(this);
-    this.handleEndDrag = this.handleEndDrag.bind(this);
+function PureModal(props) {
+  let hash = Math.random().toString();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDragged, setIsDragged] = useState(false);
+  const [x, setX] = useState(null);
+  const [y, setY] = useState(null);
+  const [deltaX, setDeltaX] = useState(0);
+  const [deltaY, setDeltaY] = useState(0);
+  const [mouseOffsetX, setMouseOffsetX] = useState(0);
+  const [mouseOffsetY, setMouseOffsetY] = useState(0);
 
-    this.handleEsc = this.handleEsc.bind(this);
-    this.close = this.close.bind(this);
-    this.open = this.open.bind(this);
-    this.handleBackdropClick = this.handleBackdropClick.bind(this);
-    this.hash = Math.random().toString();
-    this.state = {
-      isOpen: props.isOpen || false,
-      isDragged: false,
-      x: null,
-      y: null,
-      deltaX: 0,
-      deltaY: 0,
-      mouseOffsetX: 0,
-      mouseOffsetY: 0,
-    };
-  }
-
-  componentDidMount() {
-    if (this.props.isOpen) {
-      this.setModalContext();
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.isOpen === 'boolean' && this.props.isOpen !== nextProps.isOpen) {
-      if (nextProps.isOpen) {
-        this.open();
+  useEffect(() => {
+    if (typeof props.isOpen === 'boolean' && isOpen !== props.isOpen){
+      if (props.isOpen) {
+        open();
       } else {
-        this.close();
-      }
+        close();
+      } 
     }
+  }, [props.isOpen])  
+
+   useEffect(() => {
+    if (props.isOpen) {
+      setModalContext()
+    }
+    unsetModalContext();
+  },[])
+
+  const handleEsc = useCallback((event) => {
+    const allModals = document.querySelectorAll('.pure-modal');
+    if (
+      allModals.length && allModals[allModals.length - 1].classList.contains(hash)
+    ) return false;
+    if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
+      close(event);
+    }
+  },[])
+
+  if (!isOpen) {
+    return null;
   }
 
-  componentWillUnmount() {
-    this.unsetModalContext();
-  }
-
-  setModalContext() {
-    document.addEventListener('keydown', this.handleEsc);
+  function setModalContext() {
+    document.addEventListener('keydown', handleEsc);
     document.activeElement.blur();
     document.body.classList.add('body-modal-fix');
   }
 
-  handleEsc(event) {
-    const allModals = document.querySelectorAll('.pure-modal');
-    if (
-      allModals.length && !allModals[allModals.length - 1].classList.contains(this.hash)
-    ) return false;
-    if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
-      this.close(event);
-    }
-  }
-
-  unsetModalContext() {
-    document.removeEventListener('keydown', this.handleEsc);
+  function unsetModalContext() {
+    document.removeEventListener('keydown', handleEsc);
     document.body.classList.remove('body-modal-fix');
-    this.setState({
-      x: null,
-      y: null,
-      deltaX: 0,
-      deltaY: 0,
-      mouseOffsetX: 0,
-      mouseOffsetY: 0,
-    });
+    setX(null);
+    setY(null);
+    setDeltaX(0);
+    setDeltaY(0);
+    setMouseOffsetX(0);
+    setMouseOffsetY(0);
   }
 
-  getCoords(e) {
+  function getCoords(e) {
     let { pageX, pageY } = e;
     if (e.changedTouches && e.changedTouches.length === 1) {
       pageX = e.changedTouches[0].pageX;
@@ -89,77 +75,67 @@ class PureModal extends React.Component {
     };
   }
 
-  handleStartDrag(e) {
+  function handleStartDrag(e) {
     if (e.changedTouches && e.changedTouches.length > 1) return false;
 
     e.preventDefault();
 
-    const { pageX, pageY } = this.getCoords(e);
+    const { pageX, pageY } = getCoords(e);
     const { top, left } = e.currentTarget.getBoundingClientRect();
 
-    return this.setState({
-      isDragged: true,
-      x: typeof this.state.x === 'number' ? this.state.x : left,
-      y: typeof this.state.y === 'number' ? this.state.y : top,
-      mouseOffsetX: pageX - left,
-      mouseOffsetY: pageY - top,
-    });
+    setIsDragged(true);
+    setX( typeof x === 'number' ? x : left);
+    setY( typeof y === 'number' ? y : top);
+    setMouseOffsetX(pageX - left);
+    setMouseOffsetY(pageY - top);
   }
 
-  handleDrag(e) {
+  function handleDrag(e) {
     if (e.changedTouches && e.changedTouches.lenght > 1) {
-      return this.handleEndDrag();
+      return handleEndDrag();
     }
 
     e.preventDefault();
 
-    const { pageX, pageY } = this.getCoords(e);
+    const { pageX, pageY } = getCoords(e);
 
-    return this.setState({
-      deltaX: pageX - this.state.x - this.state.mouseOffsetX,
-      deltaY: pageY - this.state.y - this.state.mouseOffsetY,
-    });
+    setDeltaX(pageX - x - mouseOffsetX);
+    setDeltaY(pageY - y - mouseOffsetY);
   }
 
-  handleEndDrag() {
-    return this.setState({ isDragged: false });
+  function handleEndDrag() {
+    return setIsDragged(false);
   }
 
-  open(event) {
+  function open(event) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
     }
-    if (!this.state.isOpen) {
-      this.setState({
-        isOpen: true,
-      });
-      this.setModalContext();
+    if (!isOpen) {
+      setIsOpen(true);
+      setModalContext();
     }
   }
 
-  close(event) {
+  function close(event) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
     }
 
-    if (this.state.isOpen) {
-      let isOpen = false;
-      if (this.props.onClose && event) {
-        isOpen = !this.props.onClose();
-      }
+    let isOpened = false;
+    if (props.onClose && event) {
+      isOpened = !props.onClose();
+    }
 
-      if (this.state.isOpen !== isOpen) {
-        this.setState({
-          isOpen,
-        });
-        this.unsetModalContext();
-      }
+    if (isOpen !== isOpened) {
+      setIsOpen(isOpened)
+      unsetModalContext();
     }
   }
 
-  handleBackdropClick(event) {
+  function handleBackdropClick(event) {
     if (event) {
       if (!event.target.classList.contains('pure-modal-backdrop')) {
         return;
@@ -167,74 +143,68 @@ class PureModal extends React.Component {
       event.stopPropagation();
       event.preventDefault();
     }
-    this.close(event);
+    close(event);
   }
 
-  render() {
-    if (!this.state.isOpen) {
-      return null;
-    }
+  const {
+    children,
+    replace,
+    className,
+    header,
+    footer,
+    scrollable,
+    draggable,
+    width,
+  } = props;
 
-    const {
-      children,
-      replace,
-      className,
-      header,
-      footer,
-      scrollable,
-      draggable,
-      width,
-    } = this.props;
+  let backdropclasses = ['pure-modal-backdrop'];
+  let modalclasses = ['pure-modal', hash];
+  let bodyClasses = ['panel-body'];
 
-    let backdropclasses = ['pure-modal-backdrop'];
-    let modalclasses = ['pure-modal', this.hash];
-    let bodyClasses = ['panel-body'];
+  if (className) {
+    modalclasses = modalclasses.concat(className);
+  }
 
-    if (className) {
-      modalclasses = modalclasses.concat(className);
-    }
+  if (scrollable) {
+    bodyClasses = bodyClasses.concat('scrollable');
+  } else {
+    backdropclasses = backdropclasses.concat('scrollable');
+    modalclasses = modalclasses.concat('auto-height');
+  }
 
-    if (scrollable) {
-      bodyClasses = bodyClasses.concat('scrollable');
-    } else {
-      backdropclasses = backdropclasses.concat('scrollable');
-      modalclasses = modalclasses.concat('auto-height');
-    }
+  if (draggable) {
+    backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
+  }
 
-    if (draggable) {
-      backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
-    }
-
-    return (
+  return (
+    <div
+      className={backdropclasses.join(' ')}
+      onClick={handleBackdropClick}
+      onTouchMove={isDragged ? handleDrag : null}
+      onMouseMove={isDragged ? handleDrag : null}
+    >
       <div
-        className={backdropclasses.join(' ')}
-        onClick={this.handleBackdropClick}
-        onTouchMove={this.state.isDragged ? this.handleDrag : null}
-        onMouseMove={this.state.isDragged ? this.handleDrag : null}
+        className={modalclasses.join(' ')}
+        style={{
+          transform: `translate(${deltaX}px, ${deltaY}px)`,
+          transition: 'none',
+          width,
+        }}
       >
-        <div
-          className={modalclasses.join(' ')}
-          style={{
-            transform: `translate(${this.state.deltaX}px, ${this.state.deltaY}px)`,
-            transition: 'none',
-            width,
-          }}
+        <PureModalContent
+          replace={replace}
+          header={header}
+          footer={footer}
+          onDragStart={draggable ? handleStartDrag : null}
+          onDragEnd={draggable ? handleEndDrag : null}
+          onClose={close}
+          bodyClass={bodyClasses.join(' ')}
         >
-          <PureModalContent
-            replace={replace}
-            header={header}
-            footer={footer}
-            onDragStart={draggable ? this.handleStartDrag : null}
-            onDragEnd={draggable ? this.handleEndDrag : null}
-            onClose={this.close}
-            bodyClass={bodyClasses.join(' ')}
-          >
-            {children}
-          </PureModalContent>
-        </div>
+          {children}
+        </PureModalContent>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 PureModal.defaultProps = {

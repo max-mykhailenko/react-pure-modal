@@ -11,15 +11,6 @@ it('Should be null without props', () => {
   expect(component.toJSON()).toBeNull();
 });
 
-it('Should be opened and closed after click', () => {
-  const component = renderer.create(<Modal isOpen />);
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-  tree.props.onClick();
-  tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-});
-
 it('Should be closed', () => {
   const component = renderer.create(<Modal isOpen={false} />);
   expect(component.toJSON()).toMatchSnapshot();

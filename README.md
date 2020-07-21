@@ -20,15 +20,16 @@ React pure modal is a simplest way to create dialog on your site.
 import PureModal from 'react-pure-modal';
 import 'react-pure-modal/dist/react-pure-modal.min.css';
 
+const [modal, setModal] = useState(false);
+
 <PureModal
   header="Your header"
   footer={<div><button>Cancel</button><button>Save</button></div>}
+  isOpen={modal}
   onClose={() => {
-    console.log('handle closing');
+    setModal(false)
     return true;
-  }}
-  isOpen
-  ref="modal"
+    }}
 >
   <p>Your content</p>
 </PureModal>
@@ -36,7 +37,7 @@ import 'react-pure-modal/dist/react-pure-modal.min.css';
 
 And open with
 
-`<button onClick={() => this.refs.modal.open() }>Open modal</button>`
+`<button className="button" onClick={() => setModal(true)}>Open simple modal</button>`
 
 ## Options
 
