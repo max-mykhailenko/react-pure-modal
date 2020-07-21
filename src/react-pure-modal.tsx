@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import './react-pure-modal.css';
 
-import PureModalContent from './pure-modal-content.js';
+import PureModalContent from './pure-modal-content';
 
 function PureModal(props) {
   let hash = Math.random().toString();
@@ -107,7 +107,7 @@ function PureModal(props) {
     return setIsDragged(false);
   }
 
-  function open(event) {
+  function open(event?) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -118,7 +118,7 @@ function PureModal(props) {
     }
   }
 
-  function close(event) {
+  function close(event?) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
