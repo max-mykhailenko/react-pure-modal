@@ -7,7 +7,7 @@ type Props = {
     onDragEnd: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void,
     onClose: (event: React.MouseEvent<HTMLDivElement>) => void,
     bodyClass: string,
-    header: string,
+    header: Node | string,
     footer: Node | string
 } & typeof defaultProps;
 

@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/max-mykhailenko/react-pure-modal#readme",
   "devDependencies": {
-    "@types/react": "15.0.4",
+    "@types/react": "16.9.43",
     "autoprefixer": "7.2.5",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",

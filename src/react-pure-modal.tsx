@@ -1,10 +1,30 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import './react-pure-modal.css';
 
 import PureModalContent from './pure-modal-content';
 
-function PureModal(props) {
+type Props = {
+  mode: 'modal' | 'tooltip',
+  children: Node,
+  replace: boolean,
+  className: string,
+  header: Node | string,
+  footer: Node | string,
+  scrollable: boolean,
+  draggable: boolean,
+  width: string,
+  isOpen: boolean,
+  onClose: Function,
+} & typeof defaultProps;
+
+const defaultProps = {
+  mode: 'modal',
+  replace: false,
+  scrollable: true,
+  draggable: false,
+};
+
+function PureModal(props: Props) {
   let hash = Math.random().toString();
   const [isOpen, setIsOpen] = useState(false);
   const [isDragged, setIsDragged] = useState(false);
@@ -207,31 +227,6 @@ function PureModal(props) {
   );
 }
 
-PureModal.defaultProps = {
-  mode: 'modal',
-  replace: false,
-  scrollable: true,
-  draggable: false,
-};
-
-PureModal.propTypes = {
-  mode: PropTypes.oneOf(['modal', 'tooltip']),
-  replace: PropTypes.bool,
-  children: PropTypes.node,
-  isOpen: PropTypes.bool,
-  scrollable: PropTypes.bool,
-  draggable: PropTypes.bool,
-  onClose: PropTypes.func,
-  className: PropTypes.string,
-  width: PropTypes.string,
-  header: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-  ]),
-  footer: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-  ]),
-};
+PureModal.defaultProps = defaultProps;
 
 export default PureModal;
