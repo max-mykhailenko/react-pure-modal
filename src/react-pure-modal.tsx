@@ -1,10 +1,30 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import './react-pure-modal.css';
 
-import PureModalContent from './pure-modal-content.js';
+import PureModalContent from './pure-modal-content';
 
-function PureModal(props) {
+type Props = {
+  mode: 'modal' | 'tooltip',
+  children:  JSX.Element,
+  replace: boolean,
+  className: string,
+  header:  JSX.Element | string,
+  footer:  JSX.Element | string,
+  scrollable: boolean,
+  draggable: boolean,
+  width: string,
+  isOpen: boolean,
+  onClose: Function,
+} & typeof defaultProps;
+
+const defaultProps = {
+  mode: 'modal',
+  replace: false,
+  scrollable: true,
+  draggable: false,
+};
+
+function PureModal(props: Props) {
   let hash = Math.random().toString();
   const [isOpen, setIsOpen] = useState(false);
   const [isDragged, setIsDragged] = useState(false);
@@ -37,7 +57,7 @@ function PureModal(props) {
     if (
       allModals.length && allModals[allModals.length - 1].classList.contains(hash)
     ) return false;
-    if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
+    if (document.activeElement && event.keyCode === 27) {
       close(event);
     }
   },[])
@@ -48,7 +68,9 @@ function PureModal(props) {
 
   function setModalContext() {
     document.addEventListener('keydown', handleEsc);
-    document.activeElement.blur();
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     document.body.classList.add('body-modal-fix');
   }
 
@@ -107,7 +129,7 @@ function PureModal(props) {
     return setIsDragged(false);
   }
 
-  function open(event) {
+  function open(event?) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -118,7 +140,7 @@ function PureModal(props) {
     }
   }
 
-  function close(event) {
+  function close(event?) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -207,31 +229,6 @@ function PureModal(props) {
   );
 }
 
-PureModal.defaultProps = {
-  mode: 'modal',
-  replace: false,
-  scrollable: true,
-  draggable: false,
-};
-
-PureModal.propTypes = {
-  mode: PropTypes.oneOf(['modal', 'tooltip']),
-  replace: PropTypes.bool,
-  children: PropTypes.node,
-  isOpen: PropTypes.bool,
-  scrollable: PropTypes.bool,
-  draggable: PropTypes.bool,
-  onClose: PropTypes.func,
-  className: PropTypes.string,
-  width: PropTypes.string,
-  header: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-  ]),
-  footer: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-  ]),
-};
+PureModal.defaultProps = defaultProps;
 
 export default PureModal;

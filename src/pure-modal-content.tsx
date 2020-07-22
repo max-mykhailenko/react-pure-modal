@@ -1,19 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function PureModalContent(props) {
+type Props = {
+    replace: boolean,
+    children: JSX.Element,
+    onDragStart: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void,
+    onDragEnd: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void,
+    onClose: (event: React.MouseEvent<HTMLDivElement>) => void,
+    bodyClass: string,
+    header: JSX.Element | string,
+    footer: JSX.Element | string
+} & typeof defaultProps;
+
+const defaultProps = {
+    replace: false,
+    draggable: false,
+};
+
+function PureModalContent(props: Props): JSX.Element {
   const {
-      children,
-      replace,
-      bodyClass,
-      header,
-      footer,
-      onDragStart,
-      onDragEnd,
-      onClose,
-  } = props;
+        children,
+        replace,
+        bodyClass,
+        header,
+        footer,
+        onDragStart,
+        onDragEnd,
+        onClose,
+    } = props;
 
-  return (
+    return (
       replace ? (
         children
     ) : (
@@ -52,26 +67,6 @@ function PureModalContent(props) {
   );
 }
 
-PureModalContent.defaultProps = {
-  replace: false,
-  draggable: false,
-};
-
-PureModalContent.propTypes = {
-  replace: PropTypes.bool,
-  children: PropTypes.node,
-  onDragStart: PropTypes.func,
-  onDragEnd: PropTypes.func,
-  onClose: PropTypes.func,
-  bodyClass: PropTypes.string,
-  header: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-  ]),
-  footer: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-  ]),
-};
+PureModalContent.defaultProps = defaultProps;
 
 export default PureModalContent;
