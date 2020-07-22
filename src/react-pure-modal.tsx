@@ -6,11 +6,11 @@ import PureModalContent from './pure-modal-content';
 
 type Props = {
   mode: 'modal' | 'tooltip',
-  children: JSX.Element,
+  children:  JSX.Element,
   replace: boolean,
   className: string,
-  header: JSX.Element | string,
-  footer: JSX.Element | string,
+  header:  JSX.Element | string,
+  footer:  JSX.Element | string,
   scrollable: boolean,
   draggable: boolean,
   width: string,
