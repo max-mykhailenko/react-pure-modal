@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import ReactDOM from 'react-dom';
+import  { createPortal } from 'react-dom';
 import './react-pure-modal.css';
 
 import PureModalContent from './pure-modal-content';
 
 type Props = {
   mode: 'modal' | 'tooltip',
-  children:  JSX.Element,
+  children: JSX.Element,
   replace: boolean,
   className: string,
-  header:  JSX.Element | string,
-  footer:  JSX.Element | string,
+  header: JSX.Element | string,
+  footer: JSX.Element | string,
   scrollable: boolean,
   draggable: boolean,
   width: string,
@@ -24,6 +24,11 @@ const defaultProps = {
   scrollable: true,
   draggable: false,
 };
+
+const portal =  document.createElement("div");
+portal.setAttribute("id", "portal");
+const body = document.getElementsByTagName('body')[0];
+body.prepend(portal);
 
 function PureModal(props: Props) {
   let hash = Math.random().toString();
@@ -199,7 +204,7 @@ function PureModal(props: Props) {
     backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
   }
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <div
       className={backdropclasses.join(' ')}
       onClick={handleBackdropClick}
@@ -226,7 +231,7 @@ function PureModal(props: Props) {
           {children}
         </PureModalContent>
       </div>
-    </div>, document.querySelector('#portal')
+    </div>, portal
   );
 }
 
