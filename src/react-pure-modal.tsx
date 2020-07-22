@@ -6,11 +6,11 @@ import PureModalContent from './pure-modal-content';
 
 type Props = {
   mode: 'modal' | 'tooltip',
-  children: Node,
+  children: JSX.Element,
   replace: boolean,
   className: string,
-  header: Node| string,
-  footer: Node | string,
+  header: JSX.Element | string,
+  footer: JSX.Element | string,
   scrollable: boolean,
   draggable: boolean,
   width: string,
@@ -226,7 +226,7 @@ function PureModal(props: Props) {
           {children}
         </PureModalContent>
       </div>
-    </div>, document.body
+    </div>, document.querySelector('#portal')
   );
 }
 
