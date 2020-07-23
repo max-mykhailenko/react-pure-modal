@@ -14,12 +14,12 @@ const reactExternal = {
 
 const config = {
   entry: {
-    'react-pure-modal': path.join(__dirname, './src/react-pure-modal.js'),
+    'react-pure-modal': path.join(__dirname, './src/react-pure-modal.tsx'),
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx|tsx|ts)$/,
         exclude: /(node_modules|dist)/,
         use: {
           loader: 'babel-loader',
@@ -57,7 +57,7 @@ const config = {
   ],
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js'],
+    extensions: ['.tsx','.ts','.js']
   },
   externals: {
     react: reactExternal,

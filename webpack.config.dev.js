@@ -6,6 +6,7 @@ const config = {
   entry: {
     example: path.join(__dirname, 'example/example.js'),
   },
+  devtool : 'inline-source-map',
   module: {
     rules: [
       {
