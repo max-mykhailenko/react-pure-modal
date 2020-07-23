@@ -34,6 +34,7 @@ function ModalContainer() {
 		  footer="Buttons?"
 		  width="800px"
 		  scrollable={false}
+		  closeButtonContent='close'
 		  isOpen={modal}
           onClose={() => {
             setModal(false)

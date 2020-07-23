@@ -2,6 +2,7 @@ import React from 'react';
 
 type Props = {
     replace: boolean,
+    closeButtonContent: string,
     children: JSX.Element,
     onDragStart: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void,
     onDragEnd: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void,
@@ -14,6 +15,7 @@ type Props = {
 const defaultProps = {
     replace: false,
     draggable: false,
+    closeButtonContent: '×'
 };
 
 function PureModalContent(props: Props): JSX.Element {
@@ -26,6 +28,7 @@ function PureModalContent(props: Props): JSX.Element {
         onDragStart,
         onDragEnd,
         onClose,
+        closeButtonContent
     } = props;
 
     return (
@@ -48,7 +51,7 @@ function PureModalContent(props: Props): JSX.Element {
               </h3>
             )
         }
-          <div onClick={onClose} className="close">&times;</div>
+          <div onClick={onClose} className="close">{closeButtonContent}</div>
         </div>
 
         <div className={bodyClass}>
