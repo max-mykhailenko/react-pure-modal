@@ -26,6 +26,7 @@ const [modal, setModal] = useState(false);
   header="Your header"
   footer={<div><button>Cancel</button><button>Save</button></div>}
   isOpen={modal}
+  closeButtonContent='close'
   onClose={() => {
     setModal(false)
     return true;
@@ -41,24 +42,26 @@ And open with
 
 ## Options
 
-#### replace `PropTypes.bool` (default: false)
+#### replace `boolean` (default: false)
 Replace all inner markup with Component children
-#### isOpen: `PropTypes.bool`
+#### isOpen: `boolean`
 Control modal state from parent component
-#### scrollable: `PropTypes.bool` (default: true)
+#### scrollable: `boolean` (default: true)
 You can disable scroll in modal body
-#### draggable: `PropTypes.bool` (default: false)
+#### draggable: `boolean` (default: false)
 You can drag a modal window
-#### onClose: `PropTypes.func`
+#### onClose: `Function`
 Handle modal closing. Should return true if you allow closing
-#### className: `PropTypes.string`
+#### className: `string`
 ClassName for modal DOM element, can be used for set modal width or change behaviour on mobile devices
-#### width: `PropTypes.string` (example '200px')
+#### width: `string` (example '200px')
 Width in pixels, em's, vw etc
-#### header: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
+#### header: `JSX.Element | string`
 Modal heading, doesn't disabled close button
-#### footer: `PropTypes.oneOfType([ PropTypes.node, PropTypes.string ])`
+#### footer: `JSX.Element | string`
 Place here your actions
+#### closeButtonContent: `string` (default: '×')
+Content of your closing button
 
 ## Changelog (latest on top)
    - Drag and drop
