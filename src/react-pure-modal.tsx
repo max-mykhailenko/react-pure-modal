@@ -25,11 +25,6 @@ const defaultProps = {
   draggable: false,
 };
 
-const portal =  document.createElement("div");
-portal.setAttribute("id", "portal");
-const body = document.getElementsByTagName('body')[0];
-body.prepend(portal);
-
 function PureModal(props: Props) {
   let hash = Math.random().toString();
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +35,10 @@ function PureModal(props: Props) {
   const [deltaY, setDeltaY] = useState(0);
   const [mouseOffsetX, setMouseOffsetX] = useState(0);
   const [mouseOffsetY, setMouseOffsetY] = useState(0);
+  const [portal] = useState(document.createElement("div"));
+  portal.setAttribute("id", "portal");
+  const body = document.getElementsByTagName('body')[0];
+  body.prepend(portal);
 
   useEffect(() => {
     if (typeof props.isOpen === 'boolean' && isOpen !== props.isOpen){
