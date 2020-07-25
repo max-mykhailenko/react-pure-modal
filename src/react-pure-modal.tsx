@@ -35,10 +35,10 @@ function PureModal(props: Props) {
   const [deltaY, setDeltaY] = useState(0);
   const [mouseOffsetX, setMouseOffsetX] = useState(0);
   const [mouseOffsetY, setMouseOffsetY] = useState(0);
-  const [portal] = useState(document.createElement("div"));
-  portal.setAttribute("id", "portal");
-  const body = document.getElementsByTagName('body')[0];
-  body.prepend(portal);
+  // const [portal] = useState(document.createElement("div"));
+  // portal.setAttribute("id", "portal");
+  // const body = document.getElementsByTagName('body')[0];
+  // body.prepend(portal);
 
   useEffect(() => {
     if (typeof props.isOpen === 'boolean' && isOpen !== props.isOpen){
@@ -230,7 +230,7 @@ function PureModal(props: Props) {
           {children}
         </PureModalContent>
       </div>
-    </div>, portal
+    </div>, document.body
   );
 }
 
