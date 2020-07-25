@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { createPortal} from "react-dom";
 import './react-pure-modal.css';
 
 import PureModalContent from './pure-modal-content';
@@ -198,7 +199,7 @@ function PureModal(props: Props) {
     backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
   }
 
-  return (
+  return createPortal(
     <div
       className={backdropclasses.join(' ')}
       onClick={handleBackdropClick}
@@ -225,7 +226,7 @@ function PureModal(props: Props) {
           {children}
         </PureModalContent>
       </div>
-    </div>
+    </div>, document.body
   );
 }
 
