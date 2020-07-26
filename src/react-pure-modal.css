@@ -82,10 +82,7 @@
   margin: 0;
 }
 
-.pure-modal .panel-heading .close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+.close-button {
   z-index: 1;
   background: rgba(240, 240, 240, 0.8);
   width: 30px;
@@ -98,17 +95,13 @@
   cursor: pointer;
 }
 
+.pure-modal .panel-heading .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
 .bottom-close-button {
-  z-index: 1;
-  background: rgba(240, 240, 240, 0.8);
-  width: 30px;
-  color: rgb(140, 140, 140);
-  transition: color ease-in-out .1s;
-  height: 30px;
-  border-radius: 15px;
-  text-align: center;
-  line-height: 30px;
-  cursor: pointer;
   margin: 10px auto 0;
 }
 

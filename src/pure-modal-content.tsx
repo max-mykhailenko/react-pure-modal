@@ -50,7 +50,7 @@ function PureModalContent(props: Props): JSX.Element {
               </h3>
             )
         }
-            {!bottomCloseButton && <div onClick={onClose} className="close">&times;</div>}
+            {!bottomCloseButton && <div onClick={onClose} className="close close-button">&times;</div>}
         </div>
 
         <div className={bodyClass}>
@@ -64,7 +64,7 @@ function PureModalContent(props: Props): JSX.Element {
             </div>
           )
         }
-          {bottomCloseButton && <div onClick={onClose} className="close  bottom-close-button">&times;</div>}
+          {bottomCloseButton && <div onClick={onClose} className="bottom-close-button close-button">&times;</div>}
     </div>
     )
   );
