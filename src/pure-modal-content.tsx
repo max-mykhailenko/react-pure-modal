@@ -8,7 +8,8 @@ type Props = {
     onClose: (event: React.MouseEvent<HTMLDivElement>) => void,
     bodyClass: string,
     header: JSX.Element | string,
-    footer: JSX.Element | string
+    footer: JSX.Element | string,
+    bottomCloseButton: boolean
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -26,6 +27,7 @@ function PureModalContent(props: Props): JSX.Element {
         onDragStart,
         onDragEnd,
         onClose,
+        bottomCloseButton
     } = props;
 
     return (
@@ -48,7 +50,7 @@ function PureModalContent(props: Props): JSX.Element {
               </h3>
             )
         }
-          <div onClick={onClose} className="close">&times;</div>
+            {!bottomCloseButton && <div onClick={onClose} className="close">&times;</div>}
         </div>
 
         <div className={bodyClass}>
@@ -62,6 +64,7 @@ function PureModalContent(props: Props): JSX.Element {
             </div>
           )
         }
+          {bottomCloseButton && <div onClick={onClose} className="close  bottom-close-button">&times;</div>}
     </div>
     )
   );

@@ -50,6 +50,7 @@ function ModalContainer() {
 		  header="Custom heading"
 		  footer="Buttons?"
 		  scrollable={false}
+		  bottomCloseButton
 		  isOpen={modalCenter}
           onClose={() => {
             setModalCenter(false)
