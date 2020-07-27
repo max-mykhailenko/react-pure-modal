@@ -34,7 +34,6 @@ function ModalContainer() {
 		  footer="Buttons?"
 		  width="800px"
 		  scrollable={false}
-		  closeButton={<div className='close'>×</div>}
 		  isOpen={modal}
           onClose={() => {
             setModal(false)
@@ -50,7 +49,6 @@ function ModalContainer() {
 		<PureModal
 		  header="Custom heading"
 		  footer="Buttons?"
-		  closeButton={<div className='close'>×</div>}
 		  scrollable={false}
 		  isOpen={modalCenter}
           onClose={() => {

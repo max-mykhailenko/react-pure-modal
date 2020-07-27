@@ -13,6 +13,7 @@ type Props = {
 } & typeof defaultProps;
 
 const defaultProps = {
+    closeButton: <div className='close'>×</div>,
     replace: false,
     draggable: false,
 };
