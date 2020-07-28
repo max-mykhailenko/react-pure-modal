@@ -62,6 +62,8 @@ Modal heading, doesn't disabled close button
 Place here your actions
 #### closeButton: `(JSX.Element & string)`
 Content of your closing button
+#### bottomCloseButton: `boolean`
+Place closing button under your modal
 
 ## Changelog (latest on top)
    - Drag and drop
