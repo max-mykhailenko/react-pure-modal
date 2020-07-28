@@ -15,7 +15,7 @@ type Props = {
   width: string,
   isOpen: boolean,
   onClose: Function,
-  closeButton: JSX.Element
+  closeButton: string
 } & typeof defaultProps;
 
 const defaultProps = {

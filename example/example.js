@@ -17,7 +17,7 @@ function ModalContainer() {
 	  <PureModal
 		header="Custom header with a lot of symbols. It's very important to have a dynamic header height and this modal supports it"
 		footer="Buttons?"
-		closeButton={<div className='close'>close</div>}
+		closeButton={<div>close</div>}
 		isOpen={modalInnerScroll}
         onClose={() => {
           setModalInnerScroll(false)

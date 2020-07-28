@@ -82,7 +82,7 @@
   margin: 0;
 }
 
-.pure-modal .panel-heading .close-wrapper .close {
+.pure-modal .panel-heading .close {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -98,7 +98,7 @@
   cursor: pointer;
 }
 
-.pure-modal .panel-heading .close-wrapper .close:hover {
+.pure-modal .panel-heading .close:hover {
   color: #000;
 }
 

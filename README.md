@@ -26,7 +26,7 @@ const [modal, setModal] = useState(false);
   header="Your header"
   footer={<div><button>Cancel</button><button>Save</button></div>}
   isOpen={modal}
-  closeButtonContent='close'
+  closeButton='close'
   onClose={() => {
     setModal(false)
     return true;
@@ -60,7 +60,7 @@ Width in pixels, em's, vw etc
 Modal heading, doesn't disabled close button
 #### footer: `JSX.Element | string`
 Place here your actions
-#### closeButtonContent: `string` (default: '×')
+#### closeButton: `string`
 Content of your closing button
 
 ## Changelog (latest on top)
