@@ -9,11 +9,11 @@ type Props = {
     bodyClass: string,
     header: JSX.Element | string,
     footer: JSX.Element | string,
-    closeButton: string
+    closeButton: (JSX.Element & string)
 } & typeof defaultProps;
 
 const defaultProps = {
-    closeButton: '×',
+    closeButton: <div className='close'>×</div>,
     replace: false,
     draggable: false,
 };
@@ -51,7 +51,7 @@ function PureModalContent(props: Props): JSX.Element {
               </h3>
             )
         }
-          <div onClick={onClose} className="close">{closeButton}</div>
+          <div onClick={onClose} >{closeButton}</div>
         </div>
 
         <div className={bodyClass}>

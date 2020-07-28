@@ -60,7 +60,7 @@ Width in pixels, em's, vw etc
 Modal heading, doesn't disabled close button
 #### footer: `JSX.Element | string`
 Place here your actions
-#### closeButton: `string`
+#### closeButton: `(JSX.Element & string)`
 Content of your closing button
 
 ## Changelog (latest on top)
