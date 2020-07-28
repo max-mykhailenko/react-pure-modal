@@ -12,11 +12,12 @@ function ModalContainer() {
 	<div>
 	  <button className="button" onClick={() => setModal(true)}>Open simple modal</button>
       <button className="button" onClick={() => setModalInnerScroll(true)}>Open modal with inner scroll</button>
-	  <button className="button" onClick={() =>  setModalCenter(true)}>Open small modal on center scrollable or not</button>
+	  <button className="button" onClick={() => setModalCenter(true)}>Open small modal on center scrollable or not</button>
 
 	  <PureModal
 		header="Custom header with a lot of symbols. It's very important to have a dynamic header height and this modal supports it"
 		footer="Buttons?"
+		closeButton={<div>close</div>}
 		isOpen={modalInnerScroll}
         onClose={() => {
           setModalInnerScroll(false)
@@ -27,7 +28,6 @@ function ModalContainer() {
 		<p>Pellentesque quis metus eu urna feugiat auctor. Fusce accumsan mi nibh, porttitor lacinia est egestas vel. Maecenas nibh odio, volutpat quis tincidunt eget, lacinia a lorem. Etiam ullamcorper turpis a ultrices auctor. Cras quis tortor turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam porta sagittis congue. Maecenas volutpat lacus eu lectus dapibus, nec eleifend ipsum luctus. Etiam ac lobortis ligula, id porta lectus. Curabitur eget leo ut sapien ullamcorper sagittis.</p>
 		<p>Suspendisse commodo nisl in neque tempus pellentesque. Nullam magna turpis, fringilla sollicitudin maximus non, consectetur ac quam. Ut sit amet tortor ornare, tincidunt ante non, tempor mauris. Proin vestibulum purus vel felis pellentesque varius. Sed eget volutpat dui. Curabitur quis nunc facilisis, euismod justo placerat, sagittis nunc. Phasellus sagittis felis urna, sed sodales odio auctor sit amet. Etiam id metus quis velit ullamcorper consequat. Fusce posuere ultricies felis, at vestibulum turpis egestas et.</p>
 		<p>In hac habitasse platea dictumst. Quisque fringilla elit vel ante tristique, quis commodo turpis tincidunt. Phasellus mi sapien, lobortis sed blandit quis, suscipit ut odio. Vivamus venenatis arcu nulla, non molestie ipsum ullamcorper eu. Duis suscipit sollicitudin purus, eu consequat magna fringilla eget. Sed a varius dui. Donec at nisi tortor. Vivamus ultrices risus eu maximus fermentum. Curabitur et tempus turpis. Curabitur tincidunt porttitor imperdiet. Pellentesque hendrerit finibus mi, et rhoncus ex vestibulum nec. Integer fermentum quis elit eget faucibus.</p>
-
 		</PureModal>
 		<PureModal
 		  header="Custom heading"
