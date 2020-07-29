@@ -74,7 +74,6 @@
 
 .pure-modal .panel-heading {
   background: rgb(240, 240, 240);
-  position: relative;
 }
 
 .pure-modal .panel-title {
@@ -82,8 +81,7 @@
   margin: 0;
 }
 
-.pure-modal .panel-heading .close {
-  position: absolute;
+.pure-modal .close {
   right: 10px;
   top: 10px;
   z-index: 1;
@@ -96,6 +94,7 @@
   text-align: center;
   line-height: 30px;
   cursor: pointer;
+  margin: auto;
 }
 
 .pure-modal .panel-heading .close:hover {
@@ -115,4 +114,14 @@
 .pure-modal .panel-footer,
 .pure-modal .panel-title {
   word-break: break-all;
+}
+
+.pure-modal-backdrop .additional-row {
+  display: grid;
+  grid-template-rows: min-content minmax(0, 100%) min-content min-content ;
+}
+
+.pure-modal-backdrop:not(.scrollable) .additional-row {
+  display: grid;
+  grid-template-rows: min-content minmax(0, 100%) min-content min-content ;
 }
