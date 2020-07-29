@@ -45,7 +45,7 @@ function PureModalContent(props: Props): JSX.Element {
       replace ? (
         children
     ) : (
-      <div className="panel panel-default" style={bottomCloseButton && {position: 'relative'}}>
+      <div className={`panel panel-default ${bottomCloseButton && 'scrollable-height'}`} style={bottomCloseButton && {position: 'relative'}}>
         <div
           className="panel-heading"
           style={bottomCloseButton && { position: 'static' }}

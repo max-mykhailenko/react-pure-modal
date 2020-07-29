@@ -52,6 +52,10 @@
   height: 100%;
 }
 
+.pure-modal-backdrop:not(.scrollable) .scrollable-height {
+  height: 95%;
+}
+
 .pure-modal > * > * {
   flex: 0 0 auto;
 }
