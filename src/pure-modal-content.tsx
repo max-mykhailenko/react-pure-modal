@@ -37,7 +37,7 @@ function PureModalContent(props: Props): JSX.Element {
       replace ? (
         children
     ) : (
-      <div className={`panel panel-default ${bottomCloseButton && 'additional-row'}`}>
+      <div className={`panel panel-default ${bottomCloseButton ? 'additional-row' : ''}`}>
         <div
           className="panel-heading"
           onTouchStart={onDragStart}
