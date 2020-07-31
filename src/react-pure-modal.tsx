@@ -206,7 +206,7 @@ function PureModal(props: Props) {
   return createPortal(
     <div
       className={backdropclasses.join(' ')}
-      onClick={handleBackdropClick}
+      onMouseDown={handleBackdropClick}
       onTouchMove={isDragged ? handleDrag : null}
       onMouseMove={isDragged ? handleDrag : null}
     >
