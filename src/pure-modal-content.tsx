@@ -9,11 +9,13 @@ type Props = {
     bodyClass: string,
     header: JSX.Element | string,
     footer: JSX.Element | string,
-    closeButton: (JSX.Element & string)
+    closeButton: (JSX.Element & string),
+    closeButtonPosition: string
 } & typeof defaultProps;
 
 const defaultProps = {
-    closeButton: <div className='close'>×</div>,
+    closeButton: '×',
+    closeButtonPosition: 'header',
     replace: false,
     draggable: false,
 };
@@ -28,14 +30,15 @@ function PureModalContent(props: Props): JSX.Element {
         onDragStart,
         onDragEnd,
         onClose,
-        closeButton
+        closeButton,
+        closeButtonPosition
     } = props;
 
     return (
       replace ? (
         children
     ) : (
-      <div className="panel panel-default">
+      <div className={`panel panel-default ${closeButtonPosition === 'bottom' ? 'additional-row' : ''}`}>
         <div
           className="panel-heading"
           onTouchStart={onDragStart}
@@ -51,7 +54,6 @@ function PureModalContent(props: Props): JSX.Element {
               </h3>
             )
         }
-          <div onClick={onClose} >{closeButton}</div>
         </div>
 
         <div className={bodyClass}>
@@ -65,6 +67,10 @@ function PureModalContent(props: Props): JSX.Element {
             </div>
           )
         }
+          <div className='close' onClick={onClose}
+               style={{position: closeButtonPosition === 'header' && "absolute", margin: closeButtonPosition === 'bottom' && "10px auto"}}>
+              {closeButton}
+          </div>
     </div>
     )
   );
