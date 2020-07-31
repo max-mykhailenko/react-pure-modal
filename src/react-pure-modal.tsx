@@ -16,7 +16,7 @@ type Props = {
   isOpen: boolean,
   onClose: Function,
   closeButton: (JSX.Element & string),
-  bottomCloseButton: boolean
+  closeButtonPosition: string
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -180,7 +180,7 @@ function PureModal(props: Props) {
     draggable,
     width,
     closeButton,
-    bottomCloseButton
+    closeButtonPosition
   } = props;
 
   let backdropclasses = ['pure-modal-backdrop'];
@@ -226,7 +226,7 @@ function PureModal(props: Props) {
           onClose={close}
           bodyClass={bodyClasses.join(' ')}
           closeButton={closeButton}
-          bottomCloseButton={bottomCloseButton}
+          closeButtonPosition={closeButtonPosition}
         >
           {children}
         </PureModalContent>

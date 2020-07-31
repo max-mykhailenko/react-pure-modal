@@ -27,6 +27,7 @@ const [modal, setModal] = useState(false);
   footer={<div><button>Cancel</button><button>Save</button></div>}
   isOpen={modal}
   closeButton='close'
+  closeButtonPosition='bottom'
   onClose={() => {
     setModal(false)
     return true;
@@ -62,6 +63,8 @@ Modal heading, doesn't disabled close button
 Place here your actions
 #### closeButton: `(JSX.Element & string)`
 Content of your closing button
+#### closeButtonPosition: `string`
+Place closing button under your modal or inside header. Allowed options: 'header' | 'bottom'
 
 ## Changelog (latest on top)
    - Drag and drop
