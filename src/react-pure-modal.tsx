@@ -1,23 +1,23 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { createPortal} from "react-dom";
+import { createPortal } from 'react-dom';
 import './react-pure-modal.css';
 
 import PureModalContent from './pure-modal-content';
 
 type Props = {
-  mode: 'modal' | 'tooltip',
-  children:  JSX.Element,
-  replace: boolean,
-  className: string,
-  header:  JSX.Element | string,
-  footer:  JSX.Element | string,
-  scrollable: boolean,
-  draggable: boolean,
-  width: string,
-  isOpen: boolean,
-  onClose: Function,
-  closeButton: (JSX.Element & string),
-  closeButtonPosition: string
+  mode: 'modal' | 'tooltip';
+  children: JSX.Element;
+  replace: boolean;
+  className: string;
+  header: JSX.Element | string;
+  footer: JSX.Element | string;
+  scrollable: boolean;
+  draggable: boolean;
+  width: string;
+  isOpen: boolean;
+  onClose: Function;
+  closeButton: JSX.Element & string;
+  closeButtonPosition: string;
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -39,31 +39,29 @@ function PureModal(props: Props) {
   const [mouseOffsetY, setMouseOffsetY] = useState(0);
 
   useEffect(() => {
-    if (typeof props.isOpen === 'boolean' && isOpen !== props.isOpen){
+    if (typeof props.isOpen === 'boolean' && isOpen !== props.isOpen) {
       if (props.isOpen) {
         open();
       } else {
         close();
-      } 
+      }
     }
-  }, [props.isOpen])  
+  }, [props.isOpen]);
 
-   useEffect(() => {
+  useEffect(() => {
     if (props.isOpen) {
-      setModalContext()
+      setModalContext();
     }
     unsetModalContext();
-  },[])
+  }, []);
 
-  const handleEsc = useCallback((event) => {
+  const handleEsc = useCallback(event => {
     const allModals = document.querySelectorAll('.pure-modal');
-    if (
-      allModals.length && allModals[allModals.length - 1].classList.contains(hash)
-    ) return false;
+    if (allModals.length && allModals[allModals.length - 1].classList.contains(hash)) return false;
     if (document.activeElement && event.keyCode === 27) {
       close(event);
     }
-  },[])
+  }, []);
 
   if (!isOpen) {
     return null;
@@ -109,8 +107,8 @@ function PureModal(props: Props) {
     const { top, left } = e.currentTarget.getBoundingClientRect();
 
     setIsDragged(true);
-    setX( typeof x === 'number' ? x : left);
-    setY( typeof y === 'number' ? y : top);
+    setX(typeof x === 'number' ? x : left);
+    setY(typeof y === 'number' ? y : top);
     setMouseOffsetX(pageX - left);
     setMouseOffsetY(pageY - top);
   }
@@ -155,7 +153,7 @@ function PureModal(props: Props) {
     }
 
     if (isOpen !== isOpened) {
-      setIsOpen(isOpened)
+      setIsOpen(isOpened);
       unsetModalContext();
     }
   }
@@ -181,7 +179,7 @@ function PureModal(props: Props) {
     draggable,
     width,
     closeButton,
-    closeButtonPosition
+    closeButtonPosition,
   } = props;
 
   let backdropclasses = ['pure-modal-backdrop'];
@@ -232,7 +230,8 @@ function PureModal(props: Props) {
           {children}
         </PureModalContent>
       </div>
-    </div>, document.body
+    </div>,
+    document.body,
   );
 }
 

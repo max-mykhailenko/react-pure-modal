@@ -12,7 +12,7 @@
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: rgba(0, 0, 0, .4);
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,12 +23,11 @@
   overflow: hidden !important;
 }
 
-
 .pure-modal-backdrop .pure-modal {
   width: 300px;
   max-width: 100%;
   box-sizing: border-box;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   max-height: 100%;
 }
 
@@ -59,7 +58,6 @@
 .pure-modal > * > .scrollable {
   overflow-x: hidden;
   overflow-scrolling: touch;
-
 }
 
 @media (max-width: 480px) {
@@ -88,7 +86,7 @@
   background: rgba(240, 240, 240, 0.8);
   width: 30px;
   color: rgb(140, 140, 140);
-  transition: color ease-in-out .1s;
+  transition: color ease-in-out 0.1s;
   height: 30px;
   border-radius: 15px;
   text-align: center;
@@ -117,10 +115,10 @@
 
 .pure-modal-backdrop .additional-row {
   display: grid;
-  grid-template-rows: min-content minmax(0, 100%) min-content min-content ;
+  grid-template-rows: min-content minmax(0, 100%) min-content min-content;
 }
 
 .pure-modal-backdrop:not(.scrollable) .additional-row {
   display: grid;
-  grid-template-rows: min-content minmax(0, 100%) min-content min-content ;
+  grid-template-rows: min-content minmax(0, 100%) min-content min-content;
 }

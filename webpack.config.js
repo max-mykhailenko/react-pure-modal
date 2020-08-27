@@ -1,18 +1,23 @@
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
-const env = process.env.NODE_ENV;
-
-const reactExternal = {
-  root: 'React',
-  commonjs2: 'react',
-  commonjs: 'react',
-  amd: 'react',
-};
 
 const config = {
+  mode: 'production',
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true, // Must be set to true if using source-maps in production
+        terserOptions: {},
+      }),
+      new CssMinimizerPlugin(),
+    ],
+  },
   entry: {
     'react-pure-modal': path.join(__dirname, './src/react-pure-modal.tsx'),
   },
@@ -28,11 +33,7 @@ const config = {
       {
         test: /\.css$/,
         exclude: /(node_modules|dist)/,
-        use: ['style-loader',
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },
@@ -43,39 +44,18 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
-    new MiniCssExtractPlugin('[name].min.css'),
-    new OptimizeCSSAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
-      },
-      canPrint: true
-    })
+    new MiniCssExtractPlugin({ filename: '[name].min.css' }),
   ],
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.tsx','.ts','.js']
+    extensions: ['.tsx', '.ts', '.js'],
   },
   externals: {
-    react: reactExternal,
+    react: 'umd react',
+    'react-dom': 'umd react-dom',
   },
 };
-
-if (env === 'production') {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        screw_ie8: true,
-        warnings: false,
-      },
-    })
-  );
-}
 
 module.exports = config;
