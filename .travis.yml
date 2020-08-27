@@ -1,17 +1,15 @@
 language: node_js
 node_js:
-- '8'
+  - '12'
 before_script: npm run webpack:dev && npm run webpack:prod
 cache:
   directories:
-  - node_modules
+    - node_modules
 script:
-- npm run test-ci
+  - npm run test-ci
 deploy:
   provider: npm
   email: max.mykhailenko@gmail.com
-  api_key:
-    secure: gLDCh8yROnWfEdP1KyO1Ki0URiSiTWYGMmlP9rwVQQBOms1R6nnhJ7dsVFH3UowKqony2LPuq9I6hcoE88t/sEnVMp/xO3fOs3d3Ci0jpIniQsa5o56F3z141hDre919nhE8ukZ0FQhQzOhsiMaP2m0IfBYsOyWR64zDKFjNSE8+JNvpUEWwrrPCWRNHvuUBu+Sg58MEOinOGlcp2cxhS+tV6RNoTvefyXhsC0tY18ePowJBIQZ7H4Qn+QWUn1EAc3coMDugpwodVw1vVCBzjC7V5m+5Uu++lmfOvubtzljanm4JhbMRpEV+G9/NFiAOrV56Cxn4vLhbYmeQBpbI2NrGwzCcvcLv5NbgZ+X64MA+Tfj1tXGH/4dKr8niFqlVbblk4F/sC3ErGpN4NTBdBSv2SbG3Ktcp8ohnKJoIgmYj6vc+HsLVDv/kI6uWRcLE02cAAp2sX1YKsN2pQutWDm7M6hpxzplqmFvta/CL3kfEk8AeFn1zWdGRfZs+gP9PlWqEHGYlYyKQ8Q6HbrGG3m67QVawiQAdL3G/mnup6gmGyGIvTlU8w4U8xcFeC9fHKNlc6AEr6msNAtSDb/Jt+4nvtLKQ6BPKvxGKyisPmGji2d0QheC5kDeVTNCU6Oun+VIeDApXiibXW2ppP+cSbp3vGJtxQRNA0hlj+AZ6dmY=
   on:
     tags: true
     repo: memCrab/react-pure-modal
