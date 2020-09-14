@@ -1,0 +1,24 @@
+name: build dist and example
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  update_dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm build
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply automatic changes
+          file_pattern: src/*.js dist/*.js dist/*.css example/* index.html
