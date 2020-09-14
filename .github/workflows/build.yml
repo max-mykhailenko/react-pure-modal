@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
-      - run: npm build
+      - run: npm run build
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
