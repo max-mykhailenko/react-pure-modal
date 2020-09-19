@@ -18,6 +18,7 @@ type Props = {
   onClose: Function;
   closeButton: JSX.Element & string;
   closeButtonPosition: string;
+  portal: boolean;
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -25,6 +26,7 @@ const defaultProps = {
   replace: false,
   scrollable: true,
   draggable: false,
+  portal: false,
 };
 
 function PureModal(props: Props) {
@@ -180,6 +182,7 @@ function PureModal(props: Props) {
     width,
     closeButton,
     closeButtonPosition,
+    portal,
   } = props;
 
   let backdropclasses = ['pure-modal-backdrop'];
@@ -201,38 +204,71 @@ function PureModal(props: Props) {
     backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
   }
 
-  return createPortal(
-    <div
-      className={backdropclasses.join(' ')}
-      onMouseDown={handleBackdropClick}
-      onTouchMove={isDragged ? handleDrag : null}
-      onMouseMove={isDragged ? handleDrag : null}
-    >
+  if (portal) {
+    return createPortal(
       <div
-        className={modalclasses.join(' ')}
-        style={{
-          transform: `translate(${deltaX}px, ${deltaY}px)`,
-          transition: 'none',
-          width,
-        }}
+        className={backdropclasses.join(' ')}
+        onMouseDown={handleBackdropClick}
+        onTouchMove={isDragged ? handleDrag : null}
+        onMouseMove={isDragged ? handleDrag : null}
       >
-        <PureModalContent
-          replace={replace}
-          header={header}
-          footer={footer}
-          onDragStart={draggable ? handleStartDrag : null}
-          onDragEnd={draggable ? handleEndDrag : null}
-          onClose={close}
-          bodyClass={bodyClasses.join(' ')}
-          closeButton={closeButton}
-          closeButtonPosition={closeButtonPosition}
+        <div
+          className={modalclasses.join(' ')}
+          style={{
+            transform: `translate(${deltaX}px, ${deltaY}px)`,
+            transition: 'none',
+            width,
+          }}
         >
-          {children}
-        </PureModalContent>
-      </div>
-    </div>,
-    document.body,
-  );
+          <PureModalContent
+            replace={replace}
+            header={header}
+            footer={footer}
+            onDragStart={draggable ? handleStartDrag : null}
+            onDragEnd={draggable ? handleEndDrag : null}
+            onClose={close}
+            bodyClass={bodyClasses.join(' ')}
+            closeButton={closeButton}
+            closeButtonPosition={closeButtonPosition}
+          >
+            {children}
+          </PureModalContent>
+        </div>
+      </div>,
+      document.body,
+    )} else {
+      return (
+        <div
+          className={backdropclasses.join(' ')}
+          onMouseDown={handleBackdropClick}
+          onTouchMove={isDragged ? handleDrag : null}
+          onMouseMove={isDragged ? handleDrag : null}
+        >
+          <div
+            className={modalclasses.join(' ')}
+            style={{
+              transform: `translate(${deltaX}px, ${deltaY}px)`,
+              transition: 'none',
+              width,
+            }}
+          >
+            <PureModalContent
+              replace={replace}
+              header={header}
+              footer={footer}
+              onDragStart={draggable ? handleStartDrag : null}
+              onDragEnd={draggable ? handleEndDrag : null}
+              onClose={close}
+              bodyClass={bodyClasses.join(' ')}
+              closeButton={closeButton}
+              closeButtonPosition={closeButtonPosition}
+            >
+              {children}
+            </PureModalContent>
+          </div>
+        </div>
+      )
+    }
 }
 
 PureModal.defaultProps = defaultProps;

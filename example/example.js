@@ -128,6 +128,7 @@ function ModalContainer() {
 				scrollable={false}
 				isOpen={modalCenter}
 				closeButtonPosition="bottom"
+				portal
 				closeButton={<div>close</div>}
 				onClose={() => {
 					setModalCenter(false);
