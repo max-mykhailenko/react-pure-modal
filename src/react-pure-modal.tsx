@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { createPortal } from 'react-dom';
 import './react-pure-modal.css';
 
 import PureModalContent from './pure-modal-content';
@@ -25,6 +24,7 @@ const defaultProps = {
   replace: false,
   scrollable: true,
   draggable: false,
+  portal: false,
 };
 
 function PureModal(props: Props) {
@@ -201,7 +201,7 @@ function PureModal(props: Props) {
     backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
   }
 
-  return createPortal(
+  return (
     <div
       className={backdropclasses.join(' ')}
       onMouseDown={handleBackdropClick}
@@ -230,8 +230,7 @@ function PureModal(props: Props) {
           {children}
         </PureModalContent>
       </div>
-    </div>,
-    document.body,
+    </div>
   );
 }
 

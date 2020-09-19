@@ -128,7 +128,7 @@ function ModalContainer() {
 				scrollable={false}
 				isOpen={modalCenter}
 				closeButtonPosition="bottom"
-				closeButton={<div>close</div>}
+				closeButton={<div>✗</div>}
 				onClose={() => {
 					setModalCenter(false);
 					return true;
