@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
 import PureModal from '../dist/react-pure-modal.min.js';
-import '../dist/react-pure-modal.css';
+import '../dist/react-pure-modal.min.css';
 
 function ModalContainer() {
 	const [modal, setModal] = useState(false);
@@ -129,7 +129,7 @@ function ModalContainer() {
 				isOpen={modalCenter}
 				closeButtonPosition="bottom"
 				portal
-				closeButton={<div>close</div>}
+				closeButton={<div>&#10007;</div>}
 				onClose={() => {
 					setModalCenter(false);
 					return true;
