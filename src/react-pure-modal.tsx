@@ -204,71 +204,42 @@ function PureModal(props: Props) {
     backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
   }
 
-  if (portal) {
-    return createPortal(
+  const modalContent = (
+    <div
+      className={backdropclasses.join(' ')}
+      onMouseDown={handleBackdropClick}
+      onTouchMove={isDragged ? handleDrag : null}
+      onMouseMove={isDragged ? handleDrag : null}
+    >
       <div
-        className={backdropclasses.join(' ')}
-        onMouseDown={handleBackdropClick}
-        onTouchMove={isDragged ? handleDrag : null}
-        onMouseMove={isDragged ? handleDrag : null}
+        className={modalclasses.join(' ')}
+        style={{
+          transform: `translate(${deltaX}px, ${deltaY}px)`,
+          transition: 'none',
+          width,
+        }}
       >
-        <div
-          className={modalclasses.join(' ')}
-          style={{
-            transform: `translate(${deltaX}px, ${deltaY}px)`,
-            transition: 'none',
-            width,
-          }}
+        <PureModalContent
+          replace={replace}
+          header={header}
+          footer={footer}
+          onDragStart={draggable ? handleStartDrag : null}
+          onDragEnd={draggable ? handleEndDrag : null}
+          onClose={close}
+          bodyClass={bodyClasses.join(' ')}
+          closeButton={closeButton}
+          closeButtonPosition={closeButtonPosition}
         >
-          <PureModalContent
-            replace={replace}
-            header={header}
-            footer={footer}
-            onDragStart={draggable ? handleStartDrag : null}
-            onDragEnd={draggable ? handleEndDrag : null}
-            onClose={close}
-            bodyClass={bodyClasses.join(' ')}
-            closeButton={closeButton}
-            closeButtonPosition={closeButtonPosition}
-          >
-            {children}
-          </PureModalContent>
-        </div>
-      </div>,
-      document.body,
-    )} else {
-      return (
-        <div
-          className={backdropclasses.join(' ')}
-          onMouseDown={handleBackdropClick}
-          onTouchMove={isDragged ? handleDrag : null}
-          onMouseMove={isDragged ? handleDrag : null}
-        >
-          <div
-            className={modalclasses.join(' ')}
-            style={{
-              transform: `translate(${deltaX}px, ${deltaY}px)`,
-              transition: 'none',
-              width,
-            }}
-          >
-            <PureModalContent
-              replace={replace}
-              header={header}
-              footer={footer}
-              onDragStart={draggable ? handleStartDrag : null}
-              onDragEnd={draggable ? handleEndDrag : null}
-              onClose={close}
-              bodyClass={bodyClasses.join(' ')}
-              closeButton={closeButton}
-              closeButtonPosition={closeButtonPosition}
-            >
-              {children}
-            </PureModalContent>
-          </div>
-        </div>
-      )
-    }
+          {children}
+        </PureModalContent>
+      </div>
+    </div>
+  );
+
+  if (portal) {
+    return createPortal(modalContent, document.body);
+  }
+  return modalContent;
 }
 
 PureModal.defaultProps = defaultProps;
