@@ -62,6 +62,8 @@ Place here your actions
 Content of your closing button
 #### closeButtonPosition: `string`
 Place closing button under your modal or inside header. Allowed options: 'header' | 'bottom'
+#### portal: `boolean` (default: false)
+Creates React.Portal
 
 ## Changelog (latest on top)
    - Drag and drop

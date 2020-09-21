@@ -18,6 +18,7 @@ type Props = {
   onClose: Function;
   closeButton: JSX.Element & string;
   closeButtonPosition: string;
+  portal: boolean;
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -25,6 +26,7 @@ const defaultProps = {
   replace: false,
   scrollable: true,
   draggable: false,
+  portal: false,
 };
 
 function PureModal(props: Props) {
@@ -180,6 +182,7 @@ function PureModal(props: Props) {
     width,
     closeButton,
     closeButtonPosition,
+    portal,
   } = props;
 
   let backdropclasses = ['pure-modal-backdrop'];
@@ -201,7 +204,7 @@ function PureModal(props: Props) {
     backdropclasses = backdropclasses.concat('backdrop-overflow-hidden');
   }
 
-  return createPortal(
+  const modalContent = (
     <div
       className={backdropclasses.join(' ')}
       onMouseDown={handleBackdropClick}
@@ -230,9 +233,13 @@ function PureModal(props: Props) {
           {children}
         </PureModalContent>
       </div>
-    </div>,
-    document.body,
+    </div>
   );
+
+  if (portal) {
+    return createPortal(modalContent, document.body);
+  }
+  return modalContent;
 }
 
 PureModal.defaultProps = defaultProps;
