@@ -41,6 +41,7 @@ const config = {
     path: path.join(__dirname, 'dist/'),
     filename: '[name].min.js',
     libraryTarget: 'umd',
+    globalObject: 'this',
   },
   plugins: [
     new webpack.DefinePlugin({
