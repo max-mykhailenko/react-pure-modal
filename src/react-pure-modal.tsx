@@ -31,7 +31,6 @@ const defaultProps = {
 
 function PureModal(props: Props) {
   let hash = Math.random().toString();
-  const [isOpen, setIsOpen] = useState(false);
   const [isDragged, setIsDragged] = useState(false);
   const [x, setX] = useState(null);
   const [y, setY] = useState(null);
@@ -40,26 +39,21 @@ function PureModal(props: Props) {
   const [mouseOffsetX, setMouseOffsetX] = useState(0);
   const [mouseOffsetY, setMouseOffsetY] = useState(0);
 
-  useEffect(() => {
-    if (typeof props.isOpen === 'boolean' && isOpen !== props.isOpen) {
-      if (props.isOpen) {
-        open();
-      } else {
-        close();
-      }
-    }
-  }, [props.isOpen]);
+  const { isOpen, onClose } = props;
 
   useEffect(() => {
-    if (props.isOpen) {
-      setModalContext();
+    if (isOpen) {
+      open();
+    } else {
+      close();
     }
-    unsetModalContext();
-  }, []);
+  }, [isOpen]);
 
   const handleEsc = useCallback(event => {
     const allModals = document.querySelectorAll('.pure-modal');
+
     if (allModals.length && allModals[allModals.length - 1].classList.contains(hash)) return false;
+
     if (document.activeElement && event.keyCode === 27) {
       close(event);
     }
@@ -137,8 +131,7 @@ function PureModal(props: Props) {
       event.stopPropagation();
       event.preventDefault();
     }
-    if (!isOpen) {
-      setIsOpen(true);
+    if (isOpen) {
       setModalContext();
     }
   }
@@ -150,12 +143,12 @@ function PureModal(props: Props) {
     }
 
     let isOpened = false;
-    if (props.onClose && event) {
-      isOpened = !props.onClose();
+
+    if (onClose && event) {
+      isOpened = !onClose();
     }
 
     if (isOpen !== isOpened) {
-      setIsOpen(isOpened);
       unsetModalContext();
     }
   }

@@ -9,7 +9,7 @@ exports[`Should show content 1`] = `null`;
 exports[`Should show only content 1`] = `
 <div
   className="pure-modal-backdrop"
-  onClick={[Function]}
+  onMouseDown={[Function]}
   onMouseMove={null}
   onTouchMove={null}
 >
