@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+
 import './react-pure-modal.css';
 
 import PureModalContent from './pure-modal-content';
@@ -148,7 +149,7 @@ function PureModal(props: Props) {
       isOpened = !onClose();
     }
 
-    if (isOpen !== isOpened) {
+    if (!isOpen || isOpened) {
       unsetModalContext();
     }
   }
