@@ -2,9 +2,80 @@
 
 exports[`Should be closed 1`] = `null`;
 
-exports[`Should contain width attribute 1`] = `null`;
+exports[`Should contain width attribute 1`] = `
+<div
+  className="pure-modal-backdrop"
+  onMouseDown={[Function]}
+  onMouseMove={null}
+  onTouchMove={null}
+>
+  <div
+    className="pure-modal 0.5"
+    style={
+      Object {
+        "transform": "translate(0px, 0px)",
+        "transition": "none",
+        "width": "400px",
+      }
+    }
+  >
+    <span>
+      Some content of modal
+    </span>
+  </div>
+</div>
+`;
 
-exports[`Should show content 1`] = `null`;
+exports[`Should show content 1`] = `
+<div
+  className="pure-modal-backdrop"
+  onMouseDown={[Function]}
+  onMouseMove={null}
+  onTouchMove={null}
+>
+  <div
+    className="pure-modal 0.5"
+    style={
+      Object {
+        "transform": "translate(0px, 0px)",
+        "transition": "none",
+        "width": undefined,
+      }
+    }
+  >
+    <div
+      className="panel panel-default "
+    >
+      <div
+        className="panel-heading"
+        onMouseDown={null}
+        onMouseUp={null}
+        onTouchEnd={null}
+        onTouchStart={null}
+      />
+      <div
+        className="panel-body scrollable"
+      >
+        <span>
+          Some content of modal
+        </span>
+      </div>
+      <div
+        className="close"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": false,
+            "position": "absolute",
+          }
+        }
+      >
+        ×
+      </div>
+    </div>
+  </div>
+</div>
+`;
 
 exports[`Should show only content 1`] = `
 <div

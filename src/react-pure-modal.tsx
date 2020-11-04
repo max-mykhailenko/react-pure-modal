@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+
 import './react-pure-modal.css';
 
 import PureModalContent from './pure-modal-content';
@@ -54,7 +55,7 @@ function PureModal(props: Props) {
 
     if (allModals.length && allModals[allModals.length - 1].classList.contains(hash)) return false;
 
-    if (document.activeElement && event.keyCode === 27) {
+    if (event.keyCode === 27 && document.activeElement) {
       close(event);
     }
   }, []);
@@ -80,6 +81,28 @@ function PureModal(props: Props) {
     setDeltaY(0);
     setMouseOffsetX(0);
     setMouseOffsetY(0);
+  }
+
+  function open(event?) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    setModalContext();
+  }
+
+  function close(event?) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    if (onClose) {
+      onClose();
+    }
+
+    unsetModalContext();
   }
 
   function getCoords(e) {
@@ -124,33 +147,6 @@ function PureModal(props: Props) {
 
   function handleEndDrag() {
     return setIsDragged(false);
-  }
-
-  function open(event?) {
-    if (event) {
-      event.stopPropagation();
-      event.preventDefault();
-    }
-    if (isOpen) {
-      setModalContext();
-    }
-  }
-
-  function close(event?) {
-    if (event) {
-      event.stopPropagation();
-      event.preventDefault();
-    }
-
-    let isOpened = false;
-
-    if (onClose && event) {
-      isOpened = !onClose();
-    }
-
-    if (isOpen !== isOpened) {
-      unsetModalContext();
-    }
   }
 
   function handleBackdropClick(event) {
