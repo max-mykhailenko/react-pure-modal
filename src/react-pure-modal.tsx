@@ -50,7 +50,7 @@ function PureModal(props: Props) {
     }
 
     return () => {
-      close();
+      isOpen && close();
     };
   }, [isOpen]);
 
