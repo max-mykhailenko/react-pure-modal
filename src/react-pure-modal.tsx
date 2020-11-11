@@ -48,6 +48,10 @@ function PureModal(props: Props) {
     } else {
       close();
     }
+
+    return () => {
+      close();
+    };
   }, [isOpen]);
 
   const handleEsc = useCallback(event => {
