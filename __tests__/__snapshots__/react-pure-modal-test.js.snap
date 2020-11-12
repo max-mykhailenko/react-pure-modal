@@ -2,54 +2,10 @@
 
 exports[`Should be closed 1`] = `null`;
 
-exports[`Should be opened and closed after click 1`] = `
-<div
-  className="pure-modal-backdrop"
-  onClick={[Function]}
-  onMouseMove={null}
-  onTouchMove={null}
->
-  <div
-    className="pure-modal 0.5"
-    style={
-      Object {
-        "transform": "translate(0px, 0px)",
-        "transition": "none",
-        "width": undefined,
-      }
-    }
-  >
-    <div
-      className="panel panel-default"
-    >
-      <div
-        className="panel-heading"
-        onMouseDown={null}
-        onMouseUp={null}
-        onTouchEnd={null}
-        onTouchStart={null}
-      >
-        <div
-          className="close"
-          onClick={[Function]}
-        >
-          ×
-        </div>
-      </div>
-      <div
-        className="panel-body scrollable"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Should be opened and closed after click 2`] = `null`;
-
 exports[`Should contain width attribute 1`] = `
 <div
   className="pure-modal-backdrop"
-  onClick={[Function]}
+  onMouseDown={[Function]}
   onMouseMove={null}
   onTouchMove={null}
 >
@@ -73,7 +29,7 @@ exports[`Should contain width attribute 1`] = `
 exports[`Should show content 1`] = `
 <div
   className="pure-modal-backdrop"
-  onClick={[Function]}
+  onMouseDown={[Function]}
   onMouseMove={null}
   onTouchMove={null}
 >
@@ -88,7 +44,7 @@ exports[`Should show content 1`] = `
     }
   >
     <div
-      className="panel panel-default"
+      className="panel panel-default "
     >
       <div
         className="panel-heading"
@@ -96,20 +52,25 @@ exports[`Should show content 1`] = `
         onMouseUp={null}
         onTouchEnd={null}
         onTouchStart={null}
-      >
-        <div
-          className="close"
-          onClick={[Function]}
-        >
-          ×
-        </div>
-      </div>
+      />
       <div
         className="panel-body scrollable"
       >
         <span>
           Some content of modal
         </span>
+      </div>
+      <div
+        className="close"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": false,
+            "position": "absolute",
+          }
+        }
+      >
+        ×
       </div>
     </div>
   </div>
@@ -119,7 +80,7 @@ exports[`Should show content 1`] = `
 exports[`Should show only content 1`] = `
 <div
   className="pure-modal-backdrop"
-  onClick={[Function]}
+  onMouseDown={[Function]}
   onMouseMove={null}
   onTouchMove={null}
 >

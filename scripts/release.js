@@ -3,7 +3,7 @@
 const exec = require('child_process').execSync;
 const argv = require('yargs').argv;
 
-const versionType = argv.major ? 'major' : (argv.minor ? 'minor' : 'patch');
+const versionType = argv.major ? 'major' : argv.minor ? 'minor' : 'patch';
 
 function run(cmd, log) {
   log = log === undefined ? true : log;
