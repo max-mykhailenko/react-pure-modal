@@ -194,7 +194,7 @@ class PureModal extends React.Component {
       modalclasses = modalclasses.concat(className);
     }
 
-    if (scrollable) {
+    if (!!scrollable) {
       bodyClasses = bodyClasses.concat('scrollable');
     } else {
       backdropclasses = backdropclasses.concat('scrollable');
