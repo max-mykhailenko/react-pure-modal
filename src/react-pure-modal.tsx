@@ -87,7 +87,7 @@ function PureModal(props: Props) {
     setMouseOffsetY(0);
   }
 
-  function open(event?) {
+  function open(event?: MouseEvent) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -96,7 +96,7 @@ function PureModal(props: Props) {
     setModalContext();
   }
 
-  function close(event?) {
+  function close(event?: MouseEvent) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -109,7 +109,7 @@ function PureModal(props: Props) {
     unsetModalContext();
   }
 
-  function getCoords(e) {
+  function getCoords(e: MouseEvent) {
     let { pageX, pageY } = e;
     if (e.changedTouches && e.changedTouches.length === 1) {
       pageX = e.changedTouches[0].pageX;
@@ -121,7 +121,7 @@ function PureModal(props: Props) {
     };
   }
 
-  function handleStartDrag(e) {
+  function handleStartDrag(e: MouseEvent | TouchType) {
     if (e.changedTouches && e.changedTouches.length > 1) return false;
 
     e.preventDefault();
@@ -136,7 +136,7 @@ function PureModal(props: Props) {
     setMouseOffsetY(pageY - top);
   }
 
-  function handleDrag(e) {
+  function handleDrag(e: MouseEvent | TouchType) {
     if (e.changedTouches && e.changedTouches.lenght > 1) {
       return handleEndDrag();
     }
@@ -153,7 +153,7 @@ function PureModal(props: Props) {
     return setIsDragged(false);
   }
 
-  function handleBackdropClick(event) {
+  function handleBackdropClick(event: MouseEvent | TouchEvent) {
     if (event) {
       if (!event.target.classList.contains('pure-modal-backdrop')) {
         return;

@@ -56,8 +56,8 @@ function PureModalContent(props: Props): JSX.Element {
         className="close"
         onClick={onClose}
         style={{
-          position: closeButtonPosition === 'header' && 'absolute',
-          margin: closeButtonPosition === 'bottom' && '10px auto',
+          position: closeButtonPosition === 'header' ? 'absolute' : 'static',
+          margin: closeButtonPosition === 'bottom' ? '10px auto' : '',
         }}
       >
         {closeButton}

@@ -3,17 +3,15 @@
   "version": "2.0.12",
   "description": "React modal",
   "main": "dist/react-pure-modal.min.js",
-  "jnext:main": "dist/react-pure-modal.min.js",
+  "types": "dist/react-pure-modal.d.ts",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && NODE_ENV=production npm run webpack:prod && npm run webpack:dev",
-    "clog": "conventional-changelog -i CHANGELOG.md -w",
+    "build": "npm run clean && tsc && NODE_ENV=production npm run webpack:prod && npm run webpack:dev",
     "webpack:dev": "webpack --config webpack.config.dev.js",
     "webpack:prod": "webpack --config webpack.config.js",
     "test": "jest --json",
     "test-ci": "jest --ci",
-    "test:dev": "jest --watch",
-    "release": "./scripts/release.js"
+    "test:dev": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -38,11 +36,11 @@
     "@babel/preset-react": "7.10.4",
     "@babel/preset-typescript": "7.10.4",
     "@types/react": "16.9.48",
+    "@types/react-dom": "16.9.9",
     "autoprefixer": "9.8.6",
     "babel-eslint": "10.1.0",
     "babel-jest": "26.3.0",
     "babel-loader": "8.1.0",
-    "conventional-changelog": "3.1.23",
     "css-loader": "4.2.2",
     "css-minimizer-webpack-plugin": "1.1.2",
     "eslint": "7.7.0",
@@ -69,6 +67,7 @@
     "yargs": "15.4.1"
   },
   "peerDependencies": {
-    "react": "^15.3.0 || ^16.0 || ^17.0"
+    "react": "^15.3.0 || ^16.0 || ^17.0",
+    "react-dom": "^15.3.0 || ^16.0 || ^17.0"
   }
 }

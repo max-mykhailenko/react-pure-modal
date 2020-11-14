@@ -21,13 +21,13 @@ const config = {
         : [],
   },
   entry: {
-    example: path.join(__dirname, 'example/example.js'),
+    example: path.join(__dirname, 'example/example.tsx'),
   },
   devtool: process.env.NODE_ENV !== 'development' ? '' : 'inline-source-map',
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|ts|tsx)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -57,8 +57,8 @@ const config = {
     }),
   ],
   resolve: {
-    modules: ['node_modules'],
-    extensions: ['.js'],
+    extensions: ['.tsx', '.ts', '.js'],
+    modules: [path.join(__dirname, './src'), path.join(__dirname, './node_modules')],
   },
 };
 
