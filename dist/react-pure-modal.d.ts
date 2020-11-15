@@ -1,6 +1,5 @@
 import './react-pure-modal.css';
 declare type Props = {
-    mode: 'modal' | 'tooltip';
     children: JSX.Element;
     replace: boolean;
     className: string;
@@ -14,22 +13,6 @@ declare type Props = {
     closeButton: JSX.Element & string;
     closeButtonPosition: string;
     portal: boolean;
-} & typeof defaultProps;
-declare const defaultProps: {
-    mode: string;
-    replace: boolean;
-    scrollable: boolean;
-    draggable: boolean;
-    portal: boolean;
 };
 declare function PureModal(props: Props): JSX.Element | null;
-declare namespace PureModal {
-    var defaultProps: {
-        mode: string;
-        replace: boolean;
-        scrollable: boolean;
-        draggable: boolean;
-        portal: boolean;
-    };
-}
 export default PureModal;

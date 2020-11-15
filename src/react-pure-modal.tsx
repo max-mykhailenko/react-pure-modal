@@ -7,7 +7,6 @@ import './react-pure-modal.css';
 import type { MouseOrTouch } from './types';
 
 type Props = {
-  mode: 'modal' | 'tooltip';
   children: JSX.Element;
   replace: boolean;
   className: string;
@@ -21,14 +20,6 @@ type Props = {
   closeButton: JSX.Element & string;
   closeButtonPosition: string;
   portal: boolean;
-} & typeof defaultProps;
-
-const defaultProps = {
-  mode: 'modal',
-  replace: false,
-  scrollable: true,
-  draggable: false,
-  portal: false,
 };
 
 function PureModal(props: Props) {
@@ -176,16 +167,16 @@ function PureModal(props: Props) {
 
   const {
     children,
-    replace,
+    replace = false,
     className,
     header,
     footer,
-    scrollable,
-    draggable,
+    scrollable = true,
+    draggable = false,
     width,
     closeButton,
     closeButtonPosition,
-    portal,
+    portal = false,
   } = props;
 
   let backdropclasses = ['pure-modal-backdrop'];
@@ -244,7 +235,5 @@ function PureModal(props: Props) {
   }
   return modalContent;
 }
-
-PureModal.defaultProps = defaultProps;
 
 export default PureModal;
