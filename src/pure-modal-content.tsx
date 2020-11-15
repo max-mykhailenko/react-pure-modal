@@ -1,10 +1,12 @@
 import React from 'react';
 
+import type { MouseOrTouch } from './types';
+
 type Props = {
   replace: boolean;
   children: JSX.Element;
-  onDragStart: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void;
-  onDragEnd: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void;
+  onDragStart?: (event: MouseOrTouch) => unknown;
+  onDragEnd?: (event: MouseOrTouch) => unknown;
   onClose: (event: React.MouseEvent<HTMLDivElement>) => void;
   bodyClass: string;
   header: JSX.Element | string;

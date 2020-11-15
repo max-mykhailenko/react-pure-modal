@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
+import PureModalContent from './pure-modal-content';
 import './react-pure-modal.css';
 
-import PureModalContent from './pure-modal-content';
+import type { MouseOrTouch } from './types';
 
 type Props = {
   mode: 'modal' | 'tooltip';
@@ -33,8 +34,8 @@ const defaultProps = {
 function PureModal(props: Props) {
   let hash = Math.random().toString();
   const [isDragged, setIsDragged] = useState(false);
-  const [x, setX] = useState(null);
-  const [y, setY] = useState(null);
+  const [x, setX] = useState<number | null>(null);
+  const [y, setY] = useState<number | null>(null);
   const [deltaX, setDeltaX] = useState(0);
   const [deltaY, setDeltaY] = useState(0);
   const [mouseOffsetX, setMouseOffsetX] = useState(0);
@@ -87,7 +88,7 @@ function PureModal(props: Props) {
     setMouseOffsetY(0);
   }
 
-  function open(event?: MouseEvent) {
+  function open(event?: MouseOrTouch) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -96,7 +97,7 @@ function PureModal(props: Props) {
     setModalContext();
   }
 
-  function close(event?: MouseEvent) {
+  function close(event?: MouseOrTouch) {
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -109,20 +110,27 @@ function PureModal(props: Props) {
     unsetModalContext();
   }
 
-  function getCoords(e: MouseEvent) {
-    let { pageX, pageY } = e;
-    if (e.changedTouches && e.changedTouches.length === 1) {
-      pageX = e.changedTouches[0].pageX;
-      pageY = e.changedTouches[0].pageY;
+  function getCoords(e: MouseOrTouch) {
+    if (e instanceof TouchEvent && e.changedTouches.length > 0) {
+      return {
+        pageX: e.changedTouches[0].pageX,
+        pageY: e.changedTouches[0].pageY,
+      };
+    }
+    if (e instanceof MouseEvent) {
+      return {
+        pageX: e.pageX,
+        pageY: e.pageY,
+      };
     }
     return {
-      pageX,
-      pageY,
+      pageX: 0,
+      pageY: 0,
     };
   }
 
-  function handleStartDrag(e: MouseEvent | TouchType) {
-    if (e.changedTouches && e.changedTouches.length > 1) return false;
+  function handleStartDrag(e: MouseOrTouch) {
+    if (e instanceof TouchEvent && e.changedTouches && e.changedTouches.length > 1) return;
 
     e.preventDefault();
 
@@ -136,8 +144,8 @@ function PureModal(props: Props) {
     setMouseOffsetY(pageY - top);
   }
 
-  function handleDrag(e: MouseEvent | TouchType) {
-    if (e.changedTouches && e.changedTouches.lenght > 1) {
+  function handleDrag(e: MouseOrTouch) {
+    if (e instanceof TouchEvent && e.changedTouches && e.changedTouches.length > 1) {
       return handleEndDrag();
     }
 
@@ -145,17 +153,19 @@ function PureModal(props: Props) {
 
     const { pageX, pageY } = getCoords(e);
 
-    setDeltaX(pageX - x - mouseOffsetX);
-    setDeltaY(pageY - y - mouseOffsetY);
+    if (typeof x === 'number' && typeof y === 'number') {
+      setDeltaX(pageX - x - mouseOffsetX);
+      setDeltaY(pageY - y - mouseOffsetY);
+    }
   }
 
   function handleEndDrag() {
     return setIsDragged(false);
   }
 
-  function handleBackdropClick(event: MouseEvent | TouchEvent) {
+  function handleBackdropClick(event: MouseOrTouch) {
     if (event) {
-      if (!event.target.classList.contains('pure-modal-backdrop')) {
+      if (!(event.target as Element).classList.contains('pure-modal-backdrop')) {
         return;
       }
       event.stopPropagation();
@@ -201,8 +211,8 @@ function PureModal(props: Props) {
     <div
       className={backdropclasses.join(' ')}
       onMouseDown={handleBackdropClick}
-      onTouchMove={isDragged ? handleDrag : null}
-      onMouseMove={isDragged ? handleDrag : null}
+      onTouchMove={isDragged ? handleDrag : undefined}
+      onMouseMove={isDragged ? handleDrag : undefined}
     >
       <div
         className={modalclasses.join(' ')}
@@ -216,8 +226,8 @@ function PureModal(props: Props) {
           replace={replace}
           header={header}
           footer={footer}
-          onDragStart={draggable ? handleStartDrag : null}
-          onDragEnd={draggable ? handleEndDrag : null}
+          onDragStart={draggable ? handleStartDrag : undefined}
+          onDragEnd={draggable ? handleEndDrag : undefined}
           onClose={close}
           bodyClass={bodyClasses.join(' ')}
           closeButton={closeButton}
