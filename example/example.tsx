@@ -91,7 +91,7 @@ function ModalContainer() {
         footer="Buttons?"
         isOpen={modalNoScrollable}
         closeButtonPosition="bottom"
-        scrollable={true}
+        scrollable={false}
         portal
         closeButton={<div>&#10007;</div>}
         onClose={() => {
