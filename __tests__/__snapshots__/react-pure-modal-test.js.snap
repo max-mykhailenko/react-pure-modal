@@ -6,8 +6,6 @@ exports[`Should contain width attribute 1`] = `
 <div
   className="pure-modal-backdrop"
   onMouseDown={[Function]}
-  onMouseMove={null}
-  onTouchMove={null}
 >
   <div
     className="pure-modal 0.5"
@@ -30,8 +28,6 @@ exports[`Should show content 1`] = `
 <div
   className="pure-modal-backdrop"
   onMouseDown={[Function]}
-  onMouseMove={null}
-  onTouchMove={null}
 >
   <div
     className="pure-modal 0.5"
@@ -48,10 +44,6 @@ exports[`Should show content 1`] = `
     >
       <div
         className="panel-heading"
-        onMouseDown={null}
-        onMouseUp={null}
-        onTouchEnd={null}
-        onTouchStart={null}
       />
       <div
         className="panel-body scrollable"
@@ -65,7 +57,7 @@ exports[`Should show content 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "margin": false,
+            "margin": "",
             "position": "absolute",
           }
         }
@@ -81,8 +73,6 @@ exports[`Should show only content 1`] = `
 <div
   className="pure-modal-backdrop"
   onMouseDown={[Function]}
-  onMouseMove={null}
-  onTouchMove={null}
 >
   <div
     className="pure-modal 0.5"
