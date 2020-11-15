@@ -1,6 +1,7 @@
 {
   "include": ["src/*.tsx"],
   "compilerOptions": {
+    "outDir": "./dist",
     "declaration": true,
     "emitDeclarationOnly": true,
     "sourceMap": true,
