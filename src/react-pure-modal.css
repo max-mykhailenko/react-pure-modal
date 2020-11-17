@@ -45,9 +45,7 @@
 }
 .pure-modal-backdrop:not(.scrollable) .panel {
   grid-template-rows: min-content minmax(0, 100%) min-content;
-  max-height: -moz-available;
-  max-height: -webkit-fill-available;
-  max-height: fill-available;
+  position: relative;
   height: 100%;
 }
 
