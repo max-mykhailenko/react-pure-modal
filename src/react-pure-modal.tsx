@@ -17,7 +17,7 @@ type Props = {
   width: string;
   isOpen: boolean;
   onClose: Function;
-  closeButton: JSX.Element & string;
+  closeButton: JSX.Element | string;
   closeButtonPosition: string;
   portal: boolean;
 };
