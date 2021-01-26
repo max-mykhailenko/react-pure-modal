@@ -13,7 +13,8 @@ type Props = {
   footer: JSX.Element | string;
   closeButton: JSX.Element | string;
   closeButtonPosition: string;
-} & typeof defaultProps;
+  draggable: boolean;
+};
 
 const defaultProps = {
   closeButton: '×',

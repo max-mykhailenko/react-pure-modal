@@ -9,13 +9,8 @@ declare type Props = {
     bodyClass: string;
     header: JSX.Element | string;
     footer: JSX.Element | string;
-    closeButton: JSX.Element & string;
+    closeButton: JSX.Element | string;
     closeButtonPosition: string;
-} & typeof defaultProps;
-declare const defaultProps: {
-    closeButton: string;
-    closeButtonPosition: string;
-    replace: boolean;
     draggable: boolean;
 };
 declare function PureModalContent(props: Props): JSX.Element;
