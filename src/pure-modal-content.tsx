@@ -11,7 +11,7 @@ type Props = {
   bodyClass: string;
   header: JSX.Element | string;
   footer: JSX.Element | string;
-  closeButton: JSX.Element & string;
+  closeButton: JSX.Element | string;
   closeButtonPosition: string;
 } & typeof defaultProps;
 
