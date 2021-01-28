@@ -38,6 +38,7 @@ function ModalContainer() {
           return true;
         }}
       >
+        <input type="text" placeholder="with input" value="" />
         {largeContent}
       </PureModal>
       <PureModal
