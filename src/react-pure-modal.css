@@ -60,6 +60,10 @@
   overflow-scrolling: touch;
 }
 
+.pure-modal .panel {
+  grid-template-rows: min-content minmax(0, 1fr) min-content;
+}
+
 @media (max-width: 480px) {
   .pure-modal-backdrop .pure-modal {
     width: 100%;
