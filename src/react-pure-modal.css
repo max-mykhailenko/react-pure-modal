@@ -44,7 +44,7 @@
   grid-template-rows: repeat(3, min-content);
 }
 .pure-modal-backdrop:not(.scrollable) .panel {
-  grid-template-rows: min-content minmax(0, 100%) min-content;
+  grid-template-rows: min-content minmax(0, 1fr) min-content;
   max-height: -moz-available;
   max-height: -webkit-fill-available;
   max-height: fill-available;
@@ -115,10 +115,10 @@
 
 .pure-modal-backdrop .additional-row {
   display: grid;
-  grid-template-rows: min-content minmax(0, 100%) min-content min-content;
+  grid-template-rows: min-content minmax(0, 1fr) min-content min-content;
 }
 
 .pure-modal-backdrop:not(.scrollable) .additional-row {
   display: grid;
-  grid-template-rows: min-content minmax(0, 100%) min-content min-content;
+  grid-template-rows: min-content minmax(0, 1fr) min-content min-content;
 }
