@@ -95,7 +95,11 @@ function PureModal(props: Props) {
     }
 
     if (onClose) {
-      onClose();
+      event
+      ? onClose({
+          isTrusted: true,
+        })
+      : onClose();
     }
 
     unsetModalContext();
