@@ -8,18 +8,18 @@ import type { MouseOrTouch } from './types';
 
 type Props = {
   children: JSX.Element;
-  replace: boolean;
-  className: string;
-  header: JSX.Element | string;
-  footer: JSX.Element | string;
-  scrollable: boolean;
-  draggable: boolean;
-  width: string;
-  isOpen: boolean;
-  onClose: Function;
-  closeButton: JSX.Element | string;
-  closeButtonPosition: string;
-  portal: boolean;
+  replace?: boolean;
+  className?: string;
+  header?: JSX.Element | string;
+  footer?: JSX.Element | string;
+  scrollable?: boolean;
+  draggable?: boolean;
+  width?: string;
+  isOpen?: boolean;
+  onClose?: Function;
+  closeButton?: JSX.Element | string;
+  closeButtonPosition?: string;
+  portal?: boolean;
 };
 
 function PureModal(props: Props) {
