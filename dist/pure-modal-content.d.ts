@@ -5,10 +5,10 @@ declare type Props = {
     children: JSX.Element;
     onDragStart?: (event: MouseOrTouch) => unknown;
     onDragEnd?: (event: MouseOrTouch) => unknown;
-    onClose: (event: React.MouseEvent<HTMLDivElement>) => void;
-    bodyClass: string;
-    header: JSX.Element | string;
-    footer: JSX.Element | string;
+    onClose?: (event: React.MouseEvent<HTMLDivElement>) => void;
+    bodyClass?: string;
+    header?: JSX.Element | string;
+    footer?: JSX.Element | string;
     closeButton: JSX.Element | string;
     closeButtonPosition: string;
     draggable: boolean;
