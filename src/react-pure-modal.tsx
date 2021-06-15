@@ -239,4 +239,4 @@ function PureModal(props: Props) {
   return modalContent;
 }
 
-export default PureModal;
+export default React.memo(PureModal);
