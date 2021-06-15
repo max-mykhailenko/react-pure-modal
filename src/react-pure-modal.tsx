@@ -37,10 +37,7 @@ function PureModal(props: Props) {
   useEffect(() => {
     if (isOpen) {
       open();
-    } else {
-      close();
     }
-
     return () => {
       isOpen && close();
     };
