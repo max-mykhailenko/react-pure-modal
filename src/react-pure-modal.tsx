@@ -37,10 +37,7 @@ function PureModal(props: Props) {
   useEffect(() => {
     if (isOpen) {
       open();
-    } else {
-      close();
     }
-
     return () => {
       isOpen && close();
     };
@@ -242,4 +239,4 @@ function PureModal(props: Props) {
   return modalContent;
 }
 
-export default PureModal;
+export default React.memo(PureModal);
