@@ -1,6 +1,6 @@
 {
   "name": "react-pure-modal",
-  "version": "2.0.19",
+  "version": "2.1.0",
   "description": "React modal",
   "main": "dist/react-pure-modal.min.js",
   "types": "dist/react-pure-modal.d.ts",
