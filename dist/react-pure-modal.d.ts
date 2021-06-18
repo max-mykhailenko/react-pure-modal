@@ -1,3 +1,4 @@
+import React from 'react';
 import './react-pure-modal.css';
 declare type Props = {
     children: JSX.Element;
@@ -15,4 +16,5 @@ declare type Props = {
     portal?: boolean;
 };
 declare function PureModal(props: Props): JSX.Element | null;
-export default PureModal;
+declare const _default: React.MemoExoticComponent<typeof PureModal>;
+export default _default;
